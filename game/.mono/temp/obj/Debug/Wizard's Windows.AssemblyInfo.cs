@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wizard\'s Windows")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee494202736aaba462491f317ddcff177f053d3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74765da2c11df4e577bb8e280c2e004b4305de45")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wizard\'s Windows")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wizard\'s Windows")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

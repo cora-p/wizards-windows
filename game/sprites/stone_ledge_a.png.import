@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cleaner.png-53b2b65c549fe3d527f08ef781e8b0d6.stex"
+path="res://.import/stone_ledge_a.png-0f6b869c306f10e562cfddddb29cd587.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cleaner.png"
-dest_files=[ "res://.import/cleaner.png-53b2b65c549fe3d527f08ef781e8b0d6.stex" ]
+source_file="res://sprites/stone_ledge_a.png"
+dest_files=[ "res://.import/stone_ledge_a.png-0f6b869c306f10e562cfddddb29cd587.stex" ]
 
 [params]
 
