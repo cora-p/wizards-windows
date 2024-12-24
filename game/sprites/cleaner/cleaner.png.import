@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cleaner.png-53b2b65c549fe3d527f08ef781e8b0d6.stex"
+path="res://.import/cleaner.png-82a488b9210fa77e0f5a924a080d0c15.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cleaner.png"
-dest_files=[ "res://.import/cleaner.png-53b2b65c549fe3d527f08ef781e8b0d6.stex" ]
+source_file="res://sprites/cleaner/cleaner.png"
+dest_files=[ "res://.import/cleaner.png-82a488b9210fa77e0f5a924a080d0c15.stex" ]
 
 [params]
 
