@@ -6,17 +6,40 @@
 [node name="Root" type="Node2D"]
 
 [node name="Cleaner" parent="." instance=ExtResource( 1 )]
-position = Vector2( 87, 14 )
+position = Vector2( 87, 41 )
 speed = 60.0
-fallSpeed = 90.0
-jumpPower = 1.75
-jumpDuration = 0.15
+fallAcceleration = 300.0
+jumpPower = 150.0
 
 [node name="StoneLedge_1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 93, 53 )
+position = Vector2( 70, 53 )
 
 [node name="StoneLedge_2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 122, 53 )
+position = Vector2( 118, 53 )
 
 [node name="StoneLedge_3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 61, 70 )
+position = Vector2( 44, 71 )
+
+[node name="StoneLedge_4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 27, 93 )
+
+[node name="StoneLedge_5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 57, 93 )
+
+[node name="StoneLedge_6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 87, 93 )
+
+[node name="StoneLedge_7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 117, 96 )
+
+[node name="StoneLedge_8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 147, 99 )
+
+[node name="StoneLedge_9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 177, 104 )
+
+[node name="StoneLedge_10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 158, 53 )
+
+[node name="StoneLedge_11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 199, 53 )

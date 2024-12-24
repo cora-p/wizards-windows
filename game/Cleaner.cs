@@ -4,18 +4,14 @@ using Godot;
 public class Cleaner : KinematicBody2D {
     [Export]
     public float speed = 20;
-    
+
     [Export]
-    public float fallSpeed = 30;
+    public float fallAcceleration = 60;
 
     [Export]
     public float jumpPower;
 
-    [Export]
-    public float jumpDuration = 0.25f;
-
-    float jumpTimeRemaining;
-
+    float verticalVelocity = 0;
 
     bool isGrounded;
 
@@ -32,23 +28,33 @@ public class Cleaner : KinematicBody2D {
     }
 
     void ProcessFalling(float delta) {
-        MoveAndCollide(Vector2.Down * fallSpeed * delta);
-        isGrounded = TestMove(Transform, Vector2.Down * fallSpeed * delta);
+        verticalVelocity -= fallAcceleration * delta;
+        MoveAndCollide(Vector2.Up * verticalVelocity * delta);
+        isGrounded = TestMove(Transform, Vector2.Down);
+
+        if (isGrounded) {
+            verticalVelocity = Mathf.Clamp(verticalVelocity,0,200);
+        }
+        if (TestMove(Transform, Vector2.Up)) {
+            verticalVelocity = Mathf.Clamp(verticalVelocity,-200,0);
+        }
     }
 
     void ProcessMovement(float delta) {
-        var horizontal =  (Input.IsActionPressed("Move Left") ? -1 : 0)
+        var horizontal = (Input.IsActionPressed("Move Left") ? -1 : 0)
                         + (Input.IsActionPressed("Move Right") ? 1 : 0);
         var movementVector = new Vector2(horizontal * speed * delta, 0);
         MoveAndCollide(movementVector);
 
-        if (isGrounded && Input.IsActionJustPressed("Jump")) {
-            jumpTimeRemaining = jumpDuration;
+        if (isGrounded && Input.IsActionPressed("Jump")) {
+            verticalVelocity += jumpPower;
         }
 
-        if (jumpTimeRemaining > 0) {
-            jumpTimeRemaining -= delta;
-            MoveAndCollide(Vector2.Up * jumpPower);
-        }
+        // if (jumpPowerRemaining > 0) {
+        //     GD.Print(jumpPowerRemaining);
+        //     MoveAndCollide(Vector2.Up * jumpPowerRemaining * delta);
+        //     // jumpTimeRemaining -= delta;
+        //     jumpPowerRemaining -= jumpDecay * delta;
+        // }
     }
 }
