@@ -1,14 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/Cleaner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/StoneLedge_a.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/CleanerSpawner.tscn" type="PackedScene" id=3]
 
 [node name="Root" type="Node2D"]
-
-[node name="Cleaner" parent="." instance=ExtResource( 1 )]
-position = Vector2( 71, 42 )
-collision_mask = 3
 
 [node name="Test stuff" type="Node" parent="."]
 
@@ -91,17 +86,18 @@ position = Vector2( 248, 97 )
 [node name="CleanerSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )
 rightPlatformOffset = Vector2( 15.5, -8.5 )
-softness = 0.1
+softness = 0.25
+bias = 0.9
 ropeVisualWidth = 1.001
 ropeDensity = 0.5
 
 [node name="Left Anchor Position" parent="CleanerSpawner" index="0"]
-position = Vector2( 153.5, -144 )
+position = Vector2( 153.5, -111 )
 
 [node name="Right Anchor Position" parent="CleanerSpawner" index="1"]
-position = Vector2( 182.5, -144 )
+position = Vector2( 182.5, -111 )
 
 [node name="Platform Position" parent="CleanerSpawner" index="2"]
-position = Vector2( 168, 60 )
+position = Vector2( 168, 100 )
 
 [editable path="CleanerSpawner"]

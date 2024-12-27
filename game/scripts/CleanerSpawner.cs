@@ -27,6 +27,8 @@ public class CleanerSpawner : Node2D {
 
     [Export]
     float ropeVisualWidth;
+    [Export]
+    PhysicsMaterial ropePhysicsMaterial;
 
     [Export]
     Color ropeColor;
@@ -281,6 +283,7 @@ public class CleanerSpawner : Node2D {
             leftRope.AddChild(segment);
             segment.GlobalPosition = gPosition;
             segment.LookAt(GLeftEndPosition);
+            segment.PhysicsMaterialOverride = ropePhysicsMaterial;
             ConstructCollider(segment, 0.5f, length);
             leftSegments.Add(segment);
             return segment;
