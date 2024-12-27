@@ -75,4 +75,5 @@ DerivedDataCache/*
 **.DS_Store
 *.pdb
 *.cache
-game/mono_crash*.json
+game/mono_crash**.json
+game/mono_crash.0.0.json
