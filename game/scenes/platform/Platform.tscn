@@ -11,7 +11,7 @@ extents = Vector2( 1, 5 )
 [node name="Platform" type="RigidBody2D"]
 position = Vector2( 31, 50 )
 collision_layer = 2
-mass = 30.0
+mass = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
