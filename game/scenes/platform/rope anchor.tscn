@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/platform/RopeAnchor.cs" type="Script" id=1]
+[ext_resource path="res://scripts/RopeAnchor.cs" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -12,7 +12,7 @@ mode = 3
 can_sleep = false
 script = ExtResource( 1 )
 moveLerp = 0.1
-moveSpeed = 10.0
+moveSpeed = 18.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

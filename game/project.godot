@@ -16,9 +16,9 @@ config/icon="res://sprites/cleaner/cleaner.png"
 
 [display]
 
-window/size/width=300
+window/size/width=340
 window/size/height=240
-window/size/test_width=1200
+window/size/test_width=1360
 window/size/test_height=960
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -107,11 +107,6 @@ project/assembly_name="Wizard's Windows"
 
 [physics]
 
-common/physics_fps=120
-2d/use_bvh=false
-2d/sleep_threshold_linear=0.2
-2d/sleep_threshold_angular=0.014
-2d/default_linear_damp=0.2
 common/physics_interpolation=true
 common/enable_object_picking=false
 

@@ -8,14 +8,20 @@
 extents = Vector2( 3, 5.5 )
 
 [node name="Cleaner" type="RigidBody2D"]
+physics_interpolation_mode = 1
 collision_layer = 8
 collision_mask = 3
-mass = 75.0
+mass = 50.0
 physics_material_override = ExtResource( 3 )
 can_sleep = false
-linear_damp = 1.0
+linear_damp = 0.25
 script = ExtResource( 2 )
-speed = 8000.0
+speed = 200.0
+centeringSpeed = 2.0
+centeringFactor = 1.0
+centeringDeadzone = 2.0
+moveInputAcceleration = 0.2
+velocitySyncLerpWeight = 0.1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

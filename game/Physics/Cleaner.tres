@@ -2,6 +2,5 @@
 
 [resource]
 resource_name = "Cleaner Material"
-rough = true
-bounce = 0.5
+bounce = 1.0
 absorbent = true

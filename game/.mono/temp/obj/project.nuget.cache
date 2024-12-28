@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "iXTmddi4LJY=",
+  "dgSpecHash": "1BIKvqHvJdg=",
   "success": true,
   "projectFilePath": "/Users/matthew/projects/wizards-windows/game/Wizard's Windows.csproj",
   "expectedPackageFiles": [
-    "/Users/matthew/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "/Users/matthew/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.2/microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+    "/Users/matthew/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "/Users/matthew/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.3/microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
   ],
   "logs": []
 }

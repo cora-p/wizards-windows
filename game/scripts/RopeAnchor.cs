@@ -1,6 +1,6 @@
 using System;
 using Godot;
-
+#pragma warning disable CS0649, IDE0044
 public class RopeAnchor : RigidBody2D
 {
     [Export]

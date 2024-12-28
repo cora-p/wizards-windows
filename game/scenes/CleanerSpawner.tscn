@@ -9,17 +9,17 @@ script = ExtResource( 1 )
 LeftAnchorPosition = NodePath("Left Anchor Position")
 RightAnchorPosition = NodePath("Right Anchor Position")
 PlatformPosition = NodePath("Platform Position")
-segmentLength = 1.0
+segmentLength = 3.0
 leftPlatformOffset = Vector2( -14.5, -8.5 )
-rightPlatformOffset = Vector2( 14.5, 8.5 )
-softness = 0.3
-bias = 0.3
-ropeVisualWidth = 1.5
+rightPlatformOffset = Vector2( 14.5, -8.5 )
+softness = 0.125
+bias = 0.75
+ropeVisualWidth = 1.1
 ropePhysicsMaterial = ExtResource( 2 )
-ropeColor = Color( 0.701961, 0.576471, 0.305882, 1 )
-ropeDensity = 1.0
-raiseSpeed = 1.0
-lowerSpeed = 1.5
+ropeColor = Color( 0.482353, 0.564706, 0.623529, 1 )
+ropeDensity = 0.75
+raiseSecondsPerLink = 0.1
+lowerSecondsPerLink = 0.067
 
 [node name="Left Anchor Position" type="Node2D" parent="."]
 position = Vector2( -14.5, 1.36422e-12 )
