@@ -69,19 +69,23 @@ position = Vector2( 255, 235 )
 position = Vector2( 285, 235 )
 
 [node name="StoneLedge_7" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 66, 83 )
+position = Vector2( 118, 116 )
+rotation = -2.1007
 
 [node name="StoneLedge_8" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 237, 20 )
+position = Vector2( 219, 106 )
+rotation = 1.16466
 
 [node name="StoneLedge_9" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 2, 105 )
+rotation = 0.743522
 
 [node name="StoneLedge_10" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 81, 28 )
+position = Vector2( 239, 48 )
 
 [node name="StoneLedge_11" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 248, 97 )
+position = Vector2( 200, 163 )
+rotation = -0.445872
 
 [node name="CleanerSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )
@@ -90,12 +94,14 @@ softness = 0.25
 bias = 0.9
 ropeVisualWidth = 1.001
 ropeDensity = 0.5
+raiseSecondsPerLink = 0.1
+lowerSecondsPerLink = 0.067
 
 [node name="Left Anchor Position" parent="CleanerSpawner" index="0"]
-position = Vector2( 153.5, -111 )
+position = Vector2( 154, -23 )
 
 [node name="Right Anchor Position" parent="CleanerSpawner" index="1"]
-position = Vector2( 182.5, -111 )
+position = Vector2( 182.5, -23 )
 
 [node name="Platform Position" parent="CleanerSpawner" index="2"]
 position = Vector2( 168, 100 )

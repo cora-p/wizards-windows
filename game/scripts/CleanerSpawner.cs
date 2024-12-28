@@ -36,6 +36,12 @@ public class CleanerSpawner : Node2D {
     [Export]
     float ropeDensity;
 
+    [Export]
+    float raiseSecondsPerLink;
+
+    [Export]
+    float lowerSecondsPerLink;
+
     RigidBody2D platform, leftAnchor, rightAnchor;
 
     Node2D leftRope, rightRope;
@@ -47,6 +53,10 @@ public class CleanerSpawner : Node2D {
 
     float leftFirstSegmentLength;
     float rightFirstSegmentLength;
+
+    float timeTilNextSegment;
+
+    PackedScene anchorPackedScene;
 
     Vector2 GLeftStartPosition {
         get {
@@ -93,6 +103,7 @@ public class CleanerSpawner : Node2D {
     }
 
     public override void _Ready() {
+        anchorPackedScene = GD.Load<PackedScene>("res://scenes/platform/rope anchor.tscn");
         ConstructRopedBodies();
         ConstructRopes();
     }
@@ -116,15 +127,89 @@ public class CleanerSpawner : Node2D {
         Update();
     }
 
-    void ConstructRopedBodies() {
-        var anchorPackedScene = GD.Load<PackedScene>("res://scenes/platform/rope anchor.tscn");
+    public override void _PhysicsProcess(float delta) {
+        var moveAxis = Input.IsActionPressed("Raise Platform") ? -1f : 0f;
+        moveAxis += Input.IsActionPressed("Lower Platform") ? 1f : 0f;
+        if (timeTilNextSegment > 0) {
+            timeTilNextSegment = Mathf.Clamp(timeTilNextSegment - delta, 0, 1);
+        }
+        if (timeTilNextSegment == 0) {
+            if (moveAxis < 0) {
+                ShortenRopes();
+                timeTilNextSegment = raiseSecondsPerLink;
+            } else if (moveAxis > 0) {
+                LengthenRopes();
+                timeTilNextSegment = lowerSecondsPerLink;
+            }
+        }
+    }
+
+    void ShortenRopes() {
+        leftAnchor.QueueFree();
+        leftSegments[0].QueueFree();
+        leftSegments.RemoveAt(0);
+        leftJoints.RemoveAt(0);
+        rightAnchor.QueueFree();
+        rightSegments[0].QueueFree();
+        rightSegments.RemoveAt(0);
+        rightJoints.RemoveAt(0);
+        ConstructAnchors(leftSegments[0].GlobalPosition, rightSegments[0].GlobalPosition);
+        ConstructJoint(leftAnchor.GetPath(), leftSegments[0].GetPath(), Side.Left, leftAnchor.Position);
+        ConstructJoint(rightAnchor.GetPath(), rightSegments[0].GetPath(), Side.Right, rightAnchor.Position);
+    }
+
+    void LengthenRopes() {
+        leftAnchor.QueueFree();
+        rightAnchor.QueueFree();
+        var newLeftAnchorPosition = ((Node2D)GetNode(LeftAnchorPosition)).GlobalPosition
+            + Vector2.Up * segmentLength;
+        var newRightAnchorPosition = ((Node2D)GetNode(RightAnchorPosition)).GlobalPosition
+            + Vector2.Up * segmentLength;
+        ConstructAnchors(
+            newLeftAnchorPosition,
+            newRightAnchorPosition);
+        ConstructSegment(GLeftStartPosition, segmentLength, Side.Left, true);
+        ConstructSegment(GRightStartPosition, segmentLength, Side.Right, true);
+        leftSegments[0].LookAt(leftSegments[1].GlobalPosition);
+        rightSegments[0].LookAt(rightSegments[1].GlobalPosition);
+        ConstructJoint(
+            leftAnchor.GetPath(),
+            leftSegments[0].GetPath(),
+            Side.Left,
+            leftAnchor.Position);
+        ConstructJoint(
+            rightAnchor.GetPath(),
+            rightSegments[0].GetPath(),
+            Side.Right,
+            rightAnchor.Position);
+        ConstructJoint(
+            leftSegments[0].GetPath(),
+            leftSegments[1].GetPath(),
+            Side.Left,
+            leftSegments[1].GlobalPosition);
+        ConstructJoint(
+            rightSegments[0].GetPath(),
+            rightSegments[1].GetPath(),
+            Side.Right,
+            rightSegments[1].GlobalPosition);
+    }
+
+    void ConstructAnchors(Vector2 leftPosition, Vector2 rightPosition) {
         leftAnchor = anchorPackedScene.Instance<RigidBody2D>();
-        leftAnchor.GlobalPosition = ((Node2D)GetNode(LeftAnchorPosition)).GlobalPosition;
+        leftAnchor.GlobalPosition = leftPosition;//((Node2D)GetNode(LeftAnchorPosition)).GlobalPosition;
         rightAnchor = anchorPackedScene.Instance<RigidBody2D>();
-        rightAnchor.GlobalPosition = ((Node2D)GetNode(RightAnchorPosition)).GlobalPosition;
+        rightAnchor.GlobalPosition = rightPosition;//((Node2D)GetNode(RightAnchorPosition)).GlobalPosition;
+        (leftAnchor as RopeAnchor).targetPosition = ((Node2D)GetNode(LeftAnchorPosition)).GlobalPosition;
+        (rightAnchor as RopeAnchor).targetPosition = ((Node2D)GetNode(RightAnchorPosition)).GlobalPosition;
         AddChild(leftAnchor);
         AddChild(rightAnchor);
+    }
 
+    void ConstructRopedBodies() {
+        ConstructAnchors(
+            ((Node2D)GetNode(LeftAnchorPosition)).GlobalPosition,
+            ((Node2D)GetNode(RightAnchorPosition)).GlobalPosition
+        );
         var platformPackedScene = GD.Load<PackedScene>("res://scenes/platform/Platform.tscn");
         platform = platformPackedScene.Instance<RigidBody2D>();
         platform.GlobalPosition = ((Node2D)GetNode(PlatformPosition)).GlobalPosition;
@@ -177,12 +262,12 @@ public class CleanerSpawner : Node2D {
                     break;
             }
             b = leftSegments[i].GetPath();
-            ConstructJoint(a, b, true, position);
+            ConstructJoint(a, b, Side.Left, position);
         }
         ConstructJoint(
             leftSegments.Last().GetPath(),
             platform.GetPath(),
-            true,
+            Side.Left,
             GLeftEndPosition);
 
         // Now construct the right-side rope
@@ -228,17 +313,17 @@ public class CleanerSpawner : Node2D {
                     break;
             }
             b = rightSegments[i].GetPath();
-            ConstructJoint(a, b, false, position);
+            ConstructJoint(a, b, Side.Right, position);
         }
         ConstructJoint(
             rightSegments.Last().GetPath(),
             platform.GetPath(),
-            false,
+            Side.Right,
             GRightEndPosition);
     }
 
-    PinJoint2D ConstructJoint(NodePath a, NodePath b, bool left, Vector2? globalPosition = null) {
-        if (left) {
+    PinJoint2D ConstructJoint(NodePath a, NodePath b, Side side, Vector2? globalPosition, bool insertAtStart = false) {
+        if (side == Side.Left) {
             var joint = new PinJoint2D() {
                 Name = $"j-L-{jn++}",
                 Bias = bias,
@@ -251,7 +336,11 @@ public class CleanerSpawner : Node2D {
             } else {
                 joint.GlobalPosition = (Vector2)globalPosition;
             }
-            leftJoints.Add(joint);
+            if (insertAtStart) {
+                leftJoints.Insert(0, joint);
+            } else {
+                leftJoints.Add(joint);
+            }
             joint.NodeB = b;
             return joint;
         } else {
@@ -267,13 +356,17 @@ public class CleanerSpawner : Node2D {
             } else {
                 joint.GlobalPosition = (Vector2)globalPosition;
             }
-            rightJoints.Add(joint);
+            if (insertAtStart) {
+                rightJoints.Insert(0, joint);
+            } else {
+                rightJoints.Add(joint);
+            }
             joint.NodeB = b;
             return joint;
         }
     }
 
-    RigidBody2D ConstructSegment(Vector2 gPosition, float length, Side side) {
+    RigidBody2D ConstructSegment(Vector2 gPosition, float length, Side side, bool insertAtStart = false) {
         if (side == Side.Left) {
             var segment = new RigidBody2D() {
                 Name = $"s-L-{sn++}",
@@ -285,7 +378,11 @@ public class CleanerSpawner : Node2D {
             segment.LookAt(GLeftEndPosition);
             segment.PhysicsMaterialOverride = ropePhysicsMaterial;
             ConstructCollider(segment, 0.5f, length);
-            leftSegments.Add(segment);
+            if (insertAtStart) {
+                leftSegments.Insert(0, segment);
+            } else {
+                leftSegments.Add(segment);
+            }
             return segment;
         } else {
             var segment = new RigidBody2D() {
@@ -297,7 +394,11 @@ public class CleanerSpawner : Node2D {
             segment.GlobalPosition = gPosition;
             segment.LookAt(GRightEndPosition);
             ConstructCollider(segment, 0.5f, length);
-            rightSegments.Add(segment);
+            if (insertAtStart) {
+                rightSegments.Insert(0, segment);
+            } else {
+                rightSegments.Add(segment);
+            }
             return segment;
         }
     }

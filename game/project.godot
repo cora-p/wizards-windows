@@ -89,6 +89,7 @@ Quit={
 2d_physics/layer_1="General"
 2d_physics/layer_2="Platform"
 2d_physics/layer_3="Rope"
+2d_physics/layer_4="Cleaner"
 
 [mono]
 

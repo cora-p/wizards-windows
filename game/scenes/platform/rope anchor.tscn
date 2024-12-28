@@ -6,13 +6,12 @@
 
 [node name="rope anchor" type="RigidBody2D"]
 position = Vector2( 36, 16 )
-collision_layer = 0
+collision_layer = 8388608
+collision_mask = 0
 mode = 3
 can_sleep = false
 script = ExtResource( 1 )
-raiseSpeed = 20.0
-lowerSpeed = 35.0
+moveLerp = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
