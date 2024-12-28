@@ -19,7 +19,6 @@ script = ExtResource( 2 )
 speed = 200.0
 centeringSpeed = 2.0
 centeringFactor = 1.0
-centeringDeadzone = 2.0
 moveInputAcceleration = 0.2
 velocitySyncLerpWeight = 0.1
 

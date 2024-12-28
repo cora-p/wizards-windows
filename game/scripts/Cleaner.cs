@@ -2,17 +2,20 @@ using System;
 using Godot;
 #pragma warning disable CS0649, IDE0044
 public class Cleaner : RigidBody2D {
+    
     [Export]
     float speed;
+
     [Export]
     float centeringSpeed;
+
     [Export]
     float centeringFactor;
-    [Export]
-    float centeringDeadzone;
+
     Vector2 startPosition;
 
     float moveInputMoment = 0f;
+
     [Export]
     float moveInputAcceleration;
 
@@ -24,7 +27,6 @@ public class Cleaner : RigidBody2D {
     }
 
     public override void _Process(float delta) {
-        GD.Print(moveInputMoment);
         var leftPressed = Input.IsActionPressed("Move Left");
         var rightPressed = Input.IsActionPressed("Move Right");
 
@@ -50,10 +52,7 @@ public class Cleaner : RigidBody2D {
         } else {
             var centeringVector = startPosition - Position;
             var centerDistance = centeringVector.Length();
-            // if (centerDistance > centeringDeadzone) {
-            // Only try to center if the player isn't moving, and they're outside of the deadzone.
             Position += centeringVector.Normalized() * centeringSpeed * delta * Mathf.Pow(centerDistance, centeringFactor);
-            // }
             LinearVelocity = LinearVelocity.LinearInterpolate(
                  GetParent<RigidBody2D>().LinearVelocity, velocitySyncLerpWeight);
         }
