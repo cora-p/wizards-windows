@@ -1,12 +1,251 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/MenuController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/StoneLedge_a.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/CleanerSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/env/StoneWallEdge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/env/StoneWall.tscn" type="PackedScene" id=5]
 
 [node name="Root" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
-[node name="Test stuff" type="Node" parent="."]
+[node name="bg" type="Node2D" parent="."]
+position = Vector2( 6, 0 )
+
+[node name="StoneWall_c" parent="bg" instance=ExtResource( 5 )]
+
+[node name="StoneWall_c2" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 16 )
+
+[node name="StoneWall_c3" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 16 )
+
+[node name="StoneWall_c4" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 16 )
+
+[node name="StoneWall_c5" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 16 )
+
+[node name="StoneWall_c6" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 16 )
+
+[node name="StoneWall_c7" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 16 )
+
+[node name="StoneWall_c8" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 16 )
+
+[node name="StoneWall_c9" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 16 )
+
+[node name="StoneWall_c10" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 48.01 )
+
+[node name="StoneWall_c74" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 48.01 )
+
+[node name="StoneWall_c11" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 47.01 )
+
+[node name="StoneWall_c73" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 48.01 )
+
+[node name="StoneWall_c12" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 49.01 )
+
+[node name="StoneWall_c13" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 48.01 )
+
+[node name="StoneWall_c14" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 48.01 )
+
+[node name="StoneWall_c15" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 48.01 )
+
+[node name="StoneWall_c75" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 48.01 )
+
+[node name="StoneWall_c16" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 47.01 )
+
+[node name="StoneWall_c17" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 48.01 )
+
+[node name="StoneWall_c18" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 48.01 )
+
+[node name="StoneWall_c19" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 80.02 )
+
+[node name="StoneWall_c20" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 80.02 )
+
+[node name="StoneWall_c21" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 79.02 )
+
+[node name="StoneWall_c22" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 80.02 )
+
+[node name="StoneWall_c23" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 80.02 )
+
+[node name="StoneWall_c24" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 80.02 )
+
+[node name="StoneWall_c25" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 80.02 )
+
+[node name="StoneWall_c26" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 80.02 )
+
+[node name="StoneWall_c27" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 80.02 )
+
+[node name="StoneWall_c28" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 111.03 )
+
+[node name="StoneWall_c29" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 111.03 )
+
+[node name="StoneWall_c30" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 111.03 )
+
+[node name="StoneWall_c31" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 111.03 )
+
+[node name="StoneWall_c32" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 111.03 )
+
+[node name="StoneWall_c76" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 111.03 )
+
+[node name="StoneWall_c33" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 177.03, 111.03 )
+
+[node name="StoneWall_c34" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 111.03 )
+
+[node name="StoneWall_c35" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 111.03 )
+
+[node name="StoneWall_c36" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 111.03 )
+
+[node name="StoneWall_c37" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 142.04 )
+
+[node name="StoneWall_c38" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 142.04 )
+
+[node name="StoneWall_c39" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 142.04 )
+
+[node name="StoneWall_c40" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 142.04 )
+
+[node name="StoneWall_c41" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 142.04 )
+
+[node name="StoneWall_c42" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 142.04 )
+
+[node name="StoneWall_c43" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 142.04 )
+
+[node name="StoneWall_c44" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 142.04 )
+
+[node name="StoneWall_c45" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 142.04 )
+
+[node name="StoneWall_c46" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 173.05 )
+
+[node name="StoneWall_c47" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 173.05 )
+
+[node name="StoneWall_c48" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 174.05 )
+
+[node name="StoneWall_c49" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 173.05 )
+
+[node name="StoneWall_c77" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 173.05 )
+
+[node name="StoneWall_c50" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 145.02, 173.05 )
+
+[node name="StoneWall_c51" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 173.05 )
+
+[node name="StoneWall_c52" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 173.05 )
+
+[node name="StoneWall_c53" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 173.05 )
+
+[node name="StoneWall_c54" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 271.06, 173.05 )
+
+[node name="StoneWall_c55" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 205.06 )
+
+[node name="StoneWall_c56" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 205.06 )
+
+[node name="StoneWall_c57" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 205.06 )
+
+[node name="StoneWall_c58" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 205.06 )
+
+[node name="StoneWall_c59" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 205.06 )
+
+[node name="StoneWall_c60" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 205.06 )
+
+[node name="StoneWall_c61" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 205.06 )
+
+[node name="StoneWall_c62" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 205.06 )
+
+[node name="StoneWall_c63" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 205.06 )
+
+[node name="StoneWall_c64" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 16, 236.07 )
+
+[node name="StoneWall_c65" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 48, 236.07 )
+
+[node name="StoneWall_c66" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 80, 236.07 )
+
+[node name="StoneWall_c67" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 112.01, 236.07 )
+
+[node name="StoneWall_c68" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 144.02, 236.07 )
+
+[node name="StoneWall_c69" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 176.03, 236.07 )
+
+[node name="StoneWall_c70" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 208.04, 236.07 )
+
+[node name="StoneWall_c71" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 240.05, 236.07 )
+
+[node name="StoneWall_c72" parent="bg" instance=ExtResource( 5 )]
+position = Vector2( 272.06, 236.07 )
+
+[node name="Test stuff" type="Node2D" parent="."]
+visible = false
 
 [node name="StoneLedge_1" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 21, 135 )
@@ -107,5 +346,65 @@ position = Vector2( 182.5, -31 )
 position = Vector2( 168, 100 )
 
 [node name="MenuController" parent="." instance=ExtResource( 1 )]
+
+[node name="StoneWallEdge" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 236 )
+
+[node name="StoneWallEdge2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 204.99 )
+
+[node name="StoneWallEdge3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 309, 172.98 )
+
+[node name="StoneWallEdge4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 140.97 )
+
+[node name="StoneWallEdge5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 110.96 )
+
+[node name="StoneWallEdge6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 79.95 )
+
+[node name="StoneWallEdge7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 47.94 )
+
+[node name="StoneWallEdge8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 310, 15.93 )
+
+[node name="StoneWallEdge9" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 13.93 )
+rotation = -3.14159
+
+[node name="StoneWallEdge10" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 45.94 )
+rotation = -3.14159
+
+[node name="StoneWallEdge12" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 108.96 )
+rotation = -3.14159
+
+[node name="StoneWallEdge11" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 77.95 )
+rotation = -3.14159
+
+[node name="StoneWallEdge14" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 170.98 )
+rotation = -3.14159
+
+[node name="StoneWallEdge13" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 139.97 )
+rotation = -3.14159
+
+[node name="StoneWallEdge15" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 202.99 )
+rotation = -3.14159
+
+[node name="StoneWallEdge16" parent="." instance=ExtResource( 4 )]
+position = Vector2( -9.10004, 234 )
+rotation = -3.14159
+
+[node name="StoneWallEdge17" parent="." instance=ExtResource( 4 )]
+position = Vector2( -10.1, 266.01 )
+rotation = -3.14159
 
 [editable path="CleanerSpawner"]
