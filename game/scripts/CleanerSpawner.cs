@@ -144,7 +144,13 @@ public class CleanerSpawner : Node2D {
         }
     }
 
+    Vector2 GetTargetOffset() => (leftAnchor as RopeAnchor).targetOffset;
+    void SetTargetOffsets(Vector2 offset) {
+        (leftAnchor as RopeAnchor).targetOffset = offset;
+        (rightAnchor as RopeAnchor).targetOffset = offset;
+    }
     void ShortenRopes() {
+        var targetOffset = GetTargetOffset();
         leftAnchor.QueueFree();
         leftSegments[0].QueueFree();
         leftSegments.RemoveAt(0);
@@ -154,11 +160,13 @@ public class CleanerSpawner : Node2D {
         rightSegments.RemoveAt(0);
         rightJoints.RemoveAt(0);
         ConstructAnchors(leftSegments[0].GlobalPosition, rightSegments[0].GlobalPosition);
+        SetTargetOffsets(targetOffset);
         ConstructJoint(leftAnchor.GetPath(), leftSegments[0].GetPath(), Side.Left, leftAnchor.Position);
         ConstructJoint(rightAnchor.GetPath(), rightSegments[0].GetPath(), Side.Right, rightAnchor.Position);
     }
 
     void LengthenRopes() {
+        var targetOffset = GetTargetOffset();
         leftAnchor.QueueFree();
         rightAnchor.QueueFree();
         var newLeftAnchorPosition = ((Node2D)GetNode(LeftAnchorPosition)).GlobalPosition
@@ -166,8 +174,9 @@ public class CleanerSpawner : Node2D {
         var newRightAnchorPosition = ((Node2D)GetNode(RightAnchorPosition)).GlobalPosition
             + Vector2.Up * segmentLength;
         ConstructAnchors(
-            newLeftAnchorPosition,
-            newRightAnchorPosition);
+            newLeftAnchorPosition + targetOffset,
+            newRightAnchorPosition + targetOffset);
+        SetTargetOffsets(targetOffset);
         ConstructSegment(GLeftStartPosition, segmentLength, Side.Left, true);
         ConstructSegment(GRightStartPosition, segmentLength, Side.Right, true);
         leftSegments[0].LookAt(leftSegments[1].GlobalPosition);
