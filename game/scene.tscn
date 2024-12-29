@@ -378,45 +378,14 @@ rotation = -3.14159
 [node name="StoneLedge_2" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 83, 84 )
 
-[node name="StoneLedge_6" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 15, 235 )
-
-[node name="StoneLedge_21" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 5, 215 )
-rotation = 1.57079
-
-[node name="StoneLedge_22" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 5, 185 )
-rotation = 1.57079
-
-[node name="StoneLedge_23" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 5, 155 )
-rotation = 1.57079
-
-[node name="StoneLedge_24" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 5, 125 )
-rotation = 1.57079
-
-[node name="StoneLedge_12" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 45, 235 )
-
 [node name="StoneLedge_13" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 75, 235 )
 
 [node name="StoneLedge_14" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 105, 235 )
 
-[node name="StoneLedge_15" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 135, 235 )
-
 [node name="StoneLedge_16" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 165, 235 )
-
-[node name="StoneLedge_17" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 195, 235 )
-
-[node name="StoneLedge_18" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 225, 235 )
 
 [node name="StoneLedge_19" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 255, 235 )
