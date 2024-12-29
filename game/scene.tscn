@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/MenuController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/StoneLedge_a.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/env/StoneWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/env/NebulaBg.tscn" type="PackedScene" id=6]
 [ext_resource path="res://misc/font_silkscreen.tres" type="DynamicFont" id=7]
+[ext_resource path="res://sprites/env/window_a.png" type="Texture" id=8]
+[ext_resource path="res://sprites/env/window_b.png" type="Texture" id=9]
 
 [node name="Root" type="Node2D"]
 __meta__ = {
@@ -400,6 +402,33 @@ position = Vector2( 85, 158 )
 [node name="StoneLedge_11" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 196, 150 )
 rotation = -1.57079
+
+[node name="Window_a" type="Sprite" parent="Test stuff"]
+position = Vector2( 176.06, 166.95 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="Window_b" type="Sprite" parent="Test stuff"]
+position = Vector2( 70.02, 49.51 )
+scale = Vector2( 1, 0.765938 )
+texture = ExtResource( 9 )
+
+[node name="Window_b2" type="Sprite" parent="Test stuff"]
+position = Vector2( 134.04, 42.02 )
+texture = ExtResource( 9 )
+
+[node name="Window_b3" type="Sprite" parent="Test stuff"]
+position = Vector2( 205.03, 58.51 )
+scale = Vector2( 1.43563, 0.484688 )
+texture = ExtResource( 9 )
+
+[node name="Window_b4" type="Sprite" parent="Test stuff"]
+position = Vector2( 262.08, 42.02 )
+texture = ExtResource( 9 )
+
+[node name="Window_b5" type="Sprite" parent="Test stuff"]
+position = Vector2( 297, 155 )
+texture = ExtResource( 9 )
 
 [node name="CleanerSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )

@@ -79,3 +79,4 @@ game/mono_crash**.json
 game/mono_crash.0.0.json
 /game/.mono
 .DS_Store
+/game/.import
