@@ -80,3 +80,19 @@ game/mono_crash.0.0.json
 /game/.mono
 .DS_Store
 /game/.import
+
+# Godot 4+ specific ignores
+game/.godot/
+
+# Godot-specific ignores
+game/.import/
+game/export.cfg
+game/export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+game/*.translation
+
+# Mono-specific ignores
+game/.mono/
+game/data_*/
+game/mono_crash.*.json
