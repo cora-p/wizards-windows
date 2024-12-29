@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/MenuController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/StoneLedge_a.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://misc/font_silkscreen.tres" type="DynamicFont" id=7]
 [ext_resource path="res://sprites/env/window_a.png" type="Texture" id=8]
 [ext_resource path="res://sprites/env/window_b.png" type="Texture" id=9]
+[ext_resource path="res://scenes/env/1x1.tscn" type="PackedScene" id=10]
 
 [node name="Root" type="Node2D"]
 __meta__ = {
@@ -399,9 +400,9 @@ position = Vector2( 285, 235 )
 [node name="StoneLedge_10" parent="Test stuff" instance=ExtResource( 2 )]
 position = Vector2( 85, 158 )
 
-[node name="StoneLedge_11" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 196, 150 )
-rotation = -1.57079
+[node name="StoneLedge_1" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 258, 160.01 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Window_a" type="Sprite" parent="Test stuff"]
 position = Vector2( 176.06, 166.95 )
