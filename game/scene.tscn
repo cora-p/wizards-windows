@@ -19,363 +19,699 @@ __meta__ = {
 [node name="background" type="Node2D" parent="."]
 position = Vector2( 16, -96.03 )
 rotation = 0.415388
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg5" parent="background" instance=ExtResource( 6 )]
 position = Vector2( -5.11001, 286.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg6" parent="background" instance=ExtResource( 6 )]
 position = Vector2( -5.11007, 158.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg7" parent="background" instance=ExtResource( 6 )]
 position = Vector2( -5.11007, 30.06 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg8" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 122.93, 286.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg9" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 122.93, 158.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg10" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 122.93, 30.06 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg11" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 250.97, 286.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg12" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 250.97, 158.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg13" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 250.97, 30.06 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg14" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 379.01, 286.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg15" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 379.01, 158.1 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg16" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 379.01, 30.06 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg17" parent="background" instance=ExtResource( 6 )]
 position = Vector2( -5.11007, -97.98 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg18" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 122.93, -97.98 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg19" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 250.97, -97.98 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NebulaBg20" parent="background" instance=ExtResource( 6 )]
 position = Vector2( 379.01, -97.98 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="tower" type="Node2D" parent="."]
 position = Vector2( 27.01, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c" parent="tower" instance=ExtResource( 5 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c2" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c3" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c4" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c5" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c6" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c7" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c8" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c9" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c10" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c74" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c11" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 47.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c73" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c12" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 49.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c13" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c14" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c15" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c75" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c16" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 47.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c17" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c18" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 48.01 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c19" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c20" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c21" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 79.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c22" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c23" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c24" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c25" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c26" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c27" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 80.02 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c28" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c29" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c30" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c31" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c32" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c76" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c33" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 177.03, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c34" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c35" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c36" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 111.03 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c37" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c38" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c39" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c40" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c41" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c42" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c43" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c44" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c45" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 142.04 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c46" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c47" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c48" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 174.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c49" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c77" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c50" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 145.02, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c51" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c52" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c53" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c54" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 271.06, 173.05 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c55" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c56" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c57" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c58" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c59" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c60" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c61" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c62" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c63" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 205.06 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c64" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 16, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c65" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 48, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c66" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 80, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c67" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 112.01, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c68" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 144.02, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c69" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 176.03, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c70" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 208.04, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c71" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 240.05, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWall_c72" parent="tower" instance=ExtResource( 5 )]
 position = Vector2( 272.06, 236.07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 236 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge2" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 204.99 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge3" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 303, 172.98 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge4" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 140.97 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge5" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 110.96 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge6" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 79.95 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge7" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 47.94 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge8" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( 304, 15.93 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge9" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 13.93 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge10" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 45.94 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge12" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 108.96 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge11" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 77.95 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge14" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 170.98 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge13" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 139.97 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge15" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 202.99 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge16" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -15.1, 234 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StoneWallEdge17" parent="tower" instance=ExtResource( 4 )]
 position = Vector2( -16.1, 266.01 )
 rotation = -3.14159
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Test stuff" type="Node2D" parent="."]
 
@@ -454,6 +790,7 @@ custom_fonts/font = ExtResource( 7 )
 text = "Move Cleaner: A/D
 Move Platform: Q/E
 Cable Length: W/S
+Scrub: LMB
 "
 align = 2
 valign = 2

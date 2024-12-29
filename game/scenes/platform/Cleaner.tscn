@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/cleaner/cleaner.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Cleaner.cs" type="Script" id=2]
 [ext_resource path="res://Physics/Cleaner.tres" type="PhysicsMaterial" id=3]
+[ext_resource path="res://scenes/platform/Brush.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 5.5 )
@@ -21,6 +22,10 @@ centeringSpeed = 2.0
 centeringFactor = 1.0
 moveInputAcceleration = 0.2
 velocitySyncLerpWeight = 0.1
+
+[node name="Brush" parent="." instance=ExtResource( 4 )]
+physics_interpolation_mode = 1
+position = Vector2( 6, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

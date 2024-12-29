@@ -93,13 +93,21 @@ Quit={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
+Scrub={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [layer_names]
 
-2d_physics/layer_1="General"
+2d_physics/layer_1="Tower"
 2d_physics/layer_2="Platform"
 2d_physics/layer_3="Rope"
 2d_physics/layer_4="Cleaner"
+2d_physics/layer_5="Brush"
+2d_physics/layer_6="Water"
+2d_physics/layer_7="Monsters"
 
 [mono]
 
