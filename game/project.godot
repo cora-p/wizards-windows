@@ -108,6 +108,7 @@ Scrub={
 2d_physics/layer_5="Brush"
 2d_physics/layer_6="Water"
 2d_physics/layer_7="Monsters"
+2d_physics/layer_8="FX"
 
 [mono]
 

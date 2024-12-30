@@ -1,0 +1,5 @@
+[gd_resource type="PhysicsMaterial" format=2]
+
+[resource]
+resource_name = "Brush Fiber Material"
+bounce = 0.51
