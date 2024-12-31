@@ -2,7 +2,7 @@ using System;
 using Godot;
 #pragma warning disable CS0649, IDE0044
 public class Cleaner : RigidBody2D {
-    
+
     [Export]
     float speed;
 

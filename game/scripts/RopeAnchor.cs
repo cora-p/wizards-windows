@@ -1,8 +1,7 @@
 using System;
 using Godot;
 #pragma warning disable CS0649, IDE0044
-public class RopeAnchor : RigidBody2D
-{
+public class RopeAnchor : RigidBody2D {
     [Export]
     float moveLerp;
 
@@ -12,7 +11,7 @@ public class RopeAnchor : RigidBody2D
     public Vector2 targetPosition;
     public Vector2 targetOffset;
     public override void _PhysicsProcess(float delta) {
-        GlobalPosition = GlobalPosition.LinearInterpolate(targetPosition+targetOffset, moveLerp);
+        GlobalPosition = GlobalPosition.LinearInterpolate(targetPosition + targetOffset, moveLerp);
         var leftPressed = Input.IsActionPressed("Move Platform Left");
         var rightPressed = Input.IsActionPressed("Move Platform Right");
         Vector2 moveVector = Vector2.Zero;
