@@ -33,7 +33,9 @@ public class BrushController : KinematicBody2D, Manager {
 	Node2D manipulatableNode;
 	Node2D brushHeadPositionNode;
 
-	public Area2D hitbox;
+	Area2D hitbox;
+
+	public List<Area2D> brushHitboxes;
 
 	private static BrushController _Instance;
 
@@ -55,8 +57,15 @@ public class BrushController : KinematicBody2D, Manager {
 		manipulatableNode = GetNode<Node2D>("Manipulatable");
 		brushHeadPositionNode = GetNode<Node2D>("Manipulatable/Brush/BrushHeadPosition");
 		hitbox = GetNode<Area2D>("Hitbox");
+
+		var hitboxKids = new List<Node>();
+		RecurseChildren(hitbox, hitboxKids);
+		brushHitboxes = (from k in hitboxKids
+						 where k is Area2D
+						 select k as Area2D)
+						   .ToList();
+
 		ManagerManager.Instance.ReportReady(this);
-		// GrimeManager.Instance.GenerateGrime(100);
 	}
 
 	void RecurseChildren(Node node, List<Node> collection) {

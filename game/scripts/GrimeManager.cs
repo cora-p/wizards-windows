@@ -48,7 +48,6 @@ public class GrimeManager : Node, Manager {
 	/// <param name="lowerBound">the lower bounds in global coordinates</param>
 	/// <param name="upperBound">the upper bounds in global coordinates</param>
 	public static void QueueGrime(int count, Vector2 lowerBound, Vector2 upperBound) {
-		GD.Print($"Queueing grime request: [{count},{lowerBound},{upperBound}]");
 		grimeRequests.Add(new GrimeRequest(count, lowerBound, upperBound));
 	}
 
@@ -58,7 +57,10 @@ public class GrimeManager : Node, Manager {
 	}
 
 	public void OnAllReady() {
-		BrushController.Instance.hitbox.Connect("area_entered", this, "OnClean");
+		foreach (var b in BrushController.Instance.brushHitboxes) {
+			b.Connect("area_entered", this, "OnClean");
+		}
+		// BrushController.Instance.hitbox.Connect("area_entered", this, "OnClean");
 		for (var i = 0; i < grimeRequests.Count; i++) {
 			var gr = grimeRequests[i];
 			GenerateGrime(gr);

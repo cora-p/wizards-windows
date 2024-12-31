@@ -15,11 +15,8 @@ public class Window : Node2D {
 					var lowerBound = c.GlobalPosition - rect.Extents;
 					var upperBound = c.GlobalPosition + rect.Extents;
 					var vol = rect.Extents * 2f;
-					GD.Print($"v:{vol}");
 					var area = (int)(vol.x * vol.y);
-					GD.Print($"a:{vol}");
 					var grimePoints = griminess / 100f * area;
-					GD.Print($"g:{grimePoints}");
 					GrimeManager.QueueGrime((int)grimePoints, lowerBound, upperBound);
 				} else {
 					GD.PrintErr($"Window {Name} has grime bounds shape of type {shape.GetType().Name}. Ignoring...");
