@@ -6,8 +6,10 @@ public class GrimeManager : Node, Manager {
 	static PackedScene grimePackedScene;
 
 	FastNoiseLite noise = new FastNoiseLite();
+
 	[Export]
 	float threshold;
+
 	[Export]
 	float frequency;
 
@@ -79,10 +81,6 @@ public class GrimeManager : Node, Manager {
 		return color;
 	}
 
-	public void OnClean(Area2D area2D) {
-		area2D.QueueFree();
-	}
-
 	public void OnAllReady() {
 		foreach (var b in BrushController.Instance.brushHitboxes) {
 			b.Connect("area_entered", this, "OnClean");
@@ -100,6 +98,17 @@ public class GrimeManager : Node, Manager {
 		public GrimeRequest(Vector2[] lowerBounds, Vector2[] upperBounds) {
 			this.lowerBounds = lowerBounds;
 			this.upperBounds = upperBounds;
+		}
+	}
+
+	public void OnClean(Area2D area2D) {
+		var c = area2D.Modulate;
+		var griminess = c.a;
+		griminess -= BrushController.Instance.scrubbingPower;
+		if (griminess < threshold) {
+			area2D.QueueFree();
+		} else {
+			area2D.Modulate = new Color(c.r, c.g, c.b, griminess);
 		}
 	}
 }

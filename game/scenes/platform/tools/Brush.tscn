@@ -11,12 +11,13 @@ physics_interpolation_mode = 1
 collision_layer = 16
 collision_mask = 256
 script = ExtResource( 3 )
+scrubbingPower = 0.05
 moveLerpWeight = 0.1
 rotateLerpWeight = 0.1
-scrubCooldown = 1.0
+scrubCooldown = 0.01
 scrubPositionCurve = ExtResource( 2 )
 scrubAngleCurve = ExtResource( 4 )
-scrubDuration = 0.75
+scrubDuration = 0.607
 
 [node name="Manipulatable" type="Node2D" parent="."]
 

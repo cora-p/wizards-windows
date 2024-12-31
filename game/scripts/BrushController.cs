@@ -9,6 +9,9 @@ public class BrushController : KinematicBody2D, Manager {
 	public Cleaner cleaner;
 
 	[Export]
+	public float scrubbingPower;
+
+	[Export]
 	float moveLerpWeight;
 	[Export]
 	float rotateLerpWeight;
@@ -97,7 +100,7 @@ public class BrushController : KinematicBody2D, Manager {
 			scrubCooldownRemaining += scrubCooldown;
 			scrubDurationRemaining = scrubDuration;
 		}
-		if (scrubCooldownRemaining > 0f) {
+		if (scrubDurationRemaining == 0f && scrubCooldownRemaining > 0f) {
 			scrubCooldownRemaining -= delta;
 			if (scrubCooldownRemaining < 0f) scrubCooldownRemaining = 0f;
 		}
