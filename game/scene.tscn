@@ -776,13 +776,13 @@ possibleGrimeColors = PoolColorArray( 0.290196, 0.290196, 0.290196, 0.764706, 0.
 position = Vector2( 1.36422e-12, 1.36422e-12 )
 
 [node name="Left Anchor Position" parent="CleanerSpawner" index="0"]
-position = Vector2( 154, -14.99 )
+position = Vector2( 154, -18 )
 
 [node name="Right Anchor Position" parent="CleanerSpawner" index="1"]
-position = Vector2( 182.5, -14.99 )
+position = Vector2( 182.5, -18 )
 
 [node name="Platform Position" parent="CleanerSpawner" index="2"]
-position = Vector2( 168, 100 )
+position = Vector2( 168, 36 )
 
 [node name="MenuController" parent="." instance=ExtResource( 1 )]
 

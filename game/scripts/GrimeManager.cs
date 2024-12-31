@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 
 public class GrimeManager : Node, Manager {
@@ -60,7 +59,6 @@ public class GrimeManager : Node, Manager {
 		foreach (var b in BrushController.Instance.brushHitboxes) {
 			b.Connect("area_entered", this, "OnClean");
 		}
-		// BrushController.Instance.hitbox.Connect("area_entered", this, "OnClean");
 		for (var i = 0; i < grimeRequests.Count; i++) {
 			var gr = grimeRequests[i];
 			GenerateGrime(gr);

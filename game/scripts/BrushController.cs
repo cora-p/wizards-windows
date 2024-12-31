@@ -31,9 +31,9 @@ public class BrushController : KinematicBody2D, Manager {
 	float distanceFromCleaner;
 
 	Node2D manipulatableNode;
-	Node2D brushHeadPositionNode;
+	Node2D headPositionNode;
 
-	Area2D hitbox;
+	Node2D head;
 
 	public List<Area2D> brushHitboxes;
 
@@ -55,11 +55,11 @@ public class BrushController : KinematicBody2D, Manager {
 		Instance = this;
 		distanceFromCleaner = Position.DistanceTo(Vector2.Zero);
 		manipulatableNode = GetNode<Node2D>("Manipulatable");
-		brushHeadPositionNode = GetNode<Node2D>("Manipulatable/Brush/BrushHeadPosition");
-		hitbox = GetNode<Area2D>("Hitbox");
+		headPositionNode = GetNode<Node2D>("Manipulatable/Brush/BrushHeadPosition");
+		head = GetNode<Node2D>("Head");
 
 		var hitboxKids = new List<Node>();
-		RecurseChildren(hitbox, hitboxKids);
+		RecurseChildren(head, hitboxKids);
 		brushHitboxes = (from k in hitboxKids
 						 where k is Area2D
 						 select k as Area2D)
@@ -89,7 +89,7 @@ public class BrushController : KinematicBody2D, Manager {
 		LookAt(GetGlobalMousePosition());
 		Rotation = Mathf.LerpAngle(currentRot, Rotation, rotateLerpWeight);
 
-		hitbox.GlobalPosition = brushHeadPositionNode.GlobalPosition;
+		head.GlobalPosition = headPositionNode.GlobalPosition;
 	}
 
 	public override void _Process(float delta) {

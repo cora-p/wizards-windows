@@ -68,10 +68,9 @@ position = Vector2( 0, 0.441 )
 collision_layer = 128
 collision_mask = 128
 mass = 3.0
-gravity_scale = 1.5
 can_sleep = false
-linear_damp = 1.982
-angular_damp = 1.775
+linear_damp = 0.3
+angular_damp = 0.3
 
 [node name="hitbox" type="Area2D" parent="Head2"]
 collision_layer = 16
@@ -100,11 +99,10 @@ softness = 0.16
 position = Vector2( 0, 2 )
 collision_layer = 128
 collision_mask = 128
-mass = 3.0
-gravity_scale = 1.5
+mass = 7.0
 can_sleep = false
-linear_damp = 1.521
-angular_damp = 1.344
+linear_damp = 0.3
+angular_damp = 0.3
 
 [node name="hitbox" type="Area2D" parent="Head2/Head3"]
 collision_layer = 16
@@ -131,11 +129,10 @@ softness = 0.05
 position = Vector2( 0, 2 )
 collision_layer = 128
 collision_mask = 128
-mass = 5.0
-gravity_scale = 1.5
+mass = 4.0
 can_sleep = false
-linear_damp = 0.752
-angular_damp = 1.985
+linear_damp = 0.3
+angular_damp = 0.3
 
 [node name="hitbox" type="Area2D" parent="Head2/Head3/Head4"]
 collision_layer = 16
@@ -161,11 +158,10 @@ softness = 0.05
 position = Vector2( 0, 1.516 )
 collision_layer = 0
 collision_mask = 0
-mass = 5.0
-gravity_scale = 1.5
+mass = 0.47
 can_sleep = false
-linear_damp = 1.451
-angular_damp = 1.987
+linear_damp = 0.3
+angular_damp = 0.3
 
 [node name="hitbox" type="Area2D" parent="Head2/Head3/Head4/Head5"]
 collision_layer = 16
