@@ -721,31 +721,6 @@ __meta__ = {
 
 [node name="Test stuff" type="Node2D" parent="."]
 
-[node name="StoneLedge_2" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 83, 84 )
-
-[node name="StoneLedge_13" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 75, 235 )
-
-[node name="StoneLedge_14" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 105, 235 )
-
-[node name="StoneLedge_16" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 165, 235 )
-
-[node name="StoneLedge_19" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 255, 235 )
-
-[node name="StoneLedge_20" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 285, 235 )
-
-[node name="StoneLedge_10" parent="Test stuff" instance=ExtResource( 2 )]
-position = Vector2( 85, 158 )
-
-[node name="StoneLedge_1" parent="Test stuff" instance=ExtResource( 10 )]
-position = Vector2( 258, 160.01 )
-scale = Vector2( 0.5, 0.5 )
-
 [node name="Window_a" parent="Test stuff" instance=ExtResource( 8 )]
 
 [node name="Window_a2" parent="Test stuff" instance=ExtResource( 8 )]
@@ -769,8 +744,35 @@ position = Vector2( 180, 182 )
 [node name="Window_a8" parent="Test stuff" instance=ExtResource( 8 )]
 position = Vector2( 141, 181 )
 
+[node name="StoneLedge_2" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 120, 150 )
+
+[node name="StoneLedge_13" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 75, 235 )
+
+[node name="StoneLedge_14" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 105, 235 )
+
+[node name="StoneLedge_16" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 165, 235 )
+
+[node name="StoneLedge_19" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 255, 235 )
+
+[node name="StoneLedge_20" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 285, 235 )
+
+[node name="StoneLedge_10" parent="Test stuff" instance=ExtResource( 2 )]
+position = Vector2( 85, 158 )
+
+[node name="StoneLedge_1" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 258, 160.01 )
+scale = Vector2( 0.5, 0.5 )
+
 [node name="GrimeManager" parent="." instance=ExtResource( 11 )]
-possibleGrimeColors = PoolColorArray( 0.290196, 0.290196, 0.290196, 0.764706, 0.164706, 0.164706, 0.164706, 0.901961, 0, 0, 0, 0.901961, 0, 0.501961, 0.266667, 0.858824, 0.290196, 0.184314, 0, 1, 0.2, 0.294118, 0, 0.686275, 0.266667, 0.266667, 0.266667, 1, 0.0156863, 0.278431, 0, 0.870588 )
+threshold = 0.1
+frequency = 0.1
+possibleGrimeColors = PoolColorArray( 0.486275, 0.137255, 0, 1, 0.211765, 0.109804, 0, 1, 0.309804, 0.180392, 0, 1, 0.403922, 0.388235, 0, 1, 0.180392, 0.305882, 0, 1, 0.160784, 0.419608, 0, 1, 0.501961, 0, 0.505882, 1, 0.498039, 0.498039, 0.498039, 1, 0.12549, 0.243137, 0.160784, 1, 0.341176, 0.380392, 0.254902, 1, 0.32549, 0.270588, 0.196078, 1, 0.2, 0.160784, 0.152941, 1 )
 
 [node name="CleanerSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )
