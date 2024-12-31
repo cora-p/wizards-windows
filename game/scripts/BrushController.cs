@@ -5,15 +5,12 @@ using System.Linq;
 using Godot;
 #pragma warning disable CS0649, IDE0044
 
-public class BrushController : KinematicBody2D {
-	// [Export]
-	// float distanceFromCleaner;
-
+public class BrushController : KinematicBody2D, Manager {
 	public Cleaner cleaner;
 
 	[Export]
 	float moveLerpWeight;
-		[Export]
+	[Export]
 	float rotateLerpWeight;
 
 	[Export]
@@ -31,29 +28,35 @@ public class BrushController : KinematicBody2D {
 	float scrubDuration;
 	float scrubDurationRemaining;
 
-	float scrubProgress;
-
 	float distanceFromCleaner;
 
 	Node2D manipulatableNode;
 	Node2D brushHeadPositionNode;
-	Node2D brushHeadColliderNode;
-	
-	RigidBody2D[] scrubHeadBodies;
+
+	public Area2D hitbox;
+
+	private static BrushController _Instance;
+
+	public static BrushController Instance {
+		get { return _Instance; }
+		private set {
+			if (_Instance == null) {
+				_Instance = value;
+			} else {
+				GD.PrintErr("A BrushController has already initialized!");
+			}
+		}
+	}
+
 
 	public override void _Ready() {
+		Instance = this;
 		distanceFromCleaner = Position.DistanceTo(Vector2.Zero);
 		manipulatableNode = GetNode<Node2D>("Manipulatable");
 		brushHeadPositionNode = GetNode<Node2D>("Manipulatable/Brush/BrushHeadPosition");
-		brushHeadColliderNode = GetNode<Node2D>("CollisionShape2D");
-
-		var children = new List<Node>();
-		RecurseChildren(this, children);
-		scrubHeadBodies = (
-			from c in children
-			where c is RigidBody2D
-			select c as RigidBody2D
-			).ToArray();
+		hitbox = GetNode<Area2D>("Hitbox");
+		ManagerManager.Instance.ReportReady(this);
+		// GrimeManager.Instance.GenerateGrime(100);
 	}
 
 	void RecurseChildren(Node node, List<Node> collection) {
@@ -63,7 +66,7 @@ public class BrushController : KinematicBody2D {
 			RecurseChildren(c, collection);
 		}
 	}
-	
+
 
 	public override void _PhysicsProcess(float delta) {
 
@@ -71,25 +74,13 @@ public class BrushController : KinematicBody2D {
 
 		var parent = GetParent<Node2D>();
 		var targetPosition = parent.GetLocalMousePosition().Normalized() * distanceFromCleaner;
-		// Position = targetPosition.Rotated(Rotation);
 		Position = Position.LinearInterpolate(targetPosition, moveLerpWeight);
 
 		var currentRot = Rotation;
 		LookAt(GetGlobalMousePosition());
 		Rotation = Mathf.LerpAngle(currentRot, Rotation, rotateLerpWeight);
 
-		if (Position.x < 0) {
-			manipulatableNode.Scale = new Vector2(1, -1);
-		} else {
-			manipulatableNode.Scale = new Vector2(1, 1);
-		}
-
-		// var scrubHeadOffset = brushHeadPositionNode.GlobalPosition - brushHeadColliderNode.GlobalPosition;
-		brushHeadColliderNode.GlobalPosition = brushHeadPositionNode.GlobalPosition;
-		
-		// for (var i = 0; i < scrubHeadBodies.Length; i++) {
-		// 	scrubHeadBodies[i].GlobalPosition += scrubHeadOffset;
-		// }
+		hitbox.GlobalPosition = brushHeadPositionNode.GlobalPosition;
 	}
 
 	public override void _Process(float delta) {
@@ -111,5 +102,9 @@ public class BrushController : KinematicBody2D {
 			manipulatableNode.Rotation = 0f;
 			manipulatableNode.Position = Vector2.Zero;
 		}
+	}
+
+	public void OnAllReady() {
+		// nothing to do
 	}
 }

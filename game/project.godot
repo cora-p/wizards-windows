@@ -12,7 +12,12 @@ config_version=4
 
 config/name="Wizard's Windows"
 run/main_scene="res://scene.tscn"
+run/flush_stdout_on_print=true
 config/icon="res://sprites/cleaner/cleaner.png"
+
+[debug]
+
+shapes/collision/contact_color=Color( 1, 0.2, 0.101961, 0.298039 )
 
 [display]
 
@@ -109,6 +114,7 @@ Scrub={
 2d_physics/layer_6="Water"
 2d_physics/layer_7="Monsters"
 2d_physics/layer_8="FX"
+2d_physics/layer_9="Grime"
 
 [mono]
 
