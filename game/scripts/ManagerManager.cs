@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
+#pragma warning disable CS0649, IDE0044
 
 public class ManagerManager : Node {
 
@@ -9,7 +9,7 @@ public class ManagerManager : Node {
     /// <summary>
     /// A list of names of Managers that aren't ready yet. Values are removed as they report ready. 
     /// </summary>
-    List<String> unreadyManagerNames;
+    List<string> unreadyManagerNames;
     List<Manager> readyManagers = new List<Manager>();
 
     public bool HasCalledOnAllReady {

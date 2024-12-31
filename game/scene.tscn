@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/ui/MenuController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/StoneLedge_a.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/env/StoneWallEdge.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/env/StoneWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/env/NebulaBg.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/SparkleManager.cs" type="Script" id=7]
 [ext_resource path="res://scenes/env/Window_a.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/ui/cleanliness meter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/env/1x1.tscn" type="PackedScene" id=10]
@@ -20,7 +21,7 @@ __meta__ = {
 [node name="ManagerManager" type="Node" parent="."]
 process_priority = -100
 script = ExtResource( 12 )
-unreadyManagerNames = [ "BrushController", "GrimeManager", "CleanlinessMeter" ]
+unreadyManagerNames = [ "BrushController", "GrimeManager", "CleanlinessMeter", "SparkleManager" ]
 
 [node name="background" type="Node2D" parent="."]
 position = Vector2( 16, -96.03 )
@@ -734,7 +735,7 @@ position = Vector2( 63, 65 )
 position = Vector2( 63, 65 )
 
 [node name="Window_a9" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 149, 93 )
+position = Vector2( 220, 47 )
 
 [node name="Window_a10" parent="Test stuff" instance=ExtResource( 8 )]
 position = Vector2( 50, 131 )
@@ -924,6 +925,11 @@ scale = Vector2( 0.5, 0.5 )
 threshold = 0.1
 frequency = 0.1
 possibleGrimeColors = PoolColorArray( 0.486275, 0.137255, 0, 1, 0.211765, 0.109804, 0, 1, 0.309804, 0.180392, 0, 1, 0.403922, 0.388235, 0, 1, 0.180392, 0.305882, 0, 1, 0.160784, 0.419608, 0, 1, 0.501961, 0, 0.505882, 1, 0.498039, 0.498039, 0.498039, 1, 0.12549, 0.243137, 0.160784, 1, 0.341176, 0.380392, 0.254902, 1, 0.32549, 0.270588, 0.196078, 1, 0.2, 0.160784, 0.152941, 1 )
+
+[node name="SparkleManager" type="Node2D" parent="."]
+script = ExtResource( 7 )
+sparkleDelayRange = Vector2( 0.1, 1 )
+sparkleScaleRange = Vector2( 0.15, 1 )
 
 [node name="CleanerSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )
