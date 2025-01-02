@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 #pragma warning disable CS0649, IDE0044
-public class CleanerSpawner : Node2D {
+public class RopeController : Node2D {
 
     enum Side {
         Left,

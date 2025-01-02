@@ -2,7 +2,7 @@
 
 [ext_resource path="res://_scenes/ui/MenuController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/dot.png" type="Texture" id=2]
-[ext_resource path="res://_scenes/CleanerSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://_scenes/RopeController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_scenes/env/other/StoneWallEdge.tscn" type="PackedScene" id=4]
 [ext_resource path="res://_scenes/env/other/StoneWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://_scenes/env/other/NebulaBg.tscn" type="PackedScene" id=6]
@@ -745,7 +745,7 @@ script = ExtResource( 7 )
 sparkleDelayRange = Vector2( 0.1, 1 )
 sparkleScaleRange = Vector2( 0.15, 1 )
 
-[node name="CleanerSpawner" parent="." instance=ExtResource( 3 )]
+[node name="RopeController" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )
 
 [node name="MenuController" parent="." instance=ExtResource( 1 )]
@@ -777,3 +777,5 @@ position = Vector2( 102, 116 )
 
 [node name="Block - Shallow2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 80, 101 )
+
+[node name="Node2D" type="Node2D" parent="."]
