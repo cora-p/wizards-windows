@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "/Applications/Godot_mono.app/Contents/MacOS/Godot",
+            "command": "C:/Program Files/Godot/Godot_v3.6-stable_mono_win64/Godot_v3.6-stable_mono_win64.exe",
             "type": "process",
             "args": [
                 "--build-solutions",

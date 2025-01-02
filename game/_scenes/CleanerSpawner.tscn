@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/CleanerSpawner.cs" type="Script" id=1]
+[ext_resource path="res://Physics/Rope.tres" type="PhysicsMaterial" id=2]
+
+[node name="CleanerSpawner" type="Node2D"]
+physics_interpolation_mode = 2
+script = ExtResource( 1 )
+segmentLength = 3.0
+leftPlatformOffset = Vector2( -14.5, -8.5 )
+rightPlatformOffset = Vector2( 14.5, -8.5 )
+softness = 0.1
+bias = 0.7
+ropeVisualWidth = 1.01
+ropePhysicsMaterial = ExtResource( 2 )
+ropeColor = Color( 0.705882, 0.752941, 0.784314, 1 )
+ropeDensity = 0.5
+raiseSecondsPerLink = 0.1
+lowerSecondsPerLink = 0.085
+minimumRopeSegments = 5
+
+[node name="Platform Position" type="Node2D" parent="."]
+position = Vector2( 168, 70 )
+
+[node name="Left Anchor Position" type="Node2D" parent="."]
+position = Vector2( 153.5, -23 )
+
+[node name="Right Anchor Position" type="Node2D" parent="."]
+position = Vector2( 182.5, -23 )

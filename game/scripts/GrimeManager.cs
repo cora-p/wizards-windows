@@ -36,7 +36,7 @@ public class GrimeManager : Node, Manager {
         perWindowGrimeCount = new Dictionary<Window, int>();
         Instance = this;
         ResetGrimeMeter();
-        grimePackedScene = GD.Load<PackedScene>("res://scenes/grime/grime speck.tscn");
+        grimePackedScene = GD.Load<PackedScene>("res://_scenes/grime/grime.tscn");
         noise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
         noise.SetFrequency(frequency);
         noise.SetFractalType(FastNoiseLite.FractalType.FBm);

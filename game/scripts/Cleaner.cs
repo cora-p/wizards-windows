@@ -3,60 +3,110 @@ using Godot;
 #pragma warning disable CS0649, IDE0044
 public class Cleaner : RigidBody2D {
 
-    [Export]
-    float speed;
+
 
     [Export]
-    float centeringSpeed;
-
+    float moveInputAcceleration, centeringAcceleration, stopAcceleration;
     [Export]
-    float centeringFactor;
-
-    Vector2 startPosition;
-
+    float maxTravelDistance;
     float moveInputMoment = 0f;
+    float travelPosition;
+    [Export]
+    float travelSpeed;
 
     [Export]
-    float moveInputAcceleration;
+    float centerAfter;
+    float idleTime;
+
+    float shoveMomentumDistance = 0f;
 
     [Export]
-    float velocitySyncLerpWeight;
+    float shovePower;
+
+    bool hasShovedRight, hasShovedLeft;
+
+    RigidBody2D platform;
 
     public override void _Ready() {
-        startPosition = Position;
+        platform = GetParent<RigidBody2D>();
+        hasShovedRight = false;
+        hasShovedLeft = false;
     }
 
-    public override void _Process(float delta) {
+    public override void _PhysicsProcess(float delta) {
         var leftPressed = Input.IsActionPressed("Move Left");
         var rightPressed = Input.IsActionPressed("Move Right");
-
-        if (leftPressed && moveInputMoment > 0f) moveInputMoment = 0f;
-        if (rightPressed && moveInputMoment < 0f) moveInputMoment = 0f;
-        if (!leftPressed && moveInputMoment < 0f) moveInputMoment = 0f;
-        if (!rightPressed && moveInputMoment > 0f) moveInputMoment = 0f;
         if (leftPressed && !rightPressed) {
             moveInputMoment = Mathf.Lerp(moveInputMoment, -1f, moveInputAcceleration);
         }
         if (rightPressed && !leftPressed) {
             moveInputMoment = Mathf.Lerp(moveInputMoment, 1f, moveInputAcceleration);
         }
-        if (!leftPressed && !rightPressed) {
-            moveInputMoment = 0f;
+        if (!rightPressed) {
+            hasShovedRight = false;
         }
+        if (!leftPressed) {
+            hasShovedLeft = false;
+        }
+        if (!(leftPressed || rightPressed)) {
+            if (idleTime > centerAfter) {
+                if (travelPosition > 0f) {
+                    moveInputMoment = Mathf.Lerp(moveInputMoment, -1f, centeringAcceleration);
+                } else {
+                    moveInputMoment = Mathf.Lerp(moveInputMoment, 1f, centeringAcceleration);
+                }
+                if (Mathf.Abs(travelPosition) < 0.25f) {
+                    moveInputMoment = 0f;
+                    travelPosition = 0f;
+                }
+            } else {
+                moveInputMoment = Mathf.Lerp(moveInputMoment, 0f, stopAcceleration);
+                idleTime += delta;
+            }
+        } else {
+            idleTime = 0;
+        }
+        if (Mathf.Abs(moveInputMoment) > 0.01f) {
+            if (moveInputMoment > 0 && travelPosition >= maxTravelDistance) {
+                if (!hasShovedRight) {
+                    ShovePlatform(left: false);
+                }
+                travelPosition = maxTravelDistance;
+            } else if (moveInputMoment < 0 && travelPosition <= -maxTravelDistance) {
+                if (!hasShovedLeft) {
+                    ShovePlatform(left: true);
+                }
+                travelPosition = -maxTravelDistance;
+            } else {
+                var positionDelta = moveInputMoment * travelSpeed * delta;
+                travelPosition += positionDelta;
+                shoveMomentumDistance += Mathf.Abs(positionDelta);
+            }
+        }
+
+        // if (travelPosition > maxTravelDistance) {
+        //     travelPosition = maxTravelDistance;
+        //     GD.Print("D");
+        // } else if (travelPosition < -maxTravelDistance) {
+        //     travelPosition = -maxTravelDistance;
+        //     GD.Print("E");
+        // }
+        // GD.Print($"p: {travelPosition}, m: {moveInputMoment}");
+        Position = new Vector2(travelPosition, Position.y);
+        Rotation = 0f;
     }
 
-
-    public override void _PhysicsProcess(float delta) {
-        if (Mathf.Abs(moveInputMoment) > 0.1f) {
-            ApplyCentralImpulse(Vector2.Right.Rotated(GlobalRotation) * moveInputMoment * speed * Mass * delta);
+    void ShovePlatform(bool left) {
+        Vector2 impulse;
+        GD.Print(travelPosition);
+        if (left) {
+            impulse = Vector2.Left.Rotated(platform.GlobalRotation);
+            hasShovedLeft = true;
         } else {
-            var centeringVector = startPosition - Position;
-            var centerDistance = centeringVector.Length();
-            Position += centeringVector.Normalized() * centeringSpeed * delta * Mathf.Pow(centerDistance, centeringFactor);
-            LinearVelocity = LinearVelocity.LinearInterpolate(
-                 GetParent<RigidBody2D>().LinearVelocity, velocitySyncLerpWeight);
+            impulse = Vector2.Right.Rotated(platform.GlobalRotation);
+            hasShovedRight = true;
         }
-
-        Rotation = 0f;
+        platform.ApplyCentralImpulse(impulse * shoveMomentumDistance * shovePower);
+        shoveMomentumDistance = 0f;
     }
 }

@@ -38,6 +38,7 @@ public class BrushController : KinematicBody2D, Manager {
 
     Node2D head;
 
+    AudioStreamPlayer sfx;
     public List<Area2D> brushHitboxes;
 
     private static BrushController _Instance;
@@ -59,6 +60,7 @@ public class BrushController : KinematicBody2D, Manager {
         distanceFromCleaner = Position.DistanceTo(Vector2.Zero);
         manipulatableNode = GetNode<Node2D>("Manipulatable");
         headPositionNode = GetNode<Node2D>("Manipulatable/Brush/BrushHeadPosition");
+        sfx = GetNode<AudioStreamPlayer>("sfx");
         head = GetNode<Node2D>("Head");
 
         var hitboxKids = new List<Node>();
@@ -93,12 +95,14 @@ public class BrushController : KinematicBody2D, Manager {
         Rotation = Mathf.LerpAngle(currentRot, Rotation, rotateLerpWeight);
 
         head.GlobalPosition = headPositionNode.GlobalPosition;
+        head.ResetPhysicsInterpolation();
     }
 
     public override void _Process(float delta) {
         if (Input.IsActionPressed("Scrub") && scrubCooldownRemaining == 0f) {
             scrubCooldownRemaining += scrubCooldown;
             scrubDurationRemaining = scrubDuration;
+            sfx.Play();
         }
         if (scrubDurationRemaining == 0f && scrubCooldownRemaining > 0f) {
             scrubCooldownRemaining -= delta;

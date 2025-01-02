@@ -10,6 +10,8 @@ public class RopeAnchor : RigidBody2D {
 
     public Vector2 targetPosition;
     public Vector2 targetOffset;
+
+    public Vector2 moveRange;
     public override void _PhysicsProcess(float delta) {
         GlobalPosition = GlobalPosition.LinearInterpolate(targetPosition + targetOffset, moveLerp);
         var leftPressed = Input.IsActionPressed("Move Platform Left");

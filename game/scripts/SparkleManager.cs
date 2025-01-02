@@ -26,18 +26,16 @@ public class SparkleManager : Node2D, Manager {
     public override void _Ready() {
         Instance = this;
         sparklingWindows = new Dictionary<Window, float>();
-        sparkleScene = GD.Load<PackedScene>("res://scenes/fx/Sparkle.tscn");
+        sparkleScene = GD.Load<PackedScene>("res://_scenes/fx/Sparkle.tscn");
         ManagerManager.Instance.ReportReady(this);
     }
 
     public void StartSparkling(Window w) {
         sparklingWindows.Add(w, NewSparkleDelay);
-        GD.Print($"{w.Name} started sparkling.");
     }
 
     public void StopSparkling(Window w) {
         sparklingWindows.Remove(w);
-        GD.Print($"{w.Name} stopped sparkling.");
     }
 
     public override void _Process(float delta) {
@@ -59,7 +57,6 @@ public class SparkleManager : Node2D, Manager {
         var s = sparkleScene.Instance<Sparkle>();
         s.GlobalPosition = new Vector2(x, y);
         s.Scale = Vector2.One * (float)GD.RandRange(sparkleScaleRange.x, sparkleScaleRange.y);
-        GD.Print(s.Scale);
         AddChild(s);
     }
 

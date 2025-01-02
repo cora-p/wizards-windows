@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scrub_1.mp3-e7713177a6278cc1ec5d7814533795c9.mp3str"
+
+[deps]
+
+source_file="res://sound/scrub_1.mp3"
+dest_files=[ "res://.import/scrub_1.mp3-e7713177a6278cc1ec5d7814533795c9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

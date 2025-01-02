@@ -1,7 +1,0 @@
-[gd_resource type="Curve" format=2]
-
-[resource]
-resource_name = "ScrubAngleCurve"
-min_value = -30.0
-max_value = 30.0
-_data = [ Vector2( 0, 0 ), 0.0, -85.8373, 0, 0, Vector2( 0.297297, -28.3636 ), 2.91756, 2.91756, 0, 0, Vector2( 0.756757, 30 ), 1.79394, 4.42069, 0, 0, Vector2( 1, 0 ), -116.803, 0.0, 0, 0 ]
