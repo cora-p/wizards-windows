@@ -39,10 +39,7 @@ public class RopeController : Node2D {
     float ropeDensity;
 
     [Export]
-    float raiseSecondsPerLink;
-
-    [Export]
-    float lowerSecondsPerLink;
+    float raiseSpeed, lowerSpeed;
 
     [Export]
     float minimumSlack;
@@ -65,7 +62,7 @@ public class RopeController : Node2D {
 
     PackedScene anchorPackedScene;
 
-    AudioStreamPlayer sfx;
+    AudioStreamPlayer verticalSfx, horizontalSfx;
 
     Vector2 GetStartPosition(Side s) => anchors[s].GlobalPosition;
     Vector2 GetEndPosition(Side s) => s == L ? platform.ToGlobal(leftPlatformOffset) : platform.ToGlobal(rightPlatformOffset);
@@ -79,7 +76,8 @@ public class RopeController : Node2D {
         leftAnchorPosition = GetNode<Node2D>("Left Anchor Position");
         rightAnchorPosition = GetNode<Node2D>("Right Anchor Position");
         platformPosition = GetNode<Node2D>("Platform Position");
-        sfx = GetNode<AudioStreamPlayer>("sfx");
+        verticalSfx = GetNode<AudioStreamPlayer>("vertical sfx");
+        horizontalSfx = GetNode<AudioStreamPlayer>("horizontal sfx");
 
         segments = new Dictionary<Side, List<RigidBody2D>>();
         segments[L] = new List<RigidBody2D>();
@@ -108,6 +106,11 @@ public class RopeController : Node2D {
     }
 
     public override void _PhysicsProcess(float delta) {
+        if (anchors[L].IsTravelling) {
+            if (!horizontalSfx.Playing) horizontalSfx.Play();
+        } else {
+            if (horizontalSfx.Playing) horizontalSfx.Stop();
+        }
         var isRaisePressed = Input.IsActionPressed("Raise Platform");
         var isLowerPressed = Input.IsActionPressed("Lower Platform");
         var moveAxis = isLowerPressed ? 1 : 0;
@@ -116,58 +119,44 @@ public class RopeController : Node2D {
             timeTilNextSegment = Mathf.Clamp(timeTilNextSegment - delta, 0, 1);
         }
         if (moveAxis < 0 && CanShorten) {
-            if (!sfx.Playing) sfx.Play();
+            if (!verticalSfx.Playing) verticalSfx.Play();
         } else {
-            if (sfx.Playing) sfx.Stop();
+            if (verticalSfx.Playing) verticalSfx.Stop();
         }
         if (timeTilNextSegment == 0) {
             if (moveAxis < 0) {
                 ShortenRopes();
-                timeTilNextSegment = raiseSecondsPerLink;
+                timeTilNextSegment = 1f / (raiseSpeed / segmentLength);
             } else if (moveAxis > 0) {
                 LengthenRopes();
-                timeTilNextSegment = lowerSecondsPerLink;
+                timeTilNextSegment = 1f / (lowerSpeed / segmentLength);
             }
         }
     }
 
-    Vector2 GetTargetOffset() => anchors[L].targetOffset;
-    void SetTargetOffsets(Vector2 offset) {
-        anchors[L].targetOffset = offset;
-        anchors[R].targetOffset = offset;
-    }
-
-
-
     void ShortenRopes() {
         if (!CanShorten) return;
-        var targetOffset = GetTargetOffset();
-        anchors[L].QueueFree();
         segments[L][0].QueueFree();
         segments[L].RemoveAt(0);
-        joints[L].RemoveAt(0);
-        anchors[R].QueueFree();
         segments[R][0].QueueFree();
         segments[R].RemoveAt(0);
+        joints[L].RemoveAt(0);
         joints[R].RemoveAt(0);
-        ConstructAnchors(segments[L][0].GlobalPosition, segments[R][0].GlobalPosition);
-        SetTargetOffsets(targetOffset);
+        ReconstructAnchors(
+            segments[L][0].GlobalPosition,
+            segments[R][0].GlobalPosition);
         ConstructJoint(anchors[L].GetPath(), segments[L][0].GetPath(), Side.Left, anchors[L].Position);
         ConstructJoint(anchors[R].GetPath(), segments[R][0].GetPath(), Side.Right, anchors[R].Position);
     }
 
     void LengthenRopes() {
-        var targetOffset = GetTargetOffset();
-        anchors[L].QueueFree();
-        anchors[R].QueueFree();
-        var newLeftAnchorPosition = leftAnchorPosition.GlobalPosition
+        var newLeftPos = anchors[L].GlobalPosition
             + Vector2.Up * segmentLength;
-        var newRightAnchorPosition = rightAnchorPosition.GlobalPosition
+        var newRightPos = anchors[R].GlobalPosition
             + Vector2.Up * segmentLength;
-        ConstructAnchors(
-            newLeftAnchorPosition + targetOffset,
-            newRightAnchorPosition + targetOffset);
-        SetTargetOffsets(targetOffset);
+        ReconstructAnchors(
+            newLeftPos,
+            newRightPos);
         ConstructSegment(GetStartPosition(Side.Left), segmentLength, Side.Left, true);
         ConstructSegment(GetStartPosition(Side.Right), segmentLength, Side.Right, true);
         segments[L][0].LookAt(segments[L][1].GlobalPosition);
@@ -197,12 +186,26 @@ public class RopeController : Node2D {
     void ConstructAnchors(Vector2 leftPosition, Vector2 rightPosition) {
         anchors[L] = anchorPackedScene.Instance<RopeAnchor>();
         anchors[L].GlobalPosition = leftPosition;
+        anchors[L].targetPosition = leftPosition;
         anchors[R] = anchorPackedScene.Instance<RopeAnchor>();
         anchors[R].GlobalPosition = rightPosition;
-        anchors[L].targetPosition = leftAnchorPosition.GlobalPosition;
-        anchors[R].targetPosition = rightAnchorPosition.GlobalPosition;
+        anchors[R].targetPosition = rightPosition;
         AddChild(anchors[L]);
         AddChild(anchors[R]);
+    }
+
+    void ReconstructAnchors(Vector2 leftPos, Vector2 rightPos) {
+        var oldLeft = anchors[L];
+        var oldRight = anchors[R];
+        ConstructAnchors(leftPos, rightPos);
+        anchors[L].targetOffset = oldLeft.targetOffset;
+        anchors[L].targetPosition = oldLeft.targetPosition;
+        anchors[L].travel = oldLeft.travel;
+        anchors[R].targetOffset = oldRight.targetOffset;
+        anchors[R].targetPosition = oldRight.targetPosition;
+        anchors[R].travel = oldRight.travel;
+        oldLeft.QueueFree();
+        oldRight.QueueFree();
     }
 
     void ConstructRopedBodies() {
@@ -302,13 +305,14 @@ public class RopeController : Node2D {
             segment.Name = $"sR{sn++}";
             rightRope.AddChild(segment);
         }
-        ConstructCollider(segment, 0.5f, length);
+        ConstructCollider(segment, 1f, length);
         segment.Mass = ropeDensity * length;
         segment.GlobalPosition = gPosition;
         segment.PhysicsMaterialOverride = ropePhysicsMaterial;
         segment.CollisionLayer = Layer.Rope;
         segment.CollisionMask = Layer.Deep;
         segment.ZIndex = ZIndices.Rope;
+        segment.ContinuousCd = RigidBody2D.CCDMode.CastShape;
         segment.LookAt(lookPosition);
         if (insertAtStart) {
             segments[side].Insert(0, segment);

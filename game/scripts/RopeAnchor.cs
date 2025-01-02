@@ -11,20 +11,39 @@ public class RopeAnchor : RigidBody2D {
     public Vector2 targetPosition;
     public Vector2 targetOffset;
 
+    public bool IsTravelling { get; private set; }
+
+    [Export]
+    float maxTravel;
+    public float travel;
+
     public Vector2 moveRange;
     public override void _PhysicsProcess(float delta) {
-        GlobalPosition = GlobalPosition.LinearInterpolate(targetPosition + targetOffset, moveLerp);
+
         var leftPressed = Input.IsActionPressed("Move Platform Left");
         var rightPressed = Input.IsActionPressed("Move Platform Right");
-        Vector2 moveVector = Vector2.Zero;
-        if (leftPressed) {
-            moveVector = Vector2.Left * moveSpeed * delta;
+        float travelDelta = 0;
+        if (leftPressed && !rightPressed) {
+            travelDelta = -1;
+        } else if (rightPressed && !leftPressed) {
+            travelDelta = 1;
         }
-        if (rightPressed) {
-            moveVector = Vector2.Right * moveSpeed * delta;
+        travelDelta *= moveSpeed * delta;
+        if (travelDelta != 0) {
+            if (travelDelta < 0 && travel > -maxTravel) {
+                travel += travelDelta;
+                IsTravelling = true;
+            } else if (travelDelta > 0 && travel < maxTravel) {
+                travel += travelDelta;
+                IsTravelling = true;
+            } else {
+                IsTravelling = false;
+            }
+        } else {
+            IsTravelling = false;
         }
-        if (leftPressed ^ rightPressed) {
-            targetOffset += moveVector;
-        }
+        travel = Mathf.Clamp(travel, -maxTravel, maxTravel);
+
+        GlobalPosition = GlobalPosition.LinearInterpolate(targetPosition + targetOffset + Vector2.Right * travel, moveLerp);
     }
 }

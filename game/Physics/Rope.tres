@@ -3,5 +3,3 @@
 [resource]
 resource_name = "Rope Material"
 friction = 0.0
-rough = true
-bounce = 0.25

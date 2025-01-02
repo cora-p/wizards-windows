@@ -17,7 +17,29 @@ public class GrimeManager : Node, Manager {
     [Export]
     Color[] possibleGrimeColors;
 
+    Node2D winLabelHolder;
+    Label winLabel;
+
+    [Export]
+    Color win1, win2;
+    [Export]
+    float winBlinkTime;
+    float remainingTime;
+
     Dictionary<Window, int> perWindowGrimeCount;
+
+    string[] winTextOptions = new string[] {
+        "PRISTINE",
+        "SPOTLESS",
+        "OOH SHINY",
+        "FABULOUS",
+        "YOU WIN",
+        "IMPECCABLE",
+        "PERFECTION",
+        "ULTRACLEAN",
+        "GLEAMING",
+        "IMMACULATE"
+    };
 
     public float PercentGrimy {
         get {
@@ -40,7 +62,28 @@ public class GrimeManager : Node, Manager {
         noise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
         noise.SetFrequency(frequency);
         noise.SetFractalType(FastNoiseLite.FractalType.FBm);
+        winLabelHolder = GetNode<Node2D>("Win Label Holder");
+        winLabel = winLabelHolder.GetChild<Label>(0);
         ManagerManager.Instance.ReportReady(this);
+    }
+
+    public override void _Process(float delta) {
+        if (currentGrime == 0 && maxGrime != 0) {
+            if (!winLabelHolder.Visible) {
+                winLabel.Text = winTextOptions[GD.Randi() % winTextOptions.Length];
+                winLabelHolder.Visible = true;
+            }
+            HandleBlinking(delta);
+        }
+    }
+
+    void HandleBlinking(float delta) {
+        if (remainingTime > 0) {
+            remainingTime -= delta;
+        } else {
+            if (winLabel.Modulate.Equals(win1)) winLabel.Modulate = win2; else winLabel.Modulate = win1;
+            remainingTime = winBlinkTime;
+        }
     }
 
     void ResetGrimeMeter() {

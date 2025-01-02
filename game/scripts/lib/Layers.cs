@@ -28,6 +28,7 @@ public static class ZIndices {
     public const int HudMiddleground = 305;
     public const int HudForeground = 310;
     public const int HudFrame = 311;
+    public const int WinCondition = 350;
     public const int MenuBackground = 400;
     public const int MenuForeground = 401;
 }

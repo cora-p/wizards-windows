@@ -30,6 +30,7 @@ public class LevelManager : Node2D, Manager {
         bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWall.tscn");
         bgEdgeScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWallEdge.tscn");
         GenerateBackground();
+        ManagerManager.Instance.ReportReady(this);
     }
 
     void GenerateBackground() {
@@ -122,7 +123,7 @@ public class LevelManager : Node2D, Manager {
     }
 
     public void OnAllReady() {
-        throw new NotImplementedException();
+        // nothing to do
     }
 
     float GetJitter(float extent) => (float)GD.RandRange(-extent, extent);

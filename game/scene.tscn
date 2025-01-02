@@ -151,9 +151,6 @@ z_index = -500
 z_as_relative = false
 texture = ExtResource( 2 )
 centered = false
-
-[node name="tower" type="Node2D" parent="."]
-position = Vector2( 27.01, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -161,49 +158,911 @@ __meta__ = {
 [node name="Test stuff" type="Node2D" parent="."]
 
 [node name="Window_a" parent="Test stuff" instance=ExtResource( 10 )]
-position = Vector2( 92, 105 )
+position = Vector2( 66, 65 )
 
-[node name="Block - Shallow" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 90, 70 )
+[node name="Window_a6" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 253, 65 )
 
-[node name="Block - Shallow2" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 83, 70 )
+[node name="Window_a10" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 249, 129 )
 
-[node name="Block - Shallow3" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 105, 70 )
+[node name="Window_a12" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 272, 204 )
 
-[node name="Block - Shallow4" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 98, 70 )
+[node name="Window_a11" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 288, 129 )
 
-[node name="Block - Shallow5" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 135, 70 )
+[node name="Window_a7" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 286, 65 )
 
-[node name="Block - Shallow6" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 128, 70 )
+[node name="Window_a8" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 198, 192 )
+rotation = -0.261799
 
-[node name="Block - Shallow7" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 120, 70 )
+[node name="Window_a2" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 148, 93 )
 
-[node name="Block - Shallow8" parent="Test stuff" instance=ExtResource( 8 )]
-position = Vector2( 113, 70 )
+[node name="Window_a3" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 53, 132 )
+
+[node name="Window_a4" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 78, 132 )
+
+[node name="Window_a5" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 103, 132 )
+
+[node name="Window_a9" parent="Test stuff" instance=ExtResource( 10 )]
+position = Vector2( 51, 189 )
 
 [node name="Block - Deep" parent="Test stuff" instance=ExtResource( 14 )]
-position = Vector2( 123, 89 )
+position = Vector2( 91, 45 )
+
+[node name="Block - Deep2" parent="Test stuff" instance=ExtResource( 14 )]
+position = Vector2( 119, 111 )
+
+[node name="Block - Deep14" parent="Test stuff" instance=ExtResource( 14 )]
+position = Vector2( 229, 199 )
+
+[node name="Block - Deep3" parent="Test stuff" instance=ExtResource( 14 )]
+position = Vector2( 229, 30 )
+
+[node name="Block - Deep15" parent="Test stuff" instance=ExtResource( 14 )]
+position = Vector2( 307, 100 )
+
+[node name="4x1 shallow" type="Node2D" parent="Test stuff"]
+position = Vector2( 112, 37 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow10" type="Node2D" parent="Test stuff"]
+position = Vector2( 144, 37 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow10" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow10" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow10" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow10" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow2" type="Node2D" parent="Test stuff"]
+position = Vector2( 80, 37 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow2" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow2" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow2" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow2" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow3" type="Node2D" parent="Test stuff"]
+position = Vector2( 48, 37 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow3" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow3" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow3" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow3" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow4" type="Node2D" parent="Test stuff"]
+position = Vector2( 130, 82 )
+rotation = 1.57079
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow4" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow4" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow4" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow4" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow9" type="Node2D" parent="Test stuff"]
+position = Vector2( 142, 63 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow9" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow9" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow9" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow9" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow5" type="Node2D" parent="Test stuff"]
+position = Vector2( 36, 57 )
+rotation = -1.57079
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow5" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow5" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow5" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow5" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow11" type="Node2D" parent="Test stuff"]
+position = Vector2( 36, 89 )
+rotation = -1.57079
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow11" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow11" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow11" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow11" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow17" type="Node2D" parent="Test stuff"]
+position = Vector2( 30, 212 )
+rotation = -1.57079
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow17" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow17" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow17" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow17" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow18" type="Node2D" parent="Test stuff"]
+position = Vector2( 50, 223 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow18" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow18" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow18" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow18" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow19" type="Node2D" parent="Test stuff"]
+position = Vector2( 81, 217 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow19" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow19" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow19" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow19" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow20" type="Node2D" parent="Test stuff"]
+position = Vector2( 83, 180 )
+rotation = -1.5708
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow20" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow20" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow20" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow20" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow21" type="Node2D" parent="Test stuff"]
+position = Vector2( 230, 86 )
+rotation = -1.5708
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow21" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow21" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow21" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow21" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow22" type="Node2D" parent="Test stuff"]
+position = Vector2( 227, 116 )
+rotation = -1.5708
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow22" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow22" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow22" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow22" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow23" type="Node2D" parent="Test stuff"]
+position = Vector2( 226, 147 )
+rotation = -1.5708
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow23" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow23" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow23" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow23" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow24" type="Node2D" parent="Test stuff"]
+position = Vector2( 229, 179 )
+rotation = -1.5708
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow24" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow24" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow24" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow24" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow25" type="Node2D" parent="Test stuff"]
+position = Vector2( 208, 162 )
+rotation = -0.261799
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow25" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow25" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow25" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow25" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow26" type="Node2D" parent="Test stuff"]
+position = Vector2( 177, 170 )
+rotation = -0.261799
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow26" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow26" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow26" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow26" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow27" type="Node2D" parent="Test stuff"]
+position = Vector2( 250, 100 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow27" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow27" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow27" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow27" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow29" type="Node2D" parent="Test stuff"]
+position = Vector2( 249, 173 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow29" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow29" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow29" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow29" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow30" type="Node2D" parent="Test stuff"]
+position = Vector2( 282, 173 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow30" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow30" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow30" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow30" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow28" type="Node2D" parent="Test stuff"]
+position = Vector2( 286, 100 )
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow28" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow28" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow28" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow28" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow6" type="Node2D" parent="Test stuff"]
+position = Vector2( 55, 101 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow6" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow6" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow6" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow6" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow7" type="Node2D" parent="Test stuff"]
+position = Vector2( 86, 102 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow7" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow7" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow7" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow7" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow12" type="Node2D" parent="Test stuff"]
+position = Vector2( 209, 30 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow12" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow12" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow12" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow12" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow13" type="Node2D" parent="Test stuff"]
+position = Vector2( 271, 30 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow13" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow13" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow13" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow13" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow14" type="Node2D" parent="Test stuff"]
+position = Vector2( 271, 30 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow14" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow14" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow14" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow14" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow8" type="Node2D" parent="Test stuff"]
+position = Vector2( 117, 103 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow8" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow8" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow8" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow8" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow15" type="Node2D" parent="Test stuff"]
+position = Vector2( 100, 161 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow15" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow15" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow15" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow15" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4x1 shallow16" type="Node2D" parent="Test stuff"]
+position = Vector2( 68, 161 )
+rotation = -6.28318
+
+[node name="Block - Shallow" parent="Test stuff/4x1 shallow16" instance=ExtResource( 8 )]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow2" parent="Test stuff/4x1 shallow16" instance=ExtResource( 8 )]
+position = Vector2( -12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow3" parent="Test stuff/4x1 shallow16" instance=ExtResource( 8 )]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block - Shallow4" parent="Test stuff/4x1 shallow16" instance=ExtResource( 8 )]
+position = Vector2( 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GrimeManager" parent="." instance=ExtResource( 11 )]
-threshold = 0.1
-frequency = 0.1
-possibleGrimeColors = PoolColorArray( 0.486275, 0.137255, 0, 1, 0.211765, 0.109804, 0, 1, 0.309804, 0.180392, 0, 1, 0.403922, 0.388235, 0, 1, 0.180392, 0.305882, 0, 1, 0.160784, 0.419608, 0, 1, 0.501961, 0, 0.505882, 1, 0.498039, 0.498039, 0.498039, 1, 0.12549, 0.243137, 0.160784, 1, 0.341176, 0.380392, 0.254902, 1, 0.32549, 0.270588, 0.196078, 1, 0.2, 0.160784, 0.152941, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+threshold = 0.174
+frequency = 0.087
 
 [node name="SparkleManager" type="Node2D" parent="."]
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 sparkleDelayRange = Vector2( 0.1, 1 )
 sparkleScaleRange = Vector2( 0.15, 1 )
 
 [node name="RopeController" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.36422e-12, 1.36422e-12 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MenuController" parent="." instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Label" type="Label" parent="MenuController"]
 margin_left = 266.0
@@ -220,6 +1079,9 @@ Scrub: LMB
 align = 2
 valign = 2
 uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="cleanliness meter" parent="MenuController" instance=ExtResource( 9 )]
 position = Vector2( 2, 2 )

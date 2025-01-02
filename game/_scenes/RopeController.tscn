@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/RopeController.cs" type="Script" id=1]
 [ext_resource path="res://Physics/Rope.tres" type="PhysicsMaterial" id=2]
-[ext_resource path="res://sound/Winch_Ratcheting_Up.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/Winch_Ratcheting_Up_8bitLoop.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/SqueakyPulley.wav" type="AudioStream" id=4]
 
 [node name="RopeController" type="Node2D"]
 physics_interpolation_mode = 2
@@ -17,22 +18,27 @@ ropeVisualWidth = 1.01
 ropePhysicsMaterial = ExtResource( 2 )
 ropeColor = Color( 0.705882, 0.752941, 0.784314, 1 )
 ropeDensity = 0.5
-raiseSecondsPerLink = 0.1
-lowerSecondsPerLink = 0.085
+raiseSpeed = 6.0
+lowerSpeed = 18.0
 minimumSlack = 0.65
 minimumRopeSegments = 5
 
 [node name="Platform Position" type="Node2D" parent="."]
-position = Vector2( 168, 70 )
+position = Vector2( 170, 30 )
 
 [node name="Left Anchor Position" type="Node2D" parent="."]
-position = Vector2( 153.5, -23 )
+position = Vector2( 155.5, -15 )
 
 [node name="Right Anchor Position" type="Node2D" parent="."]
-position = Vector2( 182.5, -23 )
+position = Vector2( 184.5, -15 )
 
-[node name="sfx" type="AudioStreamPlayer" parent="."]
+[node name="vertical sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -15.497
-pitch_scale = 1.61
+pitch_scale = 1.5
+bus = "Effects"
+
+[node name="horizontal sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.497
 bus = "Effects"

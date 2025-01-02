@@ -68,4 +68,5 @@ rotation = 0.546288
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -8.0
 bus = "Effects"
