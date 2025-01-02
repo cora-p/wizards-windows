@@ -65,18 +65,21 @@ public class RopeController : Node2D {
 
     PackedScene anchorPackedScene;
 
+    AudioStreamPlayer sfx;
+
     Vector2 GetStartPosition(Side s) => anchors[s].GlobalPosition;
     Vector2 GetEndPosition(Side s) => s == L ? platform.ToGlobal(leftPlatformOffset) : platform.ToGlobal(rightPlatformOffset);
     Vector2 GetSegmentPosition(Vector2 start, Vector2 end, int index) => start + start.DirectionTo(end) * index * segmentLength;
     float GetAnchorDistance(Side s) => GetStartPosition(s).DistanceTo(GetEndPosition(s));
     float GetActualRopeLength(Side s) => segments[s].Count * segmentLength;
     float GetSlackFactor(Side s) => GetActualRopeLength(s) / GetAnchorDistance(s);
-
+    bool CanShorten { get => segments[L].Count > minimumRopeSegments && GetSlackFactor(L) > minimumSlack && GetSlackFactor(R) > minimumSlack; }
     public override void _Ready() {
         anchorPackedScene = GD.Load<PackedScene>("res://_scenes/platform/rope anchor.tscn");
         leftAnchorPosition = GetNode<Node2D>("Left Anchor Position");
         rightAnchorPosition = GetNode<Node2D>("Right Anchor Position");
         platformPosition = GetNode<Node2D>("Platform Position");
+        sfx = GetNode<AudioStreamPlayer>("sfx");
 
         segments = new Dictionary<Side, List<RigidBody2D>>();
         segments[L] = new List<RigidBody2D>();
@@ -105,10 +108,17 @@ public class RopeController : Node2D {
     }
 
     public override void _PhysicsProcess(float delta) {
-        var moveAxis = Input.IsActionPressed("Raise Platform") ? -1f : 0f;
-        moveAxis += Input.IsActionPressed("Lower Platform") ? 1f : 0f;
+        var isRaisePressed = Input.IsActionPressed("Raise Platform");
+        var isLowerPressed = Input.IsActionPressed("Lower Platform");
+        var moveAxis = isLowerPressed ? 1 : 0;
+        moveAxis += isRaisePressed ? -1 : 0;
         if (timeTilNextSegment > 0) {
             timeTilNextSegment = Mathf.Clamp(timeTilNextSegment - delta, 0, 1);
+        }
+        if (moveAxis < 0 && CanShorten) {
+            if (!sfx.Playing) sfx.Play();
+        } else {
+            if (sfx.Playing) sfx.Stop();
         }
         if (timeTilNextSegment == 0) {
             if (moveAxis < 0) {
@@ -130,8 +140,7 @@ public class RopeController : Node2D {
 
 
     void ShortenRopes() {
-        if (segments[L].Count <= minimumRopeSegments || segments[R].Count <= minimumRopeSegments) return;
-        if (GetSlackFactor(L) < minimumSlack || GetSlackFactor(R) < minimumSlack) { GD.Print($"Ropes too short already! L:{GetSlackFactor(L)}, R:{GetSlackFactor(R)}"); return; };
+        if (!CanShorten) return;
         var targetOffset = GetTargetOffset();
         anchors[L].QueueFree();
         segments[L][0].QueueFree();
@@ -298,7 +307,7 @@ public class RopeController : Node2D {
         segment.GlobalPosition = gPosition;
         segment.PhysicsMaterialOverride = ropePhysicsMaterial;
         segment.CollisionLayer = Layer.Rope;
-        segment.CollisionMask = Layer.None;
+        segment.CollisionMask = Layer.Deep;
         segment.ZIndex = ZIndices.Rope;
         segment.LookAt(lookPosition);
         if (insertAtStart) {

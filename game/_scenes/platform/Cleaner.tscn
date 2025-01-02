@@ -13,9 +13,9 @@ moveInputAcceleration = 0.15
 centeringAcceleration = 0.012
 stopAcceleration = 0.2
 maxTravelDistance = 12.0
-travelSpeed = 40.0
-centerAfter = 2.0
-shovePower = 100.0
+travelSpeed = 50.0
+centerAfter = 4.0
+shovePower = 150.0
 
 [node name="Brush" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0.688, 0 )
