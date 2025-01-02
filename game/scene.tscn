@@ -207,7 +207,7 @@ position = Vector2( 229, 199 )
 position = Vector2( 229, 30 )
 
 [node name="Block - Deep15" parent="Test stuff" instance=ExtResource( 14 )]
-position = Vector2( 307, 100 )
+position = Vector2( 297.99, 100 )
 
 [node name="4x1 shallow" type="Node2D" parent="Test stuff"]
 position = Vector2( 112, 37 )
@@ -775,12 +775,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Block - Shallow3" parent="Test stuff/4x1 shallow30" instance=ExtResource( 8 )]
-position = Vector2( 12, 0 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Block - Shallow4" parent="Test stuff/4x1 shallow30" instance=ExtResource( 8 )]
 position = Vector2( 4, 0 )
 __meta__ = {
@@ -798,12 +792,6 @@ __meta__ = {
 
 [node name="Block - Shallow2" parent="Test stuff/4x1 shallow28" instance=ExtResource( 8 )]
 position = Vector2( -12, 0 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Block - Shallow3" parent="Test stuff/4x1 shallow28" instance=ExtResource( 8 )]
-position = Vector2( 12, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
