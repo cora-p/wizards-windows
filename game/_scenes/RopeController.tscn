@@ -17,6 +17,7 @@ ropeColor = Color( 0.705882, 0.752941, 0.784314, 1 )
 ropeDensity = 0.5
 raiseSecondsPerLink = 0.1
 lowerSecondsPerLink = 0.085
+minimumSlack = 0.65
 minimumRopeSegments = 5
 
 [node name="Platform Position" type="Node2D" parent="."]

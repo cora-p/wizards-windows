@@ -10,6 +10,9 @@ public class RopeController : Node2D {
         Right
     }
 
+    const Side L = Side.Left;
+    const Side R = Side.Right;
+
     Node2D leftAnchorPosition, rightAnchorPosition, platformPosition;
 
     [Export]
@@ -41,13 +44,17 @@ public class RopeController : Node2D {
     [Export]
     float lowerSecondsPerLink;
 
+    [Export]
+    float minimumSlack;
+
     RigidBody2D platform;
-    RopeAnchor leftAnchor, rightAnchor;
+
+    Dictionary<Side, RopeAnchor> anchors;
 
     Node2D leftRope, rightRope;
 
-    List<RigidBody2D> leftSegments, rightSegments;
-    List<PinJoint2D> leftJoints, rightJoints;
+    Dictionary<Side, List<RigidBody2D>> segments;
+    Dictionary<Side, List<PinJoint2D>> joints;
 
     [Export]
     int minimumRopeSegments;
@@ -58,31 +65,12 @@ public class RopeController : Node2D {
 
     PackedScene anchorPackedScene;
 
-    Vector2 GLeftStartPosition {
-        get {
-            return leftAnchor.GlobalPosition;
-        }
-    }
-
-    Vector2 GLeftEndPosition {
-        get {
-            return platform.ToGlobal(leftPlatformOffset);
-        }
-    }
-
-    Vector2 GRightStartPosition {
-        get {
-            return rightAnchor.GlobalPosition;
-        }
-    }
-
-    Vector2 GRightEndPosition {
-        get {
-            return platform.ToGlobal(rightPlatformOffset);
-        }
-    }
-
+    Vector2 GetStartPosition(Side s) => anchors[s].GlobalPosition;
+    Vector2 GetEndPosition(Side s) => s == L ? platform.ToGlobal(leftPlatformOffset) : platform.ToGlobal(rightPlatformOffset);
     Vector2 GetSegmentPosition(Vector2 start, Vector2 end, int index) => start + start.DirectionTo(end) * index * segmentLength;
+    float GetAnchorDistance(Side s) => GetStartPosition(s).DistanceTo(GetEndPosition(s));
+    float GetActualRopeLength(Side s) => segments[s].Count * segmentLength;
+    float GetSlackFactor(Side s) => GetActualRopeLength(s) / GetAnchorDistance(s);
 
     public override void _Ready() {
         anchorPackedScene = GD.Load<PackedScene>("res://_scenes/platform/rope anchor.tscn");
@@ -90,20 +78,26 @@ public class RopeController : Node2D {
         rightAnchorPosition = GetNode<Node2D>("Right Anchor Position");
         platformPosition = GetNode<Node2D>("Platform Position");
 
+        segments = new Dictionary<Side, List<RigidBody2D>>();
+        segments[L] = new List<RigidBody2D>();
+        segments[R] = new List<RigidBody2D>();
+        joints = new Dictionary<Side, List<PinJoint2D>>();
+        joints[L] = new List<PinJoint2D>();
+        joints[R] = new List<PinJoint2D>();
+        anchors = new Dictionary<Side, RopeAnchor>();
+
         ConstructRopedBodies();
-        ConstructRope(Side.Left);
-        ConstructRope(Side.Right);
+        ConstructRope(L);
+        ConstructRope(R);
     }
 
     public override void _Draw() {
-        for (var i = 0; i < leftSegments.Count - 1; i++) {
-            DrawLine(ToLocal(leftSegments[i].GlobalPosition), ToLocal(leftSegments[i + 1].GlobalPosition), ropeColor, ropeVisualWidth);
+        foreach (Side s in Enum.GetValues(typeof(Side))) {
+            for (var i = 0; i < segments[s].Count - 1; i++) {
+                DrawLine(ToLocal(segments[s][i].GlobalPosition), ToLocal(segments[s][i + 1].GlobalPosition), ropeColor, ropeVisualWidth);
+                DrawLine(ToLocal(segments[s].Last().GlobalPosition), ToLocal(GetEndPosition(s)), ropeColor, ropeVisualWidth);
+            }
         }
-        DrawLine(ToLocal(leftSegments.Last().GlobalPosition), ToLocal(GLeftEndPosition), ropeColor, ropeVisualWidth);
-        for (var i = 0; i < rightSegments.Count - 1; i++) {
-            DrawLine(ToLocal(rightSegments[i].GlobalPosition), ToLocal(rightSegments[i + 1].GlobalPosition), ropeColor, ropeVisualWidth);
-        }
-        DrawLine(ToLocal(rightSegments.Last().GlobalPosition), ToLocal(GRightEndPosition), ropeColor, ropeVisualWidth);
     }
 
     public override void _Process(float delta) {
@@ -127,32 +121,36 @@ public class RopeController : Node2D {
         }
     }
 
-    Vector2 GetTargetOffset() => leftAnchor.targetOffset;
+    Vector2 GetTargetOffset() => anchors[L].targetOffset;
     void SetTargetOffsets(Vector2 offset) {
-        leftAnchor.targetOffset = offset;
-        rightAnchor.targetOffset = offset;
+        anchors[L].targetOffset = offset;
+        anchors[R].targetOffset = offset;
     }
+
+
+
     void ShortenRopes() {
-        if (leftSegments.Count <= minimumRopeSegments || rightSegments.Count <= minimumRopeSegments) return;
+        if (segments[L].Count <= minimumRopeSegments || segments[R].Count <= minimumRopeSegments) return;
+        if (GetSlackFactor(L) < minimumSlack || GetSlackFactor(R) < minimumSlack) { GD.Print($"Ropes too short already! L:{GetSlackFactor(L)}, R:{GetSlackFactor(R)}"); return; };
         var targetOffset = GetTargetOffset();
-        leftAnchor.QueueFree();
-        leftSegments[0].QueueFree();
-        leftSegments.RemoveAt(0);
-        leftJoints.RemoveAt(0);
-        rightAnchor.QueueFree();
-        rightSegments[0].QueueFree();
-        rightSegments.RemoveAt(0);
-        rightJoints.RemoveAt(0);
-        ConstructAnchors(leftSegments[0].GlobalPosition, rightSegments[0].GlobalPosition);
+        anchors[L].QueueFree();
+        segments[L][0].QueueFree();
+        segments[L].RemoveAt(0);
+        joints[L].RemoveAt(0);
+        anchors[R].QueueFree();
+        segments[R][0].QueueFree();
+        segments[R].RemoveAt(0);
+        joints[R].RemoveAt(0);
+        ConstructAnchors(segments[L][0].GlobalPosition, segments[R][0].GlobalPosition);
         SetTargetOffsets(targetOffset);
-        ConstructJoint(leftAnchor.GetPath(), leftSegments[0].GetPath(), Side.Left, leftAnchor.Position);
-        ConstructJoint(rightAnchor.GetPath(), rightSegments[0].GetPath(), Side.Right, rightAnchor.Position);
+        ConstructJoint(anchors[L].GetPath(), segments[L][0].GetPath(), Side.Left, anchors[L].Position);
+        ConstructJoint(anchors[R].GetPath(), segments[R][0].GetPath(), Side.Right, anchors[R].Position);
     }
 
     void LengthenRopes() {
         var targetOffset = GetTargetOffset();
-        leftAnchor.QueueFree();
-        rightAnchor.QueueFree();
+        anchors[L].QueueFree();
+        anchors[R].QueueFree();
         var newLeftAnchorPosition = leftAnchorPosition.GlobalPosition
             + Vector2.Up * segmentLength;
         var newRightAnchorPosition = rightAnchorPosition.GlobalPosition
@@ -161,41 +159,41 @@ public class RopeController : Node2D {
             newLeftAnchorPosition + targetOffset,
             newRightAnchorPosition + targetOffset);
         SetTargetOffsets(targetOffset);
-        ConstructSegment(GLeftStartPosition, segmentLength, Side.Left, true);
-        ConstructSegment(GRightStartPosition, segmentLength, Side.Right, true);
-        leftSegments[0].LookAt(leftSegments[1].GlobalPosition);
-        rightSegments[0].LookAt(rightSegments[1].GlobalPosition);
+        ConstructSegment(GetStartPosition(Side.Left), segmentLength, Side.Left, true);
+        ConstructSegment(GetStartPosition(Side.Right), segmentLength, Side.Right, true);
+        segments[L][0].LookAt(segments[L][1].GlobalPosition);
+        segments[R][0].LookAt(segments[R][1].GlobalPosition);
         ConstructJoint(
-            leftAnchor.GetPath(),
-            leftSegments[0].GetPath(),
+            anchors[L].GetPath(),
+            segments[L][0].GetPath(),
             Side.Left,
-            leftAnchor.Position);
+            anchors[L].Position);
         ConstructJoint(
-            rightAnchor.GetPath(),
-            rightSegments[0].GetPath(),
+            anchors[R].GetPath(),
+            segments[R][0].GetPath(),
             Side.Right,
-            rightAnchor.Position);
+            anchors[R].Position);
         ConstructJoint(
-            leftSegments[0].GetPath(),
-            leftSegments[1].GetPath(),
+            segments[L][0].GetPath(),
+            segments[L][1].GetPath(),
             Side.Left,
-            leftSegments[1].GlobalPosition);
+            segments[L][1].GlobalPosition);
         ConstructJoint(
-            rightSegments[0].GetPath(),
-            rightSegments[1].GetPath(),
+            segments[R][0].GetPath(),
+            segments[R][1].GetPath(),
             Side.Right,
-            rightSegments[1].GlobalPosition);
+            segments[R][1].GlobalPosition);
     }
 
     void ConstructAnchors(Vector2 leftPosition, Vector2 rightPosition) {
-        leftAnchor = anchorPackedScene.Instance<RopeAnchor>();
-        leftAnchor.GlobalPosition = leftPosition;
-        rightAnchor = anchorPackedScene.Instance<RopeAnchor>();
-        rightAnchor.GlobalPosition = rightPosition;
-        leftAnchor.targetPosition = leftAnchorPosition.GlobalPosition;
-        rightAnchor.targetPosition = rightAnchorPosition.GlobalPosition;
-        AddChild(leftAnchor);
-        AddChild(rightAnchor);
+        anchors[L] = anchorPackedScene.Instance<RopeAnchor>();
+        anchors[L].GlobalPosition = leftPosition;
+        anchors[R] = anchorPackedScene.Instance<RopeAnchor>();
+        anchors[R].GlobalPosition = rightPosition;
+        anchors[L].targetPosition = leftAnchorPosition.GlobalPosition;
+        anchors[R].targetPosition = rightAnchorPosition.GlobalPosition;
+        AddChild(anchors[L]);
+        AddChild(anchors[R]);
     }
 
     void ConstructRopedBodies() {
@@ -211,40 +209,27 @@ public class RopeController : Node2D {
 
     void ConstructRope(Side side) {
         var rope = new Node2D();
-        var segments = new List<RigidBody2D>();
-        var joints = new List<PinJoint2D>();
         sn = 1;
         jn = 1;
-        RopeAnchor anchor;
-        Vector2 startPosition, endPosition;
+        Vector2 startPosition = GetStartPosition(side);
+        Vector2 endPosition = GetEndPosition(side);
         if (side == Side.Left) {
             rope.Name = "Left Rope";
-            rope.GlobalPosition = leftAnchor.GlobalPosition;
-            leftSegments = segments;
-            leftJoints = joints;
+            rope.GlobalPosition = anchors[L].GlobalPosition;
             leftRope = rope;
-            startPosition = GLeftStartPosition;
-            endPosition = GLeftEndPosition;
-            anchor = leftAnchor;
         } else {
             rope.Name = "Right Rope";
-            rope.GlobalPosition = rightAnchor.GlobalPosition;
-            rightSegments = segments;
-            rightJoints = joints;
+            rope.GlobalPosition = anchors[L].GlobalPosition;
             rightRope = rope;
-            startPosition = GRightStartPosition;
-            endPosition = GRightEndPosition;
-            anchor = rightAnchor;
         }
         AddChild(rope);
         var ropeLength = startPosition.DistanceTo(endPosition);
         var distanceRemainder = ropeLength % segmentLength;
         if (distanceRemainder != 0) {
-            anchor.Position -= startPosition.DirectionTo(endPosition) * distanceRemainder;
+            anchors[L].Position -= startPosition.DirectionTo(endPosition) * distanceRemainder;
         }
         var segmentsNeeded = (int)(ropeLength / segmentLength);
         RigidBody2D segment = null;
-        GD.Print(segments);
         for (var i = 0; i < segmentsNeeded; i++) {
             segment = ConstructSegment(
                             GetSegmentPosition(startPosition, endPosition, i),
@@ -253,21 +238,21 @@ public class RopeController : Node2D {
                         );
         }
         segment.LookAt(endPosition);
-        for (var i = 0; i < segments.Count; i++) {
+        for (var i = 0; i < segments[side].Count; i++) {
             NodePath a, b;
             Vector2? position;
             if (i == 0) {
-                a = anchor.GetPath();
+                a = anchors[L].GetPath();
                 position = startPosition;
             } else {
-                a = segments[i - 1].GetPath();
+                a = segments[side][i - 1].GetPath();
                 position = null;
             }
-            b = segments[i].GetPath();
+            b = segments[side][i].GetPath();
             ConstructJoint(a, b, side, position);
         }
         ConstructJoint(
-            segments.Last().GetPath(),
+            segments[side].Last().GetPath(),
             platform.GetPath(),
             side,
             endPosition);
@@ -275,13 +260,10 @@ public class RopeController : Node2D {
 
     PinJoint2D ConstructJoint(NodePath a, NodePath b, Side side, Vector2? globalPosition, bool insertAtStart = false) {
         var joint = new PinJoint2D();
-        List<PinJoint2D> joints;
         if (side == Side.Left) {
             joint.Name = $"j-L-{jn++}";
-            joints = leftJoints;
         } else {
             joint.Name = $"j-R-{jn++}";
-            joints = rightJoints;
         }
         joint.Bias = bias;
         joint.Softness = softness;
@@ -293,9 +275,9 @@ public class RopeController : Node2D {
             joint.GlobalPosition = (Vector2)globalPosition;
         }
         if (insertAtStart) {
-            joints.Insert(0, joint);
+            joints[side].Insert(0, joint);
         } else {
-            joints.Add(joint);
+            joints[side].Add(joint);
         }
         joint.NodeB = b;
         return joint;
@@ -303,18 +285,13 @@ public class RopeController : Node2D {
 
     RigidBody2D ConstructSegment(Vector2 gPosition, float length, Side side, bool insertAtStart = false) {
         var segment = new RigidBody2D();
-        Vector2 lookPosition;
-        List<RigidBody2D> segments;
+        Vector2 lookPosition = GetEndPosition(side);
         if (side == Side.Left) {
             segment.Name = $"sL{sn++}";
             leftRope.AddChild(segment);
-            lookPosition = GLeftEndPosition;
-            segments = leftSegments;
         } else {
             segment.Name = $"sR{sn++}";
             rightRope.AddChild(segment);
-            lookPosition = GRightEndPosition;
-            segments = rightSegments;
         }
         ConstructCollider(segment, 0.5f, length);
         segment.Mass = ropeDensity * length;
@@ -325,9 +302,9 @@ public class RopeController : Node2D {
         segment.ZIndex = ZIndices.Rope;
         segment.LookAt(lookPosition);
         if (insertAtStart) {
-            segments.Insert(0, segment);
+            segments[side].Insert(0, segment);
         } else {
-            segments.Add(segment);
+            segments[side].Add(segment);
         }
         return segment;
     }

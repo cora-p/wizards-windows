@@ -83,22 +83,12 @@ public class Cleaner : Node2D {
                 shoveMomentumDistance += Mathf.Abs(positionDelta);
             }
         }
-
-        // if (travelPosition > maxTravelDistance) {
-        //     travelPosition = maxTravelDistance;
-        //     GD.Print("D");
-        // } else if (travelPosition < -maxTravelDistance) {
-        //     travelPosition = -maxTravelDistance;
-        //     GD.Print("E");
-        // }
-        // GD.Print($"p: {travelPosition}, m: {moveInputMoment}");
         Position = new Vector2(travelPosition, Position.y);
         Rotation = 0f;
     }
 
     void ShovePlatform(bool left) {
         Vector2 impulse;
-        GD.Print(travelPosition);
         if (left) {
             impulse = Vector2.Left.Rotated(platform.GlobalRotation);
             hasShovedLeft = true;
