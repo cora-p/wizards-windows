@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
 
-[node name="Block - Deep" type="Node2D"]
+[node name="Block - Deep" type="Node2D" groups=["obstacles"]]
 z_index = 200
 z_as_relative = false
 

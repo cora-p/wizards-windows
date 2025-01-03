@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sprites/env/stone_wall_edge.png" type="Texture" id=1]
 
-[node name="StoneWallEdge" type="Sprite"]
+[node name="StoneWallEdge" type="Sprite" groups=["background"]]
 z_index = -100
 z_as_relative = false
 texture = ExtResource( 1 )

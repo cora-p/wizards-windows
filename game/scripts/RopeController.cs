@@ -62,7 +62,7 @@ public class RopeController : Node2D, Manager {
 
     PackedScene anchorPackedScene;
 
-    AudioStreamPlayer verticalSfx, horizontalSfx;
+    AudioStreamPlayer raiseSfx, lowerSfx, horizontalSfx;
 
     Vector2 GetStartPosition(Side s) => anchors[s].GlobalPosition;
     Vector2 GetEndPosition(Side s) => s == L ? platform.ToGlobal(leftPlatformOffset) : platform.ToGlobal(rightPlatformOffset);
@@ -76,15 +76,18 @@ public class RopeController : Node2D, Manager {
         leftAnchorPosition = GetNode<Node2D>("Left Anchor Position");
         rightAnchorPosition = GetNode<Node2D>("Right Anchor Position");
         platformPosition = GetNode<Node2D>("Platform Position");
-        verticalSfx = GetNode<AudioStreamPlayer>("vertical sfx");
+        raiseSfx = GetNode<AudioStreamPlayer>("raise sfx");
+        lowerSfx = GetNode<AudioStreamPlayer>("lower sfx");
         horizontalSfx = GetNode<AudioStreamPlayer>("horizontal sfx");
 
-        segments = new Dictionary<Side, List<RigidBody2D>>();
-        segments[L] = new List<RigidBody2D>();
-        segments[R] = new List<RigidBody2D>();
-        joints = new Dictionary<Side, List<PinJoint2D>>();
-        joints[L] = new List<PinJoint2D>();
-        joints[R] = new List<PinJoint2D>();
+        segments = new Dictionary<Side, List<RigidBody2D>> {
+            [L] = new List<RigidBody2D>(),
+            [R] = new List<RigidBody2D>()
+        };
+        joints = new Dictionary<Side, List<PinJoint2D>> {
+            [L] = new List<PinJoint2D>(),
+            [R] = new List<PinJoint2D>()
+        };
         anchors = new Dictionary<Side, RopeAnchor>();
 
         ConstructRopedBodies();
@@ -119,9 +122,14 @@ public class RopeController : Node2D, Manager {
             timeTilNextSegment = Mathf.Clamp(timeTilNextSegment - delta, 0, 1);
         }
         if (moveAxis < 0 && CanShorten) {
-            if (!verticalSfx.Playing) verticalSfx.Play();
+            if (!raiseSfx.Playing) raiseSfx.Play();
         } else {
-            if (verticalSfx.Playing) verticalSfx.Stop();
+            if (raiseSfx.Playing) raiseSfx.Stop();
+        }
+        if (moveAxis > 0) { //TODO CanLengthen
+            if (!lowerSfx.Playing) lowerSfx.Play();
+        } else {
+            if (lowerSfx.Playing) lowerSfx.Stop();
         }
         if (timeTilNextSegment == 0) {
             if (moveAxis < 0) {

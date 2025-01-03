@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://_scenes/env/windows/Window_A.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/managers/Overseer.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://_scenes/env/obstacles/block_shallow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://_scenes/env/windows/Window_C.tscn" type="PackedScene" id=9]
 [ext_resource path="res://_scenes/env/hazards/Bird.tscn" type="PackedScene" id=10]
+[ext_resource path="res://_scenes/env/set dressing/block_background.tscn" type="PackedScene" id=11]
 
 [node name="test" type="Node2D"]
 __meta__ = {
@@ -569,6 +570,15 @@ position = Vector2( 137, 125 )
 [node name="Window_B" parent="." instance=ExtResource( 7 )]
 position = Vector2( 57, 162 )
 
+[node name="Block - Background" parent="Window_B" instance=ExtResource( 11 )]
+position = Vector2( 11, 25 )
+
+[node name="Block - Background2" parent="Window_B" instance=ExtResource( 11 )]
+position = Vector2( 12, 33.01 )
+
+[node name="Block - Background3" parent="Window_B" instance=ExtResource( 11 )]
+position = Vector2( 12, 41.02 )
+
 [node name="Window_C" parent="." instance=ExtResource( 9 )]
 position = Vector2( 105, 61 )
 
@@ -576,6 +586,30 @@ position = Vector2( 105, 61 )
 position = Vector2( 141, 196 )
 
 [node name="Window_E" parent="." instance=ExtResource( 4 )]
-position = Vector2( 104, 135 )
+position = Vector2( 101, 133 )
+
+[node name="Block - Background" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 94 )
+
+[node name="Block - Background2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 102.01 )
+
+[node name="Block - Background3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 110.02 )
+
+[node name="Block - Background4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 118.03 )
+
+[node name="Block - Background5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 126.04 )
+
+[node name="Block - Background6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 134.05 )
+
+[node name="Block - Background7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 142.06 )
+
+[node name="Block - Background8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 118, 150.07 )
 
 [editable path="nest"]

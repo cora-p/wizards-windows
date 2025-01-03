@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/LevelManager.cs" type="Script" id=1]
+
+[sub_resource type="LineShape2D" id=1]
+d = 0.01
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,3 +19,10 @@ rowShiftChance = 0.33
 rowCantChance = 0.25
 tileShiftChance = 0.131
 tileCantChance = 0.33
+
+[node name="Progress Blocker" type="StaticBody2D" parent="."]
+position = Vector2( 224.28, 244.31 )
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Progress Blocker"]
+shape = SubResource( 1 )

@@ -24,9 +24,11 @@ public class LevelManager : Node2D, Manager {
     Node2D[,] bgTiles;
     Node2D[] endcaps;
 
+    public static LevelManager Instance { get; private set; }
 
 
     public override void _Ready() {
+        Instance = this;
         bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWall.tscn");
         bgEdgeScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWallEdge.tscn");
 
@@ -133,4 +135,9 @@ public class LevelManager : Node2D, Manager {
 
     float GetJitter(float extent) => (float)GD.RandRange(-extent, extent);
     bool IsLucky(float chance) => GD.Randf() <= chance;
+
+    public void OnAllClean() {
+        //TODO: next level transition
+        GetNode<StaticBody2D>("Progress Blocker").QueueFree();
+    }
 }

@@ -22,7 +22,7 @@ extents = Vector2( 1, 0.5 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1.5, 0.5 )
 
-[node name="Window_C" type="Node2D"]
+[node name="Window_C" type="Node2D" groups=["windows"]]
 z_index = -10
 z_as_relative = false
 script = ExtResource( 1 )

@@ -167,6 +167,9 @@ public class GrimeManager : Node, Manager {
             g.window.OnCleaned();
             perWindowGrimeCount.Remove(g.window);
         }
-        if (currentGrimes < 0) currentGrimes = 0;
+        if (currentGrimes < 1) {
+            currentGrimes = 0;
+            LevelManager.Instance.OnAllClean();
+        }
     }
 }

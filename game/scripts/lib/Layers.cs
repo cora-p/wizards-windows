@@ -14,6 +14,9 @@ public static class ZIndices {
     public const int Background = -1000;
     public const int TowerBackdrop = -500;
     public const int Tower = -100;
+    public const int SetDressing_back = -50;
+    public const int SetDressing_mid = -45;
+    public const int SetDressing_front = -40;
     public const int Windows = -10;
     public const int Grime = -5;
     public const int ShallowShadow = -1;
