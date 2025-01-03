@@ -24,6 +24,7 @@ public static class ZIndices {
     public const int Rope = 100;
     public const int DeepShadow = 199;
     public const int Deep = 200;
+    public const int Birds = 250;
     public const int HudBackground = 300;
     public const int HudMiddleground = 305;
     public const int HudForeground = 310;

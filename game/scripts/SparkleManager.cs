@@ -27,7 +27,7 @@ public class SparkleManager : Node2D, Manager {
         Instance = this;
         sparklingWindows = new Dictionary<Window, float>();
         sparkleScene = GD.Load<PackedScene>("res://_scenes/fx/Sparkle.tscn");
-        ManagerManager.Instance.ReportReady(this);
+        Overseer.Instance.ReportReady(this);
     }
 
     public void StartSparkling(Window w) {

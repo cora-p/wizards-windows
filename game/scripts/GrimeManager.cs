@@ -37,18 +37,21 @@ public class GrimeManager : Node, Manager {
         "PERFECTION",
         "ULTRACLEAN",
         "GLEAMING",
-        "IMMACULATE"
+        "IMMACULATE",
+        "HOT!",
+        "WELL DONE",
+        "SPARKLY"
     };
 
     public float PercentGrimy {
         get {
-            if (maxGrime == 0) return 0;
-            return currentGrime / maxGrime;
+            if (maxGrimes == 0) return 0;
+            return (float)currentGrimes / maxGrimes;
         }
     }
 
-    float maxGrime;
-    float currentGrime;
+    int maxGrimes;
+    int currentGrimes;
 
     static List<Window> grimeRequests = new List<Window>();
 
@@ -61,12 +64,12 @@ public class GrimeManager : Node, Manager {
         noise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
         noise.SetFrequency(frequency);
         noise.SetFractalType(FastNoiseLite.FractalType.FBm);
-        winLabel = GetNode<Label>("../Win Label");
-        ManagerManager.Instance.ReportReady(this);
+        winLabel = GetNode<Label>("Win Label");
+        Overseer.Instance.ReportReady(this);
     }
 
     public override void _Process(float delta) {
-        if (currentGrime == 0 && maxGrime != 0) {
+        if (currentGrimes == 0 && maxGrimes != 0) {
             if (!winLabel.Visible) {
                 winLabel.Text = winTextOptions[GD.Randi() % winTextOptions.Length];
                 winLabel.Visible = true;
@@ -85,25 +88,25 @@ public class GrimeManager : Node, Manager {
     }
 
     void ResetGrimeMeter() {
-        maxGrime = 0f;
-        currentGrime = 0f;
+        maxGrimes = 0;
+        currentGrimes = 0;
     }
 
     void GenerateGrime(Window w) {
+        noise.SetSeed((int)(GD.Randi() % int.MaxValue));
         var c1 = GetRandomGrimeColor(Colors.Transparent);
         var c2 = GetRandomGrimeColor(c1);
-        var g = 0f;
+        var g = 0;
         for (var x = 0; x < w.BoundsCount; x++) {
             g += GrimePass(w, w.LowerBounds[x], w.UpperBounds[x], c1);
             g += GrimePass(w, w.LowerBounds[x], w.UpperBounds[x], c2);
         }
-        maxGrime += g;
-        currentGrime += g;
+        maxGrimes += g;
+        currentGrimes += g;
     }
 
-    float GrimePass(Window w, Vector2 lowerBound, Vector2 upperBound, Color c) {
-        noise.SetSeed((int)(GD.Randi() % int.MaxValue));
-        var grimeCreated = 0f;
+    int GrimePass(Window w, Vector2 lowerBound, Vector2 upperBound, Color c) {
+        var grimesCreated = 0;
         if (!perWindowGrimeCount.ContainsKey(w)) {
             perWindowGrimeCount.Add(w, 0);
         }
@@ -117,11 +120,11 @@ public class GrimeManager : Node, Manager {
                     perWindowGrimeCount[w] = perWindowGrimeCount[w] + 1;
                     g.GlobalPosition = new Vector2(x, y);
                     g.Modulate = new Color(c.r, c.g, c.b, val);
-                    grimeCreated += val;
+                    grimesCreated += 1;
                 }
             }
         }
-        return grimeCreated;
+        return grimesCreated;
     }
     /// <summary>
     /// Queues grime grime generation within the given bounds.
@@ -152,20 +155,18 @@ public class GrimeManager : Node, Manager {
         if (g.IsQueuedForDeletion() || !perWindowGrimeCount.ContainsKey(g.window)) return;
         var c = g.Modulate;
         var newVal = c.a - BrushController.Instance.scrubbingPower;
-        var delta = newVal - c.a;
         if (newVal < threshold) {
             g.QueueFree();
             perWindowGrimeCount[g.window] = perWindowGrimeCount[g.window] - 1;
-            currentGrime -= c.a;
+            currentGrimes -= 1;
         } else {
             g.Modulate = new Color(c.r, c.g, c.b, newVal);
-            currentGrime += delta;
         }
 
         if (perWindowGrimeCount[g.window] < 1) {
             g.window.OnCleaned();
             perWindowGrimeCount.Remove(g.window);
         }
-        if (currentGrime < 0) currentGrime = 0;
+        if (currentGrimes < 0) currentGrimes = 0;
     }
 }

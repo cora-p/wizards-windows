@@ -29,11 +29,16 @@ public class LevelManager : Node2D, Manager {
     public override void _Ready() {
         bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWall.tscn");
         bgEdgeScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWallEdge.tscn");
+
         GenerateBackground();
-        ManagerManager.Instance.ReportReady(this);
+        Overseer.Instance.ReportReady(this);
     }
 
     void GenerateBackground() {
+        var bgScene = GD.Load<PackedScene>("res://_scenes/env/other/background.tscn");
+        var bg = bgScene.Instance<Node2D>();
+        AddChild(bg);
+        bg.RotationDegrees = GetJitter(360);
         if (bgTiles != null) {
             // clean up existing bgTiles, if present
             for (var x = 0; x < width; x++) {

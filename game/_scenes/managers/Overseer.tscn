@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Overseer.cs" type="Script" id=1]
+[ext_resource path="res://sprites/dot.png" type="Texture" id=2]
+
+[node name="Overseer" type="Node"]
+process_priority = -100
+script = ExtResource( 1 )
+unreadyManagerNames = [ "BrushController", "CleanlinessMeter", "LevelManager", "GrimeManager", "SparkleManager" ]
+
+[node name="tower backdrop" type="Sprite" parent="."]
+modulate = Color( 0.474287, 0.458923, 0.570313, 1 )
+position = Vector2( 26, -5 )
+scale = Vector2( 288, 250 )
+z_index = -500
+z_as_relative = false
+texture = ExtResource( 2 )
+centered = false

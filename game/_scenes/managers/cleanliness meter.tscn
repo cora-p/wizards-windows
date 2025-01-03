@@ -5,6 +5,7 @@
 
 [node name="cleanliness meter" type="Node2D"]
 modulate = Color( 0.74902, 0.901961, 0.894118, 1 )
+position = Vector2( 5, 5 )
 script = ExtResource( 2 )
 frequency = 0.1
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/SparkleManager.cs" type="Script" id=1]
+
+[node name="SparkleManager" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+sparkleDelayRange = Vector2( 0.1, 1 )
+sparkleScaleRange = Vector2( 0.15, 1 )

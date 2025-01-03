@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using Godot;
 #pragma warning disable CS0649, IDE0044
 
-public class ManagerManager : Node {
+public class Overseer : Node {
 
     [Export]
-    /// <summary>
-    /// A list of names of Managers that aren't ready yet. Values are removed as they report ready. 
-    /// </summary>
+    //* A list of names of Managers that aren't ready yet. Values are removed as they report ready. 
     List<string> unreadyManagerNames;
     List<Manager> readyManagers = new List<Manager>();
 
@@ -16,15 +14,7 @@ public class ManagerManager : Node {
         get; private set;
     }
 
-    static ManagerManager _Instance;
-    public static ManagerManager Instance {
-        get {
-            return _Instance;
-        }
-        private set {
-            _Instance = value;
-        }
-    }
+    public static Overseer Instance { get; private set; }
 
     public override void _EnterTree() {
         GD.Randomize();

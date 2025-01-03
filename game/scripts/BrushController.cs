@@ -70,7 +70,7 @@ public class BrushController : KinematicBody2D, Manager {
                          select k as Area2D)
                            .ToList();
 
-        ManagerManager.Instance.ReportReady(this);
+        Overseer.Instance.ReportReady(this);
     }
 
     void RecurseChildren(Node node, List<Node> collection) {

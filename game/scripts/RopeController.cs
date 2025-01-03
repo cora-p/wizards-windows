@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 #pragma warning disable CS0649, IDE0044
-public class RopeController : Node2D {
+public class RopeController : Node2D, Manager {
 
     enum Side {
         Left,
@@ -335,4 +335,6 @@ public class RopeController : Node2D {
         collider.Rotate(Mathf.Pi / 2f);
     }
 
+    public void OnAllReady() {
+    }
 }

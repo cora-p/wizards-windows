@@ -35,7 +35,7 @@ public class CleanlinessMeter : Node2D, Manager {
 
         grimeNoiseValues = new Color[(int)background.Scale.x, (int)background.Scale.y];
 
-        ManagerManager.Instance.ReportReady(this);
+        Overseer.Instance.ReportReady(this);
     }
 
     public override void _Process(float delta) {
@@ -46,7 +46,7 @@ public class CleanlinessMeter : Node2D, Manager {
     }
 
     public override void _Draw() {
-        if (ManagerManager.Instance.HasCalledOnAllReady) {
+        if (Overseer.Instance.HasCalledOnAllReady) {
             var grimeImage = new Image();
             grimeImage.Create(Width, Height, false, Image.Format.Rgba8);
             grimeImage.Fill(Colors.Transparent);

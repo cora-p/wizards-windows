@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/GrimeManager.cs" type="Script" id=1]
+[ext_resource path="res://misc/dogica_huge.tres" type="DynamicFont" id=2]
 
 [node name="GrimeManager" type="Node2D"]
+z_index = 350
+z_as_relative = false
 script = ExtResource( 1 )
-threshold = 0.25
-frequency = 0.1
+threshold = 0.15
+frequency = 0.085
 possibleGrimeColors = PoolColorArray( 0.509804, 0.0117647, 0.513726, 1, 0.0588235, 0.372549, 0.0235294, 1, 0.184314, 0.345098, 0.286275, 1, 0.341176, 0.411765, 0.247059, 1, 0.188235, 0.160784, 0.121569, 1, 0.27451, 0.160784, 0.0745098, 1, 0.262745, 0, 0, 1, 0.0980392, 0.164706, 0.101961, 1, 0, 0.129412, 0.0470588, 1, 0.227451, 0.223529, 0, 1, 0.129412, 0.0431373, 0, 1, 0.505882, 0.458824, 0.298039, 1, 0.552941, 0.615686, 0.109804, 1, 0.188235, 0.152941, 0.113725, 1, 0.207843, 0.207843, 0.207843, 1, 0.0588235, 0.0588235, 0.0588235, 1, 0.321569, 0.270588, 0.270588, 1, 0.478431, 0.368627, 0.219608, 1, 0.301961, 0.223529, 0.27451, 1 )
 win1 = Color( 0, 1, 0.929412, 1 )
 win2 = Color( 1, 1, 0, 1 )
 winBlinkTime = 1.0
+
+[node name="Win Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 82.0
+margin_top = 111.0
+margin_right = 258.0
+margin_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "PRISTINE"
+align = 1
+valign = 1

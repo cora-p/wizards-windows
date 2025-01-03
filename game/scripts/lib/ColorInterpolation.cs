@@ -6,22 +6,21 @@ public static class ColorInterpolation {
     public static Color LerpHSV(Color a, Color b, float t) {
         // Hue interpolation
         float h = 0f;
-        float d = b.h - a.h;
-        if (a.h > b.h) {
-            var h3 = b.h;
-            b.h = a.h;
-            a.h = h3;
-
-            d = -d;
+        // storing hues as each call to Color.h is expensive
+        float aHue = a.h;
+        float bHue = b.h;
+        float delta = bHue - aHue;
+        if (aHue > bHue) {
+            (aHue, bHue) = (bHue, aHue);
+            delta = -delta;
             t = 1 - t;
         }
 
-        if (d > 0.5f) {
-            a.h = a.h + 1;
-            h = (a.h + t * (b.h - a.h)) % 1;
-        }
-        if (d <= 0.5) {
-            h = a.h + t * d;
+        if (delta > 0.5f) {
+            aHue++;
+            h = (aHue + t * bHue - aHue) % 1;
+        } else {
+            h = aHue + t * delta;
         }
 
         // Interpolates the rest
