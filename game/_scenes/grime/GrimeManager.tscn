@@ -10,22 +10,3 @@ possibleGrimeColors = PoolColorArray( 0.509804, 0.0117647, 0.513726, 1, 0.058823
 win1 = Color( 0, 1, 0.929412, 1 )
 win2 = Color( 1, 1, 0, 1 )
 winBlinkTime = 1.0
-
-[node name="Win Label Holder" type="Node2D" parent="."]
-visible = false
-position = Vector2( 170, 120 )
-scale = Vector2( 4, 4 )
-z_index = 350
-z_as_relative = false
-
-[node name="Win Label" type="Label" parent="Win Label Holder"]
-margin_left = -31.75
-margin_top = -2.75
-margin_right = 32.25
-margin_bottom = 3.25
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 0.5, 0.5 )
-text = "PRISTINE"
-align = 1
-valign = 1

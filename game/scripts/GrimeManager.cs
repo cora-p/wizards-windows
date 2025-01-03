@@ -17,7 +17,6 @@ public class GrimeManager : Node, Manager {
     [Export]
     Color[] possibleGrimeColors;
 
-    Node2D winLabelHolder;
     Label winLabel;
 
     [Export]
@@ -62,16 +61,15 @@ public class GrimeManager : Node, Manager {
         noise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
         noise.SetFrequency(frequency);
         noise.SetFractalType(FastNoiseLite.FractalType.FBm);
-        winLabelHolder = GetNode<Node2D>("Win Label Holder");
-        winLabel = winLabelHolder.GetChild<Label>(0);
+        winLabel = GetNode<Label>("../Win Label");
         ManagerManager.Instance.ReportReady(this);
     }
 
     public override void _Process(float delta) {
         if (currentGrime == 0 && maxGrime != 0) {
-            if (!winLabelHolder.Visible) {
+            if (!winLabel.Visible) {
                 winLabel.Text = winTextOptions[GD.Randi() % winTextOptions.Length];
-                winLabelHolder.Visible = true;
+                winLabel.Visible = true;
             }
             HandleBlinking(delta);
         }
