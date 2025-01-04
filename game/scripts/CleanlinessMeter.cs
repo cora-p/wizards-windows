@@ -75,4 +75,7 @@ public class CleanlinessMeter : Node2D, Manager {
             }
         }
     }
+
+    public bool Reset() => false;
+    public PackedScene GetPackedScene() => null;
 }

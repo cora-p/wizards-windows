@@ -63,4 +63,10 @@ public class SparkleManager : Node2D, Manager {
     public void OnAllReady() {
         // nothing to do
     }
+
+    public PackedScene GetPackedScene() => null;
+    public bool Reset() {
+        sparklingWindows = new Dictionary<Window, float>();
+        return false;
+    }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 #pragma warning disable CS0649, IDE0044
 
@@ -32,7 +33,6 @@ public class GrimeManager : Node, Manager {
         "SPOTLESS",
         "OOH SHINY",
         "FABULOUS",
-        "YOU WIN",
         "IMPECCABLE",
         "PERFECTION",
         "ULTRACLEAN",
@@ -40,7 +40,12 @@ public class GrimeManager : Node, Manager {
         "IMMACULATE",
         "HOT!",
         "WELL DONE",
-        "SPARKLY"
+        "SPARKLY",
+        "SPIC AND SPAN",
+        "FLAWLESS",
+        "WOW!",
+        "TOOK LONG ENOUGH",
+        "C L E A N"
     };
 
     public float PercentGrimy {
@@ -53,10 +58,13 @@ public class GrimeManager : Node, Manager {
     int maxGrimes;
     int currentGrimes;
 
+    bool hasConnectedBrush;
+
     static List<Window> grimeRequests = new List<Window>();
 
     public static GrimeManager Instance { get; private set; }
     public override void _Ready() {
+        hasConnectedBrush = false;
         perWindowGrimeCount = new Dictionary<Window, int>();
         Instance = this;
         ResetGrimeMeter();
@@ -69,12 +77,27 @@ public class GrimeManager : Node, Manager {
     }
 
     public override void _Process(float delta) {
-        if (currentGrimes == 0 && maxGrimes != 0) {
+        if (Cleaner.Instance != null && currentGrimes == 0 && maxGrimes != 0) {
             if (!winLabel.Visible) {
                 winLabel.Text = winTextOptions[GD.Randi() % winTextOptions.Length];
                 winLabel.Visible = true;
             }
             HandleBlinking(delta);
+        } else {
+            if (winLabel.Visible) {
+                winLabel.Visible = false;
+            }
+        }
+        if (BrushController.Instance != null && !hasConnectedBrush) {
+            foreach (var b in BrushController.Instance.brushHitboxes) {
+                b.Connect("area_entered", this, "OnClean");
+            }
+            hasConnectedBrush = true;
+        }
+        if (grimeRequests.Count > 0) {
+            var gr = grimeRequests.First();
+            grimeRequests.RemoveAt(0);
+            GenerateGrime(gr);
         }
     }
 
@@ -93,12 +116,16 @@ public class GrimeManager : Node, Manager {
     }
 
     void GenerateGrime(Window w) {
-        noise.SetSeed((int)(GD.Randi() % int.MaxValue));
+        var s1 = (int)(GD.Randi() % int.MaxValue);
+        var s2 = (int)(GD.Randi() % int.MaxValue);
+
         var c1 = GetRandomGrimeColor(Colors.Transparent);
         var c2 = GetRandomGrimeColor(c1);
         var g = 0;
         for (var x = 0; x < w.BoundsCount; x++) {
+            noise.SetSeed(s1);
             g += GrimePass(w, w.LowerBounds[x], w.UpperBounds[x], c1);
+            noise.SetSeed(s2);
             g += GrimePass(w, w.LowerBounds[x], w.UpperBounds[x], c2);
         }
         maxGrimes += g;
@@ -142,13 +169,6 @@ public class GrimeManager : Node, Manager {
     }
 
     public void OnAllReady() {
-        foreach (var b in BrushController.Instance.brushHitboxes) {
-            b.Connect("area_entered", this, "OnClean");
-        }
-        for (var i = 0; i < grimeRequests.Count; i++) {
-            var gr = grimeRequests[i];
-            GenerateGrime(gr);
-        }
     }
 
     public void OnClean(Grime g) {
@@ -171,5 +191,16 @@ public class GrimeManager : Node, Manager {
             currentGrimes = 0;
             LevelManager.Instance.OnAllClean();
         }
+    }
+
+    public bool Reset() {
+        ResetGrimeMeter();
+        hasConnectedBrush = false;
+        return false;
+    }
+    public PackedScene GetPackedScene() => null;
+
+    public void SetCustomWinLabel(string msg) {
+        winLabel.Text = msg;
     }
 }

@@ -1,10 +1,7 @@
 using System;
 using Godot;
 #pragma warning disable CS0649, IDE0044
-public class Cleaner : Node2D {
-
-
-
+public class Cleaner : Node2D, Manager {
     [Export]
     float moveInputAcceleration, centeringAcceleration, stopAcceleration;
     [Export]
@@ -25,12 +22,19 @@ public class Cleaner : Node2D {
 
     bool hasShovedRight, hasShovedLeft;
 
-    RigidBody2D platform;
+    public RigidBody2D platform;
+
+    public static Cleaner Instance { get; private set; }
+
+    [Export]
+    float shoveUpFactor, popUpPixels, shovePopThreshold;
 
     public override void _Ready() {
         platform = GetParent<RigidBody2D>();
         hasShovedRight = false;
         hasShovedLeft = false;
+        Instance = this;
+        Overseer.Instance.ReportReady(this);
     }
 
     public override void _PhysicsProcess(float delta) {
@@ -90,13 +94,26 @@ public class Cleaner : Node2D {
     void ShovePlatform(bool left) {
         Vector2 impulse;
         if (left) {
-            impulse = Vector2.Left.Rotated(platform.GlobalRotation);
+            impulse = (Vector2.Left + Vector2.Up * shoveUpFactor).Normalized().Rotated(platform.GlobalRotation);
             hasShovedLeft = true;
         } else {
-            impulse = Vector2.Right.Rotated(platform.GlobalRotation);
+            impulse = (Vector2.Right + Vector2.Up * shoveUpFactor).Normalized().Rotated(platform.GlobalRotation);
             hasShovedRight = true;
+        }
+        if (shoveMomentumDistance > shovePopThreshold) {
+            platform.MoveLocalY(-popUpPixels);
         }
         platform.ApplyCentralImpulse(impulse * shoveMomentumDistance * shovePower);
         shoveMomentumDistance = 0f;
     }
+
+    public void OnAllReady() {
+    }
+    public bool Reset() {
+        Instance = null;
+        QueueFree();
+        return true;
+    }
+    public PackedScene GetPackedScene() => null;
+
 }

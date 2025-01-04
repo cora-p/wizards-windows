@@ -7,7 +7,7 @@
 [ext_resource path="res://_scenes/platform/brush/scrub_angle_curve.tres" type="Curve" id=5]
 [ext_resource path="res://sound/scrub_1.mp3" type="AudioStream" id=6]
 
-[node name="Brush" type="KinematicBody2D"]
+[node name="BrushController" type="KinematicBody2D"]
 z_index = 5
 z_as_relative = false
 collision_layer = 16

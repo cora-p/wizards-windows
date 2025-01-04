@@ -24,13 +24,31 @@ public class LevelManager : Node2D, Manager {
     Node2D[,] bgTiles;
     Node2D[] endcaps;
 
+    [Export]
+    string[] levelNames;
+
+    PackedScene[] levels;
+
+    [Export]
+    int currentLevel;
+
+    CollisionShape2D progressBlocker, progress;
+
     public static LevelManager Instance { get; private set; }
 
 
     public override void _Ready() {
+        progressBlocker = GetNode<CollisionShape2D>("Progress Blocker/CollisionShape2D");
+        progress = GetNode<CollisionShape2D>("Progress/CollisionShape2D");
+        progress.GetParent().Connect("body_entered", this, "OnProgress");
         Instance = this;
         bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWall.tscn");
         bgEdgeScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWallEdge.tscn");
+
+        levels = new PackedScene[levelNames.Length];
+        for (var i = 0; i < levelNames.Length; i++) {
+            levels[i] = GD.Load<PackedScene>($"res://levels/{levelNames[i]}.tscn");
+        }
 
         GenerateBackground();
         Overseer.Instance.ReportReady(this);
@@ -138,6 +156,19 @@ public class LevelManager : Node2D, Manager {
 
     public void OnAllClean() {
         //TODO: next level transition
-        GetNode<StaticBody2D>("Progress Blocker").QueueFree();
+        progressBlocker.CallDeferred("set", "disabled", true);
     }
+    void OnProgress(Node n) {
+        currentLevel++;
+        if (currentLevel < levels.Length) {
+            Overseer.Instance.Reset();
+            GetTree().ChangeSceneTo(levels[currentLevel]);
+            progressBlocker.CallDeferred("set", "disabled", false);
+        } else {
+            GrimeManager.Instance.SetCustomWinLabel("THE END...\nFOR NOW!");
+        }
+    }
+
+    public bool Reset() => false;
+    public PackedScene GetPackedScene() => null;
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using Godot;
 #pragma warning disable CS0649, IDE0044
@@ -41,19 +40,7 @@ public class BrushController : KinematicBody2D, Manager {
     AudioStreamPlayer sfx;
     public List<Area2D> brushHitboxes;
 
-    private static BrushController _Instance;
-
-    public static BrushController Instance {
-        get { return _Instance; }
-        private set {
-            if (_Instance == null) {
-                _Instance = value;
-            } else {
-                GD.PrintErr("A BrushController has already initialized!");
-            }
-        }
-    }
-
+    public static BrushController Instance { get; private set; }
 
     public override void _Ready() {
         Instance = this;
@@ -123,4 +110,11 @@ public class BrushController : KinematicBody2D, Manager {
     public void OnAllReady() {
         // nothing to do
     }
+
+    public bool Reset() {
+        Instance = null;
+        QueueFree();
+        return true;
+    }
+    public PackedScene GetPackedScene() => null;
 }

@@ -9,15 +9,18 @@ physics_interpolation_mode = 1
 z_index = 10
 z_as_relative = false
 script = ExtResource( 2 )
-moveInputAcceleration = 0.15
+moveInputAcceleration = 0.201
 centeringAcceleration = 0.012
 stopAcceleration = 0.2
 maxTravelDistance = 12.0
-travelSpeed = 50.0
-centerAfter = 4.0
-shovePower = 150.0
+travelSpeed = 65.0
+centerAfter = 5.0
+shovePower = 230.0
+shoveUpFactor = 0.2
+popUpPixels = 0.5
+shovePopThreshold = 18.0
 
-[node name="Brush" parent="." instance=ExtResource( 4 )]
+[node name="BrushController" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0.688, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]

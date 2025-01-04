@@ -46,4 +46,29 @@ public class Overseer : Node {
             throw new ArgumentException($"{managerName} isn't present in unready manager names: [{String.Join(",", unreadyManagerNames.ToArray())}]");
         }
     }
+
+    public void Reset() {
+        GD.Print("Overseer resetting...");
+        for (var i = 0; i < readyManagers.Count;) {
+
+            var isDead = readyManagers[i].Reset();
+            if (isDead) {
+                var ps = readyManagers[i].GetPackedScene();
+                GD.Print($"Deleting manager {(readyManagers[i] as Node).Name}.");
+                unreadyManagerNames.Add((readyManagers[i] as Node).Name);
+                readyManagers.RemoveAt(i);
+                if (ps != null) {
+                    InstantiateManager(ps);
+                    GD.Print($"Instantiating replacement manager in 100ms");
+                }
+                continue;
+            }
+            i++;
+        }
+    }
+
+    async void InstantiateManager(PackedScene ps) {
+        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+        AddChild(ps.Instance());
+    }
 }

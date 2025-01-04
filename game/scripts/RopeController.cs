@@ -28,7 +28,7 @@ public class RopeController : Node2D, Manager {
     float bias;
 
     [Export]
-    float ropeVisualWidth;
+    float ropeVisualWidth, ropePhysicalWidth;
     [Export]
     PhysicsMaterial ropePhysicsMaterial;
 
@@ -93,6 +93,7 @@ public class RopeController : Node2D, Manager {
         ConstructRopedBodies();
         ConstructRope(L);
         ConstructRope(R);
+        Overseer.Instance.ReportReady(this);
     }
 
     public override void _Draw() {
@@ -313,7 +314,7 @@ public class RopeController : Node2D, Manager {
             segment.Name = $"sR{sn++}";
             rightRope.AddChild(segment);
         }
-        ConstructCollider(segment, 1f, length);
+        ConstructCollider(segment, length);
         segment.Mass = ropeDensity * length;
         segment.GlobalPosition = gPosition;
         segment.PhysicsMaterialOverride = ropePhysicsMaterial;
@@ -330,10 +331,10 @@ public class RopeController : Node2D, Manager {
         return segment;
     }
 
-    void ConstructCollider(Node segment, float width, float length) {
+    void ConstructCollider(Node segment, float length) {
         var collider = new CollisionShape2D();
         var shape = new CapsuleShape2D {
-            Radius = width,
+            Radius = ropePhysicalWidth,
             Height = length
         };
         collider.Shape = shape;
@@ -344,5 +345,11 @@ public class RopeController : Node2D, Manager {
     }
 
     public void OnAllReady() {
+        // nothing to do
+    }
+    public PackedScene GetPackedScene() => GD.Load<PackedScene>("res://_scenes/managers/RopeController.tscn");
+    public bool Reset() {
+        QueueFree();
+        return true;
     }
 }

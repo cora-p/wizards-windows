@@ -1,23 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://_scenes/env/windows/Window_A.tscn" type="PackedScene" id=1]
-[ext_resource path="res://_scenes/managers/Overseer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_scenes/env/other/StoneWall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://_scenes/env/windows/Window_E.tscn" type="PackedScene" id=4]
-[ext_resource path="res://_scenes/env/hazards/nest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://_scenes/env/windows/Window_D.tscn" type="PackedScene" id=6]
-[ext_resource path="res://_scenes/env/windows/Window_B.tscn" type="PackedScene" id=7]
-[ext_resource path="res://_scenes/env/obstacles/block_shallow.tscn" type="PackedScene" id=8]
-[ext_resource path="res://_scenes/env/windows/Window_C.tscn" type="PackedScene" id=9]
-[ext_resource path="res://_scenes/env/hazards/Bird.tscn" type="PackedScene" id=10]
-[ext_resource path="res://_scenes/env/set dressing/block_background.tscn" type="PackedScene" id=11]
+[ext_resource path="res://_scenes/env/nest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://_scenes/env/Window_C.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_scenes/env/Bird.tscn" type="PackedScene" id=10]
+[ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=11]
 
 [node name="test" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
-
-[node name="Overseer" parent="." instance=ExtResource( 2 )]
 
 [node name="Block - Shallow" parent="." instance=ExtResource( 8 )]
 position = Vector2( 118, 86 )
@@ -564,29 +557,8 @@ position = Vector2( 51.8799, 179 )
 [node name="Block - Shallow34" parent="." instance=ExtResource( 8 )]
 position = Vector2( 43.8699, 179 )
 
-[node name="Window_A" parent="." instance=ExtResource( 1 )]
-position = Vector2( 137, 125 )
-
-[node name="Window_B" parent="." instance=ExtResource( 7 )]
-position = Vector2( 57, 162 )
-
-[node name="Block - Background" parent="Window_B" instance=ExtResource( 11 )]
-position = Vector2( 11, 25 )
-
-[node name="Block - Background2" parent="Window_B" instance=ExtResource( 11 )]
-position = Vector2( 12, 33.01 )
-
-[node name="Block - Background3" parent="Window_B" instance=ExtResource( 11 )]
-position = Vector2( 12, 41.02 )
-
 [node name="Window_C" parent="." instance=ExtResource( 9 )]
 position = Vector2( 105, 61 )
-
-[node name="Window_D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 141, 196 )
-
-[node name="Window_E" parent="." instance=ExtResource( 4 )]
-position = Vector2( 101, 133 )
 
 [node name="Block - Background" parent="." instance=ExtResource( 11 )]
 position = Vector2( 118, 94 )
