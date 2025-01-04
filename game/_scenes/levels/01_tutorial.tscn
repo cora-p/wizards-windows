@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://_scenes/env/windows/Window_E.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/obstacles/block_shallow.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://_scenes/env/set dressing/block_background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://_scenes/env/windows/Window_B.tscn" type="PackedScene" id=5]
 [ext_resource path="res://_scenes/ui/Helper Text.tscn" type="PackedScene" id=6]
+[ext_resource path="res://misc/dogica_small_emoticon.tres" type="DynamicFont" id=7]
 
 [node name="01_tutorial" type="Node2D"]
 
@@ -619,15 +620,15 @@ position = Vector2( 190, 191 )
 position = Vector2( 169.98, 16 )
 
 [node name="Label" parent="Travel Helper" index="0"]
-text = "[Q]: TRAVEL LEFT
-[E]: TRAVEL RIGHT"
+text = "[Q]:TRAVEL LEFT
+[E]:TRAVEL RIGHT"
 
 [node name="Raise + Lower Helper" parent="." instance=ExtResource( 6 )]
 position = Vector2( 69, 58 )
 
 [node name="Label" parent="Raise + Lower Helper" index="0"]
-text = "[W]: RAISE
-[S]: LOWER"
+text = "[W]:RAISE
+[S]:LOWER"
 
 [node name="Scrub Helper" parent="." instance=ExtResource( 6 )]
 position = Vector2( 279, 123 )
@@ -645,16 +646,28 @@ text = "Clean everything
 to descend further"
 
 [node name="EE1" parent="." instance=ExtResource( 6 )]
-position = Vector2( 14, 230 )
-fadeOut = 8.0
+position = Vector2( 14, 128 )
+fadeIn = 8.0
+fadeOut = 24.0
 
 [node name="Label" parent="EE1" index="0"]
 text = "where
 are you
 going?"
+align = 1
+
+[node name="EE2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 13, 228 )
+fadeOut = 12.0
+
+[node name="Label" parent="EE2" index="0"]
+custom_fonts/font = ExtResource( 7 )
+text = ">:["
+align = 1
 
 [editable path="Travel Helper"]
 [editable path="Raise + Lower Helper"]
 [editable path="Scrub Helper"]
 [editable path="Progression Helper"]
 [editable path="EE1"]
+[editable path="EE2"]
