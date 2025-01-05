@@ -10,7 +10,7 @@
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 42, 63.5 )
+extents = Vector2( 42, 65 )
 
 [node name="04" type="Node2D"]
 
@@ -100,21 +100,6 @@ position = Vector2( 277.98, 97 )
 [node name="Block - Shallow5" parent="obstacles" instance=ExtResource( 1 )]
 position = Vector2( 260, 174 )
 
-[node name="Window_C" parent="obstacles/Block - Shallow5" instance=ExtResource( 6 )]
-position = Vector2( -11.98, 32 )
-
-[node name="Block - Shallow" parent="obstacles/Block - Shallow5" instance=ExtResource( 1 )]
-position = Vector2( -7.97998, 49 )
-
-[node name="Block - Shallow2" parent="obstacles/Block - Shallow5" instance=ExtResource( 1 )]
-position = Vector2( 0.0300293, 48 )
-
-[node name="Block - Shallow3" parent="obstacles/Block - Shallow5" instance=ExtResource( 1 )]
-position = Vector2( -15.99, 49 )
-
-[node name="Block - Shallow4" parent="obstacles/Block - Shallow5" instance=ExtResource( 1 )]
-position = Vector2( -24, 48 )
-
 [node name="Block - Deep3" parent="obstacles" instance=ExtResource( 2 )]
 position = Vector2( 281, 33 )
 
@@ -165,6 +150,18 @@ rotation = 0.787669
 [node name="Block - Shallow12" parent="obstacles" instance=ExtResource( 1 )]
 position = Vector2( 256.02, 194 )
 rotation = 0.787669
+
+[node name="Block - Shallow14" parent="obstacles" instance=ExtResource( 1 )]
+position = Vector2( 252.02, 223 )
+
+[node name="Block - Shallow16" parent="obstacles" instance=ExtResource( 1 )]
+position = Vector2( 260.03, 222 )
+
+[node name="Block - Shallow18" parent="obstacles" instance=ExtResource( 1 )]
+position = Vector2( 244.01, 223 )
+
+[node name="Block - Shallow20" parent="obstacles" instance=ExtResource( 1 )]
+position = Vector2( 236, 222 )
 
 [node name="set dressing" type="Node2D" parent="."]
 
@@ -285,38 +282,48 @@ position = Vector2( 282, 42 )
 
 [node name="windows" type="Node2D" parent="."]
 
-[node name="Window_B" parent="windows" instance=ExtResource( 5 )]
+[node name="Node2D2" type="Node2D" parent="windows"]
+
+[node name="Window_E" parent="windows/Node2D2" instance=ExtResource( 4 )]
+position = Vector2( 281, 74 )
+
+[node name="Node2D3" type="Node2D" parent="windows"]
+
+[node name="Window_C" parent="windows/Node2D3" instance=ExtResource( 6 )]
+position = Vector2( 248.02, 206 )
+
+[node name="Node2D4" type="Node2D" parent="windows"]
+
+[node name="Window_B" parent="windows/Node2D4" instance=ExtResource( 5 )]
 position = Vector2( 144, 197 )
 
-[node name="Window_B2" parent="windows" instance=ExtResource( 5 )]
-position = Vector2( 118.96, 197 )
-
-[node name="Window_B3" parent="windows" instance=ExtResource( 5 )]
+[node name="Window_B3" parent="windows/Node2D4" instance=ExtResource( 5 )]
 position = Vector2( 93.9199, 197 )
 
-[node name="Window_E" parent="windows" instance=ExtResource( 4 )]
-position = Vector2( 281, 74 )
+[node name="Window_B2" parent="windows/Node2D4" instance=ExtResource( 5 )]
+position = Vector2( 118.96, 197 )
 
 [node name="text" type="Node2D" parent="."]
 
 [node name="Helper Text" parent="text" instance=ExtResource( 7 )]
 position = Vector2( 125, 224 )
+delay = 20.0
 
 [node name="Label" parent="text/Helper Text" index="0"]
 margin_left = -46.0
 margin_top = -12.0
 margin_right = 102.0
 margin_bottom = 43.0
-text = "hold [ESC] for 10s to reset the level."
+text = "if you get stuck, hold [ESC] for 5s to reset the level."
 autowrap = true
 
 [node name="CollisionShape2D" parent="text/Helper Text" index="1"]
 visible = true
-position = Vector2( -10, -68.5 )
+position = Vector2( -10, -70 )
 shape = SubResource( 1 )
 
 [node name="SpellCollectible" parent="." instance=ExtResource( 8 )]
-position = Vector2( 35, 206 )
+position = Vector2( 75.05, 53.81 )
 
 [node name="Label" parent="SpellCollectible" index="2"]
 text = "WINDUP"

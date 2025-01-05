@@ -28,10 +28,16 @@ public class LevelManager : Node2D, Manager {
     Node2D[,] bgTiles;
     Node2D[] endcaps;
 
-    int currentLevel = 0;
+    [Export]
+    Level mainMenu;
+
+    Level currentLevel;
 
     [Export]
-    public Level[] levels;
+    List<Level> levels;
+
+    [Export]
+    List<Level> secretLevels;
 
     public const string MAIN_MENU = "Main Menu";
 
@@ -44,13 +50,32 @@ public class LevelManager : Node2D, Manager {
 
     PackedScene transition, towerBg;
 
-    string CurrentLevelName { get => levels[currentLevel].ResourcePath.Split('/').Last(); }
-    public bool IsLastLevel { get => levels.Length == currentLevel + 1; }
-    public bool IsOnMainMenu { get => currentLevel == 0; }
-    public int NextLevelIndex { get => IsLastLevel ? 0 : currentLevel + 1; }
+    public bool IsOnMainMenu { get => currentLevel == mainMenu; }
+    public bool IsLastLevel { get => currentLevel == levels.Last(); }
+    private Level GetNextLevel() {
+        if (IsOnMainMenu) return levels[0];
+        if (secretLevels.Contains(currentLevel)) return mainMenu;
 
+        var i = levels.IndexOf(currentLevel) + 1;
+        if (i >= 0 && i < levels.Count - 1) return levels[i];
+        return mainMenu;
+    }
 
+    public List<string> GetAllSpells() {
+        var spells = new List<string>();
+        spells.AddRange(levels.Select(l => l.spell));
+        spells.AddRange(secretLevels.Select(l => l.spell));
+        spells.Add(mainMenu.spell);
+        return spells;
+    }
 
+    List<Level> GetAllLevels() {
+        var l = new List<Level>();
+        l.AddRange(levels);
+        l.AddRange(secretLevels);
+        l.Add(mainMenu);
+        return l;
+    }
 
     public override void _Ready() {
         backdrop = GetNode<Sprite>("Backdrop");
@@ -61,12 +86,15 @@ public class LevelManager : Node2D, Manager {
         endcapScene = GD.Load<PackedScene>("res://_scenes/env/other/Endcap.tscn");
         transition = GD.Load<PackedScene>("res://_scenes/fx/transition.tscn");
         towerBg = GD.Load<PackedScene>("res://_scenes/env/other/background.tscn");
-        currentLevel = 0;
+        currentLevel = mainMenu;
         Instance = this;
         progressBlocker.SetDeferred("disabled", true);
         Overseer.Instance.ReportReady(this);
         foreach (var l in levels) {
             l.spell = l.spell.ToUpper();
+        }
+        foreach (var sl in secretLevels) {
+            sl.spell = sl.spell.ToUpper();
         }
     }
 
@@ -169,7 +197,7 @@ public class LevelManager : Node2D, Manager {
     public void AllowProgression() {
         if (!IsOnMainMenu) {
             if (IsLastLevel) {
-                GrimeManager.Instance.ShowWinLabel("THE END...\nFOR NOW!");
+                GrimeManager.Instance.ShowWinLabel("YOU'VE CLEANED\nTHE WHOLE TOWER...\nFOR NOW!");
             } else {
                 GrimeManager.Instance.ShowWinLabel();
             }
@@ -181,22 +209,21 @@ public class LevelManager : Node2D, Manager {
     }
 
     public bool Reset() {
-        progressBlocker.SetDeferred("disabled", false);
+        if (!IsOnMainMenu) {
+            progressBlocker.SetDeferred("disabled", false);
+        }
         return false;
     }
 
     public void ChangeLevel(string spell = null) {
         AddChild(transition.Instance());
-        var oldLevelIndex = currentLevel;
         if (spell != null) {
-            currentLevel = levels.ToList().FindIndex(l => l.spell == spell);
-            if (currentLevel == -1) currentLevel = 0;
+            currentLevel = GetAllLevels().Find(l => l.spell == spell);
         } else {
-            currentLevel = NextLevelIndex;
+            currentLevel = GetNextLevel();
         }
 
-        GD.Print($"Progressing from level {oldLevelIndex} to {currentLevel}");
-        GetTree().ChangeSceneTo(levels[currentLevel].scene);
+        GetTree().ChangeSceneTo(currentLevel.scene);
         Overseer.Instance.Reset();
     }
     public PackedScene GetPackedScene() => null;

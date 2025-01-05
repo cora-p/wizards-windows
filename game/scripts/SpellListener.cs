@@ -11,17 +11,12 @@ public class SpellListener : Node {
     [Export]
     int maxSpellLength;
 
-    string[] knownSpells;
-
     public override void _Ready() {
         spell = string.Empty;
         timeTilNextFalloff = falloffTime;
     }
 
     public override void _Process(float delta) {
-        if (knownSpells == null) {
-            knownSpells = LevelManager.Instance?.levels.Select((l) => l.spell.ToUpper()).ToArray();
-        }
         if (spell.Length > 0) {
             timeTilNextFalloff -= delta;
             if (timeTilNextFalloff <= 0) {
@@ -44,8 +39,7 @@ public class SpellListener : Node {
     }
 
     void CheckIfValid() {
-        for (var i = 0; i < knownSpells.Length; i++) {
-            var s = knownSpells[i];
+        foreach (var s in LevelManager.Instance.GetAllSpells()) {
             if (spell.IndexOf(s) > -1) {
                 spell = string.Empty;
                 LevelManager.Instance.ChangeLevel(s);

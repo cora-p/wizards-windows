@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource( 1 )
-spell = "PEG"
+spell = "PLINKO"
 scene = ExtResource( 2 )

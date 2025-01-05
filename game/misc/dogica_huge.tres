@@ -3,7 +3,7 @@
 [ext_resource path="res://misc/dogica.otf" type="DynamicFontData" id=1]
 
 [resource]
-size = 11
+size = 22
 extra_spacing_bottom = 10
 extra_spacing_char = -1
 font_data = ExtResource( 1 )

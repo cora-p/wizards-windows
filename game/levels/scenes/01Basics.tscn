@@ -9,6 +9,12 @@
 [ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=8]
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 63.5, 15.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 31, 24.5 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5, 19.5 )
 
@@ -30,12 +36,6 @@ radius = 14.0
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 34.4999, 27.4999 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 31, 24.5 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 63.5, 15.5 )
 
 [node name="01" type="Node2D"]
 
@@ -553,11 +553,20 @@ position = Vector2( 278.31, 14.96 )
 
 [node name="windows" type="Node" parent="."]
 
-[node name="Window_E" parent="windows" instance=ExtResource( 2 )]
+[node name="Node2D" type="Node2D" parent="windows"]
+
+[node name="Window_A" parent="windows/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 247, 134 )
+
+[node name="Node" type="Node" parent="windows"]
+
+[node name="Window_E" parent="windows/Node" instance=ExtResource( 2 )]
 position = Vector2( 48, 209 )
 
-[node name="Window_A" parent="windows" instance=ExtResource( 4 )]
-position = Vector2( 247, 134 )
+[node name="Node2" type="Node" parent="windows"]
+
+[node name="Window_B" parent="windows/Node2" instance=ExtResource( 3 )]
+position = Vector2( 49, 154 )
 
 [node name="set dressing" type="Node" parent="."]
 
@@ -678,115 +687,48 @@ position = Vector2( 189, 199 )
 [node name="Block - Background12" parent="set dressing" instance=ExtResource( 6 )]
 position = Vector2( 190, 191 )
 
-[node name="Travel Helper" parent="." instance=ExtResource( 5 )]
-position = Vector2( 223, 20 )
+[node name="Block - Background40" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 265, 16 )
 
-[node name="Label" parent="Travel Helper" index="0"]
-text = "[Q]:TRAVEL LEFT
-[E]:TRAVEL RIGHT"
+[node name="Block - Background41" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 263, 24.01 )
 
-[node name="CollisionShape2D" parent="Travel Helper" index="1"]
-position = Vector2( -48.98, 4 )
-shape = SubResource( 1 )
+[node name="Block - Background42" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 246.98, 32.02 )
 
-[node name="Raise + Lower Helper" parent="." instance=ExtResource( 5 )]
-position = Vector2( 69, 58 )
+[node name="Block - Background43" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 198.92, 64.06 )
 
-[node name="Label" parent="Raise + Lower Helper" index="0"]
-text = "[W]:RAISE
-[S]:LOWER"
+[node name="Block - Background44" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 182.9, 64.06 )
 
-[node name="CollisionShape2D" parent="Raise + Lower Helper" index="1"]
-position = Vector2( 1, 6.5 )
-shape = SubResource( 2 )
+[node name="Block - Background45" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 185.9, 72.07 )
 
-[node name="Scrub Helper" parent="." instance=ExtResource( 5 )]
-position = Vector2( 214, 89 )
+[node name="Block - Background46" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 153.86, 96.1001 )
 
-[node name="Label" parent="Scrub Helper" index="0"]
-margin_left = 20.0
-margin_top = -5.5
-margin_right = 44.0
-margin_bottom = 5.5
-text = "MOUSE:
-SCRUB"
+[node name="Block - Background47" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 137.84, 76.08 )
 
-[node name="CollisionShape2D" parent="Scrub Helper" index="1"]
-visible = true
-position = Vector2( 26, 1 )
-shape = SubResource( 3 )
+[node name="Block - Background48" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 137.84, 60.06 )
 
-[node name="Progression Helper" parent="." instance=ExtResource( 5 )]
-position = Vector2( 315, 224 )
+[node name="Block - Background49" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 99, 60 )
+rotation = -0.785397
 
-[node name="Label" parent="Progression Helper" index="0"]
-text = "Clean all of
-the windows
-to descend"
+[node name="Block - Background50" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 35, 63 )
+rotation = 0.801428
 
-[node name="CollisionShape2D" parent="Progression Helper" index="1"]
-position = Vector2( -47, -4 )
-shape = SubResource( 4 )
+[node name="Block - Background52" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 40, 69 )
+rotation = 0.801428
 
-[node name="EE1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 14, 128 )
-
-[node name="Label" parent="EE1" index="0"]
-margin_left = -12.0
-margin_top = -23.0
-margin_right = 68.0
-margin_bottom = 1.0
-text = "where are you going?"
-autowrap = true
-
-[node name="CollisionShape2D" parent="EE1" index="1"]
-visible = true
-position = Vector2( 0, -24.5 )
-shape = SubResource( 5 )
-
-[node name="EE2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 13, 228 )
-rotation = 1.57079
-
-[node name="Label" parent="EE2" index="0"]
-custom_fonts/font = ExtResource( 1 )
-text = ">:["
-
-[node name="CollisionShape2D" parent="EE2" index="1"]
-visible = true
-shape = SubResource( 6 )
-
-[node name="EE3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 318, 24 )
-rotation = 1.57079
-
-[node name="Label" parent="EE3" index="0"]
-custom_fonts/font = ExtResource( 1 )
-text = ":D"
-
-[node name="CollisionShape2D" parent="EE3" index="1"]
-visible = true
-position = Vector2( 11.4999, 6.5 )
-shape = SubResource( 7 )
-
-[node name="Window_B" parent="." instance=ExtResource( 3 )]
-position = Vector2( 49, 154 )
-
-[node name="Helper Text" parent="." instance=ExtResource( 5 )]
-position = Vector2( 107.9, 135.85 )
-
-[node name="Label" parent="Helper Text" index="0"]
-margin_left = -12.9
-margin_top = -9.85001
-margin_right = 113.1
-margin_bottom = 32.15
-text = "windows sparkle when completely clean"
-autowrap = true
-
-[node name="CollisionShape2D" parent="Helper Text" index="1"]
-visible = true
-position = Vector2( 61.1001, 3.65015 )
-shape = SubResource( 8 )
+[node name="Block - Background51" parent="set dressing" instance=ExtResource( 6 )]
+position = Vector2( 31, 58 )
+rotation = 0.675565
 
 [node name="SpellCollectible" parent="." instance=ExtResource( 8 )]
 position = Vector2( 129, 214 )
@@ -805,48 +747,197 @@ margin_bottom = 3.0
 rect_pivot_offset = Vector2( 20, 3 )
 text = "SWING"
 
-[node name="Helper Text2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 119, 272 )
-delay = 5.0
+[node name="text" type="Node2D" parent="."]
 
-[node name="Label" parent="Helper Text2" index="0"]
-margin_left = -22.0
-margin_top = -131.0
-margin_right = 94.0
-margin_bottom = -121.0
+[node name="Helper Text2" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 119, 272 )
+delay = 2.0
+
+[node name="Label" parent="text/Helper Text2" index="0"]
+margin_left = -57.0
+margin_top = -128.0
+margin_right = 59.0
+margin_bottom = -118.0
 text = "This is a spell"
 autowrap = true
 
-[node name="CollisionShape2D" parent="Helper Text2" index="1"]
+[node name="CollisionShape2D" parent="text/Helper Text2" index="1"]
 visible = true
 position = Vector2( -22.03, -57 )
 shape = SubResource( 9 )
 
-[node name="Helper Text3" parent="." instance=ExtResource( 5 )]
+[node name="Helper Text3" parent="text" instance=ExtResource( 5 )]
 position = Vector2( 119, 272 )
-delay = 7.0
+delay = 5.0
 
-[node name="Label" parent="Helper Text3" index="0"]
-margin_left = -60.0
-margin_top = -126.0
-margin_right = 158.0
-margin_bottom = -84.0
-text = "It will reveal a word you can enter at the top to teleport past the level on which it was found, once you've completed it"
+[node name="Label" parent="text/Helper Text3" index="0"]
+margin_left = -109.0
+margin_top = -119.0
+margin_right = 231.0
+margin_bottom = -99.0
+text = "It'll reveal a word you can utter anytime teleport just past where it was found."
 autowrap = true
 
-[node name="CollisionShape2D" parent="Helper Text3" index="1"]
+[node name="CollisionShape2D" parent="text/Helper Text3" index="1"]
 visible = true
 position = Vector2( -22.04, -58 )
 shape = SubResource( 9 )
 
-[editable path="Travel Helper"]
-[editable path="Raise + Lower Helper"]
-[editable path="Scrub Helper"]
-[editable path="Progression Helper"]
-[editable path="EE1"]
-[editable path="EE2"]
-[editable path="EE3"]
-[editable path="Helper Text"]
+[node name="Helper Text5" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 119, 272 )
+delay = 8.0
+
+[node name="Label" parent="text/Helper Text5" index="0"]
+margin_left = -109.0
+margin_top = -102.98
+margin_right = 231.0
+margin_bottom = -82.98
+text = "This is the only way to save your progress!"
+autowrap = true
+
+[node name="CollisionShape2D" parent="text/Helper Text5" index="1"]
+visible = true
+position = Vector2( -22.04, -58 )
+shape = SubResource( 9 )
+
+[node name="Helper Text4" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 119, 272 )
+delay = 14.0
+
+[node name="Label" parent="text/Helper Text4" index="0"]
+margin_left = 79.0
+margin_top = -79.0
+margin_right = 284.0
+margin_bottom = -59.0
+text = "The spell to go to the top of the tower is \"HOME\""
+autowrap = true
+
+[node name="CollisionShape2D" parent="text/Helper Text4" index="1"]
+visible = true
+position = Vector2( -22.04, -58 )
+shape = SubResource( 9 )
+
+[node name="Helper Text" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 107.9, 135.85 )
+
+[node name="Label" parent="text/Helper Text" index="0"]
+margin_left = -12.9
+margin_top = -9.85001
+margin_right = 113.1
+margin_bottom = 32.15
+text = "windows sparkle when completely clean"
+autowrap = true
+
+[node name="CollisionShape2D" parent="text/Helper Text" index="1"]
+visible = true
+position = Vector2( 61.1001, 3.65015 )
+shape = SubResource( 8 )
+
+[node name="Travel Helper" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 223, 20 )
+
+[node name="Label" parent="text/Travel Helper" index="0"]
+text = "[Q]:TRAVEL LEFT
+[E]:TRAVEL RIGHT"
+
+[node name="CollisionShape2D" parent="text/Travel Helper" index="1"]
+position = Vector2( -48.98, 4 )
+shape = SubResource( 1 )
+
+[node name="Raise + Lower Helper" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 69, 58 )
+
+[node name="Label" parent="text/Raise + Lower Helper" index="0"]
+margin_left = -15.98
+margin_top = -7.5
+margin_right = 56.02
+margin_bottom = 7.5
+text = "[W]:RAISE
+[S]:LOWER"
+
+[node name="CollisionShape2D" parent="text/Raise + Lower Helper" index="1"]
+position = Vector2( 1, 6.5 )
+shape = SubResource( 2 )
+
+[node name="Scrub Helper" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 214, 89 )
+
+[node name="Label" parent="text/Scrub Helper" index="0"]
+margin_left = 20.0
+margin_top = -5.5
+margin_right = 44.0
+margin_bottom = 5.5
+text = "MOUSE:
+SCRUB"
+
+[node name="CollisionShape2D" parent="text/Scrub Helper" index="1"]
+visible = true
+position = Vector2( 26, 1 )
+shape = SubResource( 3 )
+
+[node name="Progression Helper" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 315, 224 )
+
+[node name="Label" parent="text/Progression Helper" index="0"]
+text = "Clean all of
+the windows
+to descend"
+
+[node name="CollisionShape2D" parent="text/Progression Helper" index="1"]
+position = Vector2( -47, -4 )
+shape = SubResource( 4 )
+
+[node name="EE1" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 14, 128 )
+
+[node name="Label" parent="text/EE1" index="0"]
+margin_left = -12.0
+margin_top = -23.0
+margin_right = 68.0
+margin_bottom = 1.0
+text = "where are you going?"
+autowrap = true
+
+[node name="CollisionShape2D" parent="text/EE1" index="1"]
+visible = true
+position = Vector2( 0, -24.5 )
+shape = SubResource( 5 )
+
+[node name="EE2" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 13, 228 )
+rotation = 1.57079
+
+[node name="Label" parent="text/EE2" index="0"]
+custom_fonts/font = ExtResource( 1 )
+text = ">:["
+
+[node name="CollisionShape2D" parent="text/EE2" index="1"]
+visible = true
+shape = SubResource( 6 )
+
+[node name="EE3" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 318, 24 )
+rotation = 1.57079
+
+[node name="Label" parent="text/EE3" index="0"]
+custom_fonts/font = ExtResource( 1 )
+text = ":D"
+
+[node name="CollisionShape2D" parent="text/EE3" index="1"]
+visible = true
+position = Vector2( 11.4999, 6.5 )
+shape = SubResource( 7 )
+
 [editable path="SpellCollectible"]
-[editable path="Helper Text2"]
-[editable path="Helper Text3"]
+[editable path="text/Helper Text2"]
+[editable path="text/Helper Text3"]
+[editable path="text/Helper Text5"]
+[editable path="text/Helper Text4"]
+[editable path="text/Helper Text"]
+[editable path="text/Travel Helper"]
+[editable path="text/Raise + Lower Helper"]
+[editable path="text/Scrub Helper"]
+[editable path="text/Progression Helper"]
+[editable path="text/EE1"]
+[editable path="text/EE2"]
+[editable path="text/EE3"]

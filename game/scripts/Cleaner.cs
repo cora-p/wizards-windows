@@ -17,6 +17,8 @@ public class Cleaner : Node2D, Manager {
 
     [Export]
     float maxWindUpDistance;
+    [Export]
+    Curve windUpCurve;
 
     float shoveMomentumDistance = 0f;
 
@@ -28,6 +30,10 @@ public class Cleaner : Node2D, Manager {
     public RigidBody2D platform;
 
     public static Cleaner Instance { get; private set; }
+    [Export]
+    Curve windUpColorCurve;
+
+    Sprite sprite;
 
     [Export]
     float shoveUpFactor, popUpPixels, shovePopThreshold;
@@ -38,6 +44,7 @@ public class Cleaner : Node2D, Manager {
         hasShovedLeft = false;
         Instance = this;
         Overseer.Instance.ReportReady(this);
+        sprite = GetNode<Sprite>("Sprite");
     }
 
     public override void _PhysicsProcess(float delta) {
@@ -87,9 +94,11 @@ public class Cleaner : Node2D, Manager {
             } else {
                 var positionDelta = moveInputMoment * travelSpeed * delta;
                 travelPosition += positionDelta;
-                shoveMomentumDistance += Mathf.Abs(positionDelta);
+                shoveMomentumDistance += Mathf.Abs(positionDelta) * windUpCurve.InterpolateBaked(shoveMomentumDistance / maxWindUpDistance);
             }
         }
+        var ct = windUpColorCurve.InterpolateBaked(shoveMomentumDistance / maxWindUpDistance);
+        sprite.Modulate = new Color(1, ct, ct, 1);
         Position = new Vector2(travelPosition, Position.y);
         Rotation = 0f;
     }

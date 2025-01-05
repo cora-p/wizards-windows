@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/Window_A.tscn" type="PackedScene" id=2]
@@ -12,7 +12,10 @@
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16.75, 23.5 )
+extents = Vector2( 38.625, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 21.1875, 21 )
 
 [node name="03" type="Node2D"]
 
@@ -576,29 +579,41 @@ position = Vector2( 301, 201.14 )
 
 [node name="windows" type="Node2D" parent="."]
 
-[node name="Window_C" parent="windows" instance=ExtResource( 8 )]
+[node name="Node2D" type="Node2D" parent="windows"]
+
+[node name="Window_C" parent="windows/Node2D" instance=ExtResource( 8 )]
 position = Vector2( 46, 132.08 )
 
-[node name="Window_D4" parent="windows" instance=ExtResource( 9 )]
+[node name="Node2D2" type="Node2D" parent="windows"]
+
+[node name="Window_D4" parent="windows/Node2D2" instance=ExtResource( 9 )]
 position = Vector2( 261, 188 )
 
-[node name="Window_D5" parent="windows" instance=ExtResource( 9 )]
-position = Vector2( 246.98, 187 )
+[node name="Window_D5" parent="windows/Node2D2" instance=ExtResource( 9 )]
+position = Vector2( 246.98, 188 )
 
-[node name="Window_A" parent="windows" instance=ExtResource( 2 )]
-position = Vector2( 207, 119 )
-
-[node name="Window_D3" parent="windows" instance=ExtResource( 9 )]
+[node name="Window_D3" parent="windows/Node2D2" instance=ExtResource( 9 )]
 position = Vector2( 275.02, 188 )
 
-[node name="Window_E" parent="windows" instance=ExtResource( 6 )]
-position = Vector2( 286, 65 )
+[node name="Node2D3" type="Node2D" parent="windows"]
 
-[node name="Window_B" parent="windows" instance=ExtResource( 4 )]
+[node name="Window_B" parent="windows/Node2D3" instance=ExtResource( 4 )]
 position = Vector2( 40, 92 )
 
-[node name="Window_D" parent="windows" instance=ExtResource( 9 )]
+[node name="Node2D4" type="Node2D" parent="windows"]
+
+[node name="Window_E" parent="windows/Node2D4" instance=ExtResource( 6 )]
+position = Vector2( 286, 65 )
+
+[node name="Node2D5" type="Node2D" parent="windows"]
+
+[node name="Window_D" parent="windows/Node2D5" instance=ExtResource( 9 )]
 position = Vector2( 75, 168.08 )
+
+[node name="Node2D6" type="Node2D" parent="windows"]
+
+[node name="Window_A" parent="windows/Node2D6" instance=ExtResource( 2 )]
+position = Vector2( 207, 119 )
 
 [node name="Bumps Helper" parent="." instance=ExtResource( 3 )]
 position = Vector2( 84, 121.08 )
@@ -615,7 +630,8 @@ text = "a good running start helps to get over bumps"
 autowrap = true
 
 [node name="CollisionShape2D" parent="Bumps Helper" index="1"]
-position = Vector2( -10.5, 11.5 )
+visible = true
+position = Vector2( 11.375, 21.42 )
 shape = SubResource( 2 )
 
 [node name="Ropes" parent="." instance=ExtResource( 3 )]
@@ -638,14 +654,19 @@ autowrap = true
 
 [node name="CollisionShape2D" parent="Ropes" index="1"]
 visible = true
-position = Vector2( -47.9701, 14.37 )
-shape = SubResource( 2 )
+position = Vector2( -65.4075, 18.87 )
+shape = SubResource( 3 )
 
 [node name="SpellCollectible" parent="." instance=ExtResource( 10 )]
-position = Vector2( 28.02, 197.08 )
+position = Vector2( 244.29, 28.8699 )
+
+[node name="CollisionShape2D" parent="SpellCollectible/Area2D" index="0"]
+position = Vector2( 22.71, -8.8699 )
 
 [node name="Label" parent="SpellCollectible" index="2"]
-text = "PEG"
+margin_left = -40.02
+margin_right = 7.98001
+text = "PLINKO"
 
 [editable path="Bumps Helper"]
 [editable path="Ropes"]

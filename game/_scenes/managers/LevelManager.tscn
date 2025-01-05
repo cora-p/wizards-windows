@@ -33,7 +33,9 @@ rowShiftChance = 0.33
 rowCantChance = 0.25
 tileShiftChance = 0.131
 tileCantChance = 0.33
-levels = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ) ]
+mainMenu = ExtResource( 8 )
+levels = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+secretLevels = [ ExtResource( 9 ) ]
 
 [node name="Progress Blocker" type="StaticBody2D" parent="."]
 position = Vector2( 168.21, 244.31 )

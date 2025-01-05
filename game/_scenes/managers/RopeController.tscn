@@ -44,7 +44,7 @@ bus = "Effects"
 [node name="lower sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -15.0
-pitch_scale = 0.9
+pitch_scale = 1.1
 bus = "Effects"
 
 [node name="horizontal sfx" type="AudioStreamPlayer" parent="."]

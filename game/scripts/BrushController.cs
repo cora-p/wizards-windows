@@ -35,12 +35,6 @@ public class BrushController : KinematicBody2D, Manager {
     Node2D manipulatableNode;
     Node2D headPositionNode;
 
-    [Export]
-    Color guideColor;
-
-    [Export]
-    float guideDashLength, guideGapLength;
-
     Node2D head;
 
     AudioStreamPlayer sfx;
