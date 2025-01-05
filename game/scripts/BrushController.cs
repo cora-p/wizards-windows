@@ -67,17 +67,17 @@ public class BrushController : KinematicBody2D, Manager {
         Overseer.Instance.ReportReady(this);
     }
 
-    public override void _Draw() {
-        Utility.DrawDashedRay(
-            this,
-            ToLocal(headPositionNode.GlobalPosition),
-            Vector2.Right,
-            1000f,
-            guideColor,
-            guideDashLength,
-            guideGapLength,
-            1.1f);
-    }
+    // public override void _Draw() {
+    //     Utility.DrawDashedRay(
+    //         this,
+    //         ToLocal(headPositionNode.GlobalPosition),
+    //         Vector2.Right,
+    //         1000f,
+    //         guideColor,
+    //         guideDashLength,
+    //         guideGapLength,
+    //         1.1f);
+    // }
     void RecurseChildren(Node node, List<Node> collection) {
         for (var i = 0; i < node.GetChildCount(); i++) {
             var c = node.GetChild(i);
@@ -106,7 +106,7 @@ public class BrushController : KinematicBody2D, Manager {
     }
 
     public override void _Process(float delta) {
-        Update();
+        // Update();
         if (Input.IsActionPressed("Scrub") && scrubCooldownRemaining == 0f) {
             scrubCooldownRemaining += scrubCooldown;
             scrubDurationRemaining = scrubDuration;
