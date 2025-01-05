@@ -12,7 +12,10 @@ public class MenuController : Node2D {
             resetTime += delta;
             if (resetHoldTime < resetTime) {
                 Overseer.Instance.Reset();
+                resetTime = 0f;
             }
+        } else {
+            resetTime = 0f;
         }
     }
 }
