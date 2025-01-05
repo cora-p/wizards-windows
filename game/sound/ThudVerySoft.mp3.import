@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ThudVerySoft.mp3-4f47ae7a6aafa5d95168a6adba999630.mp3str"
+
+[deps]
+
+source_file="res://sound/ThudVerySoft.mp3"
+dest_files=[ "res://.import/ThudVerySoft.mp3-4f47ae7a6aafa5d95168a6adba999630.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

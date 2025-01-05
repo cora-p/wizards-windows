@@ -54,6 +54,9 @@ public class RopeController : Node2D, Manager {
     Dictionary<Side, List<PinJoint2D>> joints;
 
     [Export]
+    float mainMenuYOffset;
+
+    [Export]
     int minimumRopeSegments;
 
     int sn, jn;
@@ -89,6 +92,13 @@ public class RopeController : Node2D, Manager {
             [R] = new List<PinJoint2D>()
         };
         anchors = new Dictionary<Side, RopeAnchor>();
+
+        if (LevelManager.Instance.IsOnMainMenu) {
+            var o = new Vector2(0, mainMenuYOffset);
+            leftAnchorPosition.GlobalPosition += o;
+            rightAnchorPosition.GlobalPosition += o;
+            platformPosition.GlobalPosition += o;
+        }
 
         ConstructRopedBodies();
         ConstructRope(L);

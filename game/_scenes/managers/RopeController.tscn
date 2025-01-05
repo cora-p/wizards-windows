@@ -23,6 +23,7 @@ ropeDensity = 1.0
 raiseSpeed = 6.0
 lowerSpeed = 18.0
 minimumSlack = 0.6
+mainMenuYOffset = 65.0
 minimumRopeSegments = 5
 
 [node name="Platform Position" type="Node2D" parent="."]

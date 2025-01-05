@@ -9,27 +9,11 @@ public class Overseer : Node {
     //* A list of names of Managers that aren't ready yet. Values are removed as they report ready. 
     List<string> unreadyManagerNames;
     List<Manager> readyManagers = new List<Manager>();
-
-    public bool HasCalledOnAllReady {
-        get; private set;
-    }
-
     public static Overseer Instance { get; private set; }
 
     public override void _EnterTree() {
         GD.Randomize();
         Instance = this;
-    }
-    public override void _Process(float delta) {
-        if (HasCalledOnAllReady) return;
-
-        if (unreadyManagerNames.Count == 0) {
-            HasCalledOnAllReady = true;
-            GD.Print("All Managers reporting ready, invoking their OnAllReady methods.");
-            foreach (var m in readyManagers) {
-                m.OnAllReady();
-            }
-        }
     }
 
     /// <summary>
@@ -45,21 +29,27 @@ public class Overseer : Node {
         } else {
             throw new ArgumentException($"{managerName} isn't present in unready manager names: [{String.Join(",", unreadyManagerNames.ToArray())}]");
         }
-    }
 
+        if (unreadyManagerNames.Count == 0) {
+            GD.Print("All Managers reporting ready, invoking their OnAllReady methods.");
+            foreach (var rm in readyManagers) {
+                rm.OnAllReady();
+            }
+        }
+    }
     public void Reset() {
         GD.Print("Overseer resetting...");
         for (var i = 0; i < readyManagers.Count;) {
-
+            var m = readyManagers[i] as Node;
             var isDead = readyManagers[i].Reset();
             if (isDead) {
                 var ps = readyManagers[i].GetPackedScene();
-                GD.Print($"Deleting manager {(readyManagers[i] as Node).Name}.");
-                unreadyManagerNames.Add((readyManagers[i] as Node).Name);
+                GD.Print($"Deleting manager {m.Name}.");
+                unreadyManagerNames.Add(m.Name);
                 readyManagers.RemoveAt(i);
                 if (ps != null) {
                     InstantiateManager(ps);
-                    GD.Print($"Instantiating replacement manager in 100ms");
+                    GD.Print($"Instantiating replacement {m.Name} in 100ms");
                 }
                 continue;
             }

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Thud8bitreso.mp3-1efe3605fe328affa28211bef3fb3e5a.mp3str"
+
+[deps]
+
+source_file="res://sound/Thud8bitreso.mp3"
+dest_files=[ "res://.import/Thud8bitreso.mp3-1efe3605fe328affa28211bef3fb3e5a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

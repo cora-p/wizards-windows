@@ -25,6 +25,7 @@ public static class ZIndices {
     public const int Cleaner = 10;
     public const int Platform = 20;
     public const int Rope = 100;
+    public const int Battlements = 150;
     public const int DeepShadow = 199;
     public const int Deep = 200;
     public const int Birds = 250;
@@ -35,4 +36,6 @@ public static class ZIndices {
     public const int WinCondition = 350;
     public const int MenuBackground = 400;
     public const int MenuForeground = 401;
+
+    public const int Transition = 500;
 }

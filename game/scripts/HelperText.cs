@@ -7,8 +7,8 @@ public class HelperText : Area2D {
     Curve visibilityCurve;
 
     [Export]
-    float fadeDuration, visibleDuration;
-    float fadePosition, visibleTimeRemaining;
+    float fadeDuration, visibleDuration, delay;
+    float fadePosition, visibleTimeRemaining, delayRemaining;
 
     float FadePositionNormalized { get => fadePosition / fadeDuration; }
 
@@ -18,11 +18,17 @@ public class HelperText : Area2D {
 
     public override void _Ready() {
         Modulate = Colors.Transparent;
+        delayRemaining = delay;
     }
 
     public override void _Process(float delta) {
         if (Cleaner.Instance == null) return;
+
         isCleanerPresent = OverlapsBody(Cleaner.Instance.platform);
+        if (isCleanerPresent && delayRemaining > 0) {
+            delayRemaining -= delta;
+            return;
+        }
         if (isCleanerPresent) {
             visibleTimeRemaining = visibleDuration;
             if (fadePosition < fadeDuration) fadePosition += delta;
@@ -30,6 +36,7 @@ public class HelperText : Area2D {
             visibleTimeRemaining -= delta;
             if (fadePosition < fadeDuration) fadePosition += delta;
         } else {
+            delayRemaining = delay;
             if (fadePosition > 0f) fadePosition -= delta;
         }
         Modulate = new Color(W.r, W.g, W.b, visibilityCurve.InterpolateBaked(FadePositionNormalized));

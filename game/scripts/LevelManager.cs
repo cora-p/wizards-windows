@@ -1,12 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
-#pragma warning disable CS0649, IDE0044,IDE0017
+using static Utility;
+
+#pragma warning disable IDE0044,IDE0051,IDE0060
 public class LevelManager : Node2D, Manager {
     [Export]
     int width, height;
 
     [Export]
-    Vector2 start;
+    Vector2 start, mainMenuStart;
 
     [Export]
     float bgTileSize;
@@ -17,7 +21,7 @@ public class LevelManager : Node2D, Manager {
     [Export]
     float rowShiftChance, rowCantChance, tileShiftChance, tileCantChance;
 
-    PackedScene bgTileScene, bgEdgeScene;
+    PackedScene bgTileScene, endcapScene;
 
     Node2D[] rowHolders;
 
@@ -25,40 +29,61 @@ public class LevelManager : Node2D, Manager {
     Node2D[] endcaps;
 
     [Export]
-    string[] levelNames;
+    List<string> levelNames;
+    List<PackedScene> levelScenes;
+    int currentLevel = 0;
 
-    PackedScene[] levels;
+    public const string MAIN_MENU = "Main Menu";
 
-    [Export]
-    int currentLevel;
 
     CollisionShape2D progressBlocker, progress;
 
+    Sprite backdrop;
+
     public static LevelManager Instance { get; private set; }
+
+    PackedScene transition;
+
+    string CurrentLevelName { get => levelNames[currentLevel]; }
+    public bool IsLastLevel { get => levelNames.Count == currentLevel + 1; }
+    public bool IsOnMainMenu { get => currentLevel == 0; }
+    public int NextLevelIndex { get => IsLastLevel ? 0 : currentLevel + 1; }
+
 
 
     public override void _Ready() {
+        backdrop = GetNode<Sprite>("Backdrop");
         progressBlocker = GetNode<CollisionShape2D>("Progress Blocker/CollisionShape2D");
         progress = GetNode<CollisionShape2D>("Progress/CollisionShape2D");
         progress.GetParent().Connect("body_entered", this, "OnProgress");
-        Instance = this;
-        bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWall.tscn");
-        bgEdgeScene = GD.Load<PackedScene>("res://_scenes/env/other/StoneWallEdge.tscn");
+        bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/Wall.tscn");
+        endcapScene = GD.Load<PackedScene>("res://_scenes/env/other/Endcap.tscn");
+        transition = GD.Load<PackedScene>("res://_scenes/fx/transition.tscn");
 
-        levels = new PackedScene[levelNames.Length];
-        for (var i = 0; i < levelNames.Length; i++) {
-            levels[i] = GD.Load<PackedScene>($"res://levels/{levelNames[i]}.tscn");
+        levelScenes = new List<PackedScene>();
+        foreach (var lvlName in levelNames) {
+            levelScenes.Add(GD.Load<PackedScene>($"res://levels/{lvlName}.tscn"));
         }
 
-        GenerateBackground();
+
+        GD.Print("Initialized with level list (index, name, next):");
+        for (var i = 0; i < levelNames.Count; i++) {
+            currentLevel = i;
+            GD.Print($"{currentLevel},{CurrentLevelName},{NextLevelIndex}");
+        }
+        currentLevel = 0;
+        Instance = this;
+        progressBlocker.SetDeferred("disabled", true);
         Overseer.Instance.ReportReady(this);
     }
 
     void GenerateBackground() {
+        backdrop.Visible = !IsOnMainMenu;
         var bgScene = GD.Load<PackedScene>("res://_scenes/env/other/background.tscn");
         var bg = bgScene.Instance<Node2D>();
         AddChild(bg);
         bg.RotationDegrees = GetJitter(360);
+        var s = IsOnMainMenu ? mainMenuStart : start;
         if (bgTiles != null) {
             // clean up existing bgTiles, if present
             for (var x = 0; x < width; x++) {
@@ -69,19 +94,17 @@ public class LevelManager : Node2D, Manager {
             for (var i = 0; i < rowHolders.Length; i++) {
                 rowHolders[i].QueueFree();
             }
-            for (var i = 0; i < endcaps.Length; i++) {
-                endcaps[i].QueueFree();
-            }
         }
 
         rowHolders = new Node2D[height];
         bgTiles = new Node2D[width, height];
         endcaps = new Node2D[height * 2];
-        //* start building from bottom as it looks better with the higher row tiles in front
+
         Vector2 rowShift, tileShift;
         float rowCant, tileCant;
 
         //^ main tiles
+        //* start building from bottom as it looks better with the higher row tiles in front
         for (var y = height - 1; y >= 0; y--) {
             if (IsLucky(rowShiftChance)) {
                 rowShift = new Vector2(GetJitter(rowShiftExtent.x), 0);
@@ -100,7 +123,7 @@ public class LevelManager : Node2D, Manager {
             var rowHolder = new Node2D();
             rowHolders[y] = rowHolder;
             AddChild(rowHolder);
-            rowHolder.Position = new Vector2(start.x + width * bgTileSize, start.y + y * height);
+            rowHolder.Position = new Vector2(s.x + width * bgTileSize, s.y + y * height);
             for (var x = 0; x < width; x++) {
                 if (IsLucky(tileShiftChance)) {
                     tileShift = new Vector2(GetJitter(tileShiftExtent.x), 0);
@@ -117,7 +140,7 @@ public class LevelManager : Node2D, Manager {
                     tileCant = 0;
                 }
                 var tile = bgTileScene.Instance<Node2D>();
-                var position = start + new Vector2((x * bgTileSize) + tileShift.x,
+                var position = s + new Vector2((x * bgTileSize) + tileShift.x,
                                                     (y * bgTileSize) + tileShift.y);
                 tile.Position = rowHolder.ToLocal(position);
                 tile.RotationDegrees = tileCant;
@@ -130,7 +153,7 @@ public class LevelManager : Node2D, Manager {
 
         //^ endcaps
         for (var y = 0; y < height; y++) {
-            var endcap = bgEdgeScene.Instance<Sprite>();
+            var endcap = endcapScene.Instance<Sprite>();
             var holder = rowHolders[y];
             holder.AddChild(endcap);
             var t = bgTiles[0, y];
@@ -139,7 +162,7 @@ public class LevelManager : Node2D, Manager {
             endcap.FlipH = true;
 
             endcaps[height + y] = endcap;
-            endcap = bgEdgeScene.Instance<Sprite>();
+            endcap = endcapScene.Instance<Sprite>();
             holder.AddChild(endcap);
             t = bgTiles[width - 1, y];
             endcap.Position = t.Position + Vector2.Right * bgTileSize;
@@ -148,27 +171,36 @@ public class LevelManager : Node2D, Manager {
     }
 
     public void OnAllReady() {
-        // nothing to do
+        CallDeferred("GenerateBackground");
     }
-
-    float GetJitter(float extent) => (float)GD.RandRange(-extent, extent);
     bool IsLucky(float chance) => GD.Randf() <= chance;
 
-    public void OnAllClean() {
-        //TODO: next level transition
-        progressBlocker.CallDeferred("set", "disabled", true);
+    public void AllowProgression() {
+        if (IsLastLevel) {
+            GrimeManager.Instance.ShowWinLabel("THE END...\nFOR NOW!");
+        } else {
+            GrimeManager.Instance.ShowWinLabel();
+        }
+        progressBlocker.SetDeferred("disabled", true);
     }
     void OnProgress(Node n) {
-        currentLevel++;
-        if (currentLevel < levels.Length) {
-            Overseer.Instance.Reset();
-            GetTree().ChangeSceneTo(levels[currentLevel]);
-            progressBlocker.CallDeferred("set", "disabled", false);
-        } else {
-            GrimeManager.Instance.SetCustomWinLabel("THE END...\nFOR NOW!");
-        }
+        AddChild(transition.Instance());
+
+        ChangeLevel();
     }
 
-    public bool Reset() => false;
+    public bool Reset() {
+        progressBlocker.SetDeferred("disabled", false);
+        return false;
+    }
+
+    void ChangeLevel(int specificLevel = -1) {
+        var oldLevelIndex = currentLevel;
+        if (specificLevel >= 0) currentLevel = specificLevel;
+        currentLevel = NextLevelIndex;
+        GD.Print($"Progressing from level {oldLevelIndex} to {currentLevel}");
+        GetTree().ChangeSceneTo(levelScenes[currentLevel]);
+        Overseer.Instance.Reset();
+    }
     public PackedScene GetPackedScene() => null;
 }

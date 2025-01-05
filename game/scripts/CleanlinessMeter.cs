@@ -43,25 +43,31 @@ public class CleanlinessMeter : Node2D, Manager {
             lastPercentGrimy = GrimeManager.Instance.PercentGrimy;
             Update();
         }
+        if (Visible && LevelManager.Instance.IsOnMainMenu) {
+            Visible = false;
+        }
+        if (!Visible && !LevelManager.Instance.IsOnMainMenu) {
+            Visible = true;
+        }
     }
 
     public override void _Draw() {
-        if (Overseer.Instance.HasCalledOnAllReady) {
-            var grimeImage = new Image();
-            grimeImage.Create(Width, Height, false, Image.Format.Rgba8);
-            grimeImage.Fill(Colors.Transparent);
-            grimeImage.Lock();
-            var minXToDraw = (int)((1f - lastPercentGrimy) * Width);
-            for (var x = minXToDraw; x < Width; x++) {
-                for (var y = 0; y < Height; y++) {
-                    grimeImage.SetPixel(x, y, grimeNoiseValues[x, y]);
-                }
+        // if (Overseer.Instance.HasCalledOnAllReady) {
+        var grimeImage = new Image();
+        grimeImage.Create(Width, Height, false, Image.Format.Rgba8);
+        grimeImage.Fill(Colors.Transparent);
+        grimeImage.Lock();
+        var minXToDraw = (int)((1f - lastPercentGrimy) * Width);
+        for (var x = minXToDraw; x < Width; x++) {
+            for (var y = 0; y < Height; y++) {
+                grimeImage.SetPixel(x, y, grimeNoiseValues[x, y]);
             }
-            grimeImage.Unlock();
-            var it = new ImageTexture();
-            it.CreateFromImage(grimeImage);
-            foreground.Texture = it;
         }
+        grimeImage.Unlock();
+        var it = new ImageTexture();
+        it.CreateFromImage(grimeImage);
+        foreground.Texture = it;
+        // }
     }
 
     public void OnAllReady() {
@@ -77,5 +83,5 @@ public class CleanlinessMeter : Node2D, Manager {
     }
 
     public bool Reset() => false;
-    public PackedScene GetPackedScene() => null;
+    public PackedScene GetPackedScene() => null;//GD.Load<PackedScene>("res://_scenes/managers/CleanlinessMeter.tscn");
 }

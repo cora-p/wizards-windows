@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/env/stone_wall_a.png" type="Texture" id=1]
+
+[node name="Wall" type="Sprite" groups=["background"]]
+z_index = -100
+z_as_relative = false
+texture = ExtResource( 1 )
+centered = false

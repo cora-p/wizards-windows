@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://_scenes/env/Window_D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://_scenes/env/Window_B.tscn" type="PackedScene" id=2]
+[ext_resource path="res://_scenes/env/Window_C.tscn" type="PackedScene" id=3]
+[ext_resource path="res://_scenes/env/Window_A.tscn" type="PackedScene" id=4]
+[ext_resource path="res://_scenes/env/Window_E.tscn" type="PackedScene" id=5]
+
+[node name="t1" type="Node2D"]
+
+[node name="Window_D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 119 )
+
+[node name="Window_D2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144.02, 119 )
+
+[node name="Window_D3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144.02, 135.02 )
+
+[node name="Window_D4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 135.02 )
+
+[node name="Window_D5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 102.98 )
+
+[node name="Window_D6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144.02, 102.98 )
+
+[node name="Window_D7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144.02, 86.96 )
+
+[node name="Window_D8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 86.96 )
+
+[node name="Window_A" parent="Window_D8" instance=ExtResource( 4 )]
+position = Vector2( 91, 36.04 )
+
+[node name="Window_A2" parent="Window_D8" instance=ExtResource( 4 )]
+position = Vector2( 54, 36.04 )
+
+[node name="Window_A3" parent="Window_D8" instance=ExtResource( 4 )]
+position = Vector2( -27, 0.0400391 )
+
+[node name="Window_A4" parent="Window_D8" instance=ExtResource( 4 )]
+position = Vector2( -47, 85.04 )
+
+[node name="Window_B" parent="Window_D8" instance=ExtResource( 2 )]
+position = Vector2( -3, 85.04 )
+
+[node name="Window_B2" parent="Window_D8" instance=ExtResource( 2 )]
+position = Vector2( 36, 90.04 )
+
+[node name="Window_C" parent="Window_D8" instance=ExtResource( 3 )]
+position = Vector2( 93, 93.04 )
+
+[node name="Window_D" parent="Window_D8" instance=ExtResource( 1 )]
+position = Vector2( 2, 129.04 )
+
+[node name="Window_E" parent="Window_D8" instance=ExtResource( 5 )]
+position = Vector2( 54, 119.04 )

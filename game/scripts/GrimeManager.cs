@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using static Utility;
 #pragma warning disable CS0649, IDE0044
 
 public class GrimeManager : Node, Manager {
@@ -24,7 +25,6 @@ public class GrimeManager : Node, Manager {
     Color win1, win2;
     [Export]
     float winBlinkTime;
-    float remainingTime;
 
     Dictionary<Window, int> perWindowGrimeCount;
 
@@ -44,8 +44,8 @@ public class GrimeManager : Node, Manager {
         "SPIC AND SPAN",
         "FLAWLESS",
         "WOW!",
-        "TOOK LONG ENOUGH",
-        "C L E A N"
+        "TOOK YOU\nLONG ENOUGH",
+        "C-L-E-A-N"
     };
 
     public float PercentGrimy {
@@ -54,6 +54,10 @@ public class GrimeManager : Node, Manager {
             return (float)currentGrimes / maxGrimes;
         }
     }
+    public bool IsBlinking { get; private set; }
+
+    [Export]
+    float grimeFreqJitter;
 
     int maxGrimes;
     int currentGrimes;
@@ -67,7 +71,8 @@ public class GrimeManager : Node, Manager {
         hasConnectedBrush = false;
         perWindowGrimeCount = new Dictionary<Window, int>();
         Instance = this;
-        ResetGrimeMeter();
+        maxGrimes = 0;
+        currentGrimes = 0;
         grimePackedScene = GD.Load<PackedScene>("res://_scenes/grime/grime.tscn");
         noise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
         noise.SetFrequency(frequency);
@@ -77,17 +82,6 @@ public class GrimeManager : Node, Manager {
     }
 
     public override void _Process(float delta) {
-        if (Cleaner.Instance != null && currentGrimes == 0 && maxGrimes != 0) {
-            if (!winLabel.Visible) {
-                winLabel.Text = winTextOptions[GD.Randi() % winTextOptions.Length];
-                winLabel.Visible = true;
-            }
-            HandleBlinking(delta);
-        } else {
-            if (winLabel.Visible) {
-                winLabel.Visible = false;
-            }
-        }
         if (BrushController.Instance != null && !hasConnectedBrush) {
             foreach (var b in BrushController.Instance.brushHitboxes) {
                 b.Connect("area_entered", this, "OnClean");
@@ -100,22 +94,9 @@ public class GrimeManager : Node, Manager {
             GenerateGrime(gr);
         }
     }
-
-    void HandleBlinking(float delta) {
-        if (remainingTime > 0) {
-            remainingTime -= delta;
-        } else {
-            if (winLabel.Modulate.Equals(win1)) winLabel.Modulate = win2; else winLabel.Modulate = win1;
-            remainingTime = winBlinkTime;
-        }
-    }
-
-    void ResetGrimeMeter() {
-        maxGrimes = 0;
-        currentGrimes = 0;
-    }
-
     void GenerateGrime(Window w) {
+        var j1 = GetJitter(grimeFreqJitter);
+        var j2 = GetJitter(grimeFreqJitter);
         var s1 = (int)(GD.Randi() % int.MaxValue);
         var s2 = (int)(GD.Randi() % int.MaxValue);
 
@@ -124,8 +105,10 @@ public class GrimeManager : Node, Manager {
         var g = 0;
         for (var x = 0; x < w.BoundsCount; x++) {
             noise.SetSeed(s1);
+            noise.SetFrequency(frequency + j1);
             g += GrimePass(w, w.LowerBounds[x], w.UpperBounds[x], c1);
             noise.SetSeed(s2);
+            noise.SetFrequency(frequency + j2);
             g += GrimePass(w, w.LowerBounds[x], w.UpperBounds[x], c2);
         }
         maxGrimes += g;
@@ -169,6 +152,7 @@ public class GrimeManager : Node, Manager {
     }
 
     public void OnAllReady() {
+        // nothing to do
     }
 
     public void OnClean(Grime g) {
@@ -189,18 +173,38 @@ public class GrimeManager : Node, Manager {
         }
         if (currentGrimes < 1) {
             currentGrimes = 0;
-            LevelManager.Instance.OnAllClean();
+            LevelManager.Instance.AllowProgression();
         }
     }
 
+    public void ShowWinLabel(string message = null) {
+        GD.Print(message);
+        if (message == null) {
+            winLabel.Text = winTextOptions[GD.Randi() % winTextOptions.Length];
+        } else {
+            winLabel.Text = message;
+        }
+        winLabel.Visible = true;
+        IsBlinking = true;
+        winLabel.Modulate = win1;
+        Blink();
+    }
+
+    void Blink() {
+        if (!IsBlinking) return;
+        ToSignal(GetTree().CreateTimer(winBlinkTime), "timeout").OnCompleted(() => {
+            if (winLabel.Modulate.Equals(win1)) winLabel.Modulate = win2; else winLabel.Modulate = win1;
+            Blink();
+        });
+    }
+
     public bool Reset() {
-        ResetGrimeMeter();
+        maxGrimes = 0;
+        currentGrimes = 0;
+        winLabel.Visible = false;
         hasConnectedBrush = false;
+        IsBlinking = false;
         return false;
     }
     public PackedScene GetPackedScene() => null;
-
-    public void SetCustomWinLabel(string msg) {
-        winLabel.Text = msg;
-    }
 }
