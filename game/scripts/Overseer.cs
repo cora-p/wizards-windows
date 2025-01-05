@@ -6,7 +6,7 @@ using Godot;
 public class Overseer : Node {
 
     [Export]
-    //* A list of names of Managers that aren't ready yet. Values are removed as they report ready. 
+    // A list of names of Managers that aren't ready yet. Values are removed as they report ready. 
     List<string> unreadyManagerNames;
     List<Manager> readyManagers = new List<Manager>();
     public static Overseer Instance { get; private set; }

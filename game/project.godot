@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Wizard's Windows"
-run/main_scene="res://levels/Main Menu.tscn"
+run/main_scene="res://levels/scenes/00Main Menu.tscn"
 run/flush_stdout_on_print=true
 config/icon="res://sprites/cleaner/cleaner.png"
 
@@ -20,9 +20,10 @@ config/icon="res://sprites/cleaner/cleaner.png"
 Overseer="*res://_scenes/managers/Overseer.tscn"
 LevelManager="*res://_scenes/managers/LevelManager.tscn"
 MenuController="*res://_scenes/managers/MenuController.tscn"
-RopeController="res://_scenes/managers/RopeController.tscn"
 GrimeManager="*res://_scenes/managers/GrimeManager.tscn"
 SparkleManager="*res://_scenes/managers/SparkleManager.tscn"
+RopeController="*res://_scenes/managers/RopeController.tscn"
+SpellListener="*res://_scenes/managers/SpellListener.tscn"
 
 [debug]
 

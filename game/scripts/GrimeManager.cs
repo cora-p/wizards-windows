@@ -26,6 +26,8 @@ public class GrimeManager : Node, Manager {
     [Export]
     float winBlinkTime;
 
+    List<Grime> registeredGrimes;
+
     Dictionary<Window, int> perWindowGrimeCount;
 
     string[] winTextOptions = new string[] {
@@ -69,6 +71,7 @@ public class GrimeManager : Node, Manager {
     public static GrimeManager Instance { get; private set; }
     public override void _Ready() {
         hasConnectedBrush = false;
+        registeredGrimes = new List<Grime>();
         perWindowGrimeCount = new Dictionary<Window, int>();
         Instance = this;
         maxGrimes = 0;
@@ -125,7 +128,7 @@ public class GrimeManager : Node, Manager {
                 var val = Mathf.Clamp(noise.GetNoise(x, y), 0, 1);
                 if (val >= threshold) {
                     var g = grimePackedScene.Instance<Grime>();
-                    AddChild(g);
+                    w.AddChild(g);
                     g.window = w;
                     perWindowGrimeCount[w] = perWindowGrimeCount[w] + 1;
                     g.GlobalPosition = new Vector2(x, y);
@@ -204,6 +207,12 @@ public class GrimeManager : Node, Manager {
         winLabel.Visible = false;
         hasConnectedBrush = false;
         IsBlinking = false;
+        while (registeredGrimes.Count > 0) {
+            var g = registeredGrimes[0];
+            g.QueueFree();
+            registeredGrimes.RemoveAt(0);
+        }
+        perWindowGrimeCount = new Dictionary<Window, int>();
         return false;
     }
     public PackedScene GetPackedScene() => null;

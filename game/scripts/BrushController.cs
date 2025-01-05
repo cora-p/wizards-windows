@@ -77,7 +77,6 @@ public class BrushController : KinematicBody2D, Manager {
             guideDashLength,
             guideGapLength,
             1.1f);
-        // DrawLine(Vector2.Zero, GetLocalMousePosition(),
     }
     void RecurseChildren(Node node, List<Node> collection) {
         for (var i = 0; i < node.GetChildCount(); i++) {
@@ -95,7 +94,7 @@ public class BrushController : KinematicBody2D, Manager {
         var targetPosition = parent.GetLocalMousePosition().Normalized() * distanceFromCleaner;
         Position = Position.LinearInterpolate(targetPosition, moveLerpWeight);
 
-        //^ only look at the mouse if we are far enough away
+        // only look at the mouse if we are far enough away
         if (Position.DistanceTo(GetLocalMousePosition()) > distanceFromCleaner + scrubPositionCurve.Interpolate(T)) {
             var currentRot = Rotation;
             LookAt(GetGlobalMousePosition());

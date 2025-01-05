@@ -1,0 +1,983 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://sprites/env/battlements_c.png" type="Texture" id=1]
+[ext_resource path="res://sprites/env/battlements_a.png" type="Texture" id=2]
+[ext_resource path="res://sprites/env/battlements_b.png" type="Texture" id=3]
+[ext_resource path="res://_scenes/ui/Helper Text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=6]
+[ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/dot.png" type="Texture" id=8]
+[ext_resource path="res://misc/dogica_huge.tres" type="DynamicFont" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 161.5, 95.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 168, 90.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 151.005, 90.4101 )
+
+[sub_resource type="CircleShape2D" id=6]
+resource_local_to_scene = true
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id=7]
+resource_local_to_scene = true
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id=4]
+resource_local_to_scene = true
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id=5]
+resource_local_to_scene = true
+radius = 14.0
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Battlements" type="Node2D" parent="."]
+z_index = 150
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Dot" type="Sprite" parent="Battlements"]
+modulate = Color( 0, 0, 0, 0.301961 )
+position = Vector2( 172, 62.3125 )
+scale = Vector2( 294, 3.375 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="BattlementsA" type="Sprite" parent="Battlements"]
+position = Vector2( 44, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA2" type="Sprite" parent="Battlements"]
+position = Vector2( 60.01, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA4" type="Sprite" parent="Battlements"]
+position = Vector2( 26.99, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA3" type="Sprite" parent="Battlements"]
+position = Vector2( 77, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA5" type="Sprite" parent="Battlements"]
+position = Vector2( 94.01, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA6" type="Sprite" parent="Battlements"]
+position = Vector2( 111.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA7" type="Sprite" parent="Battlements"]
+position = Vector2( 127.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA8" type="Sprite" parent="Battlements"]
+position = Vector2( 143.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA9" type="Sprite" parent="Battlements"]
+position = Vector2( 159.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA10" type="Sprite" parent="Battlements"]
+position = Vector2( 176.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA11" type="Sprite" parent="Battlements"]
+position = Vector2( 192.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA12" type="Sprite" parent="Battlements"]
+position = Vector2( 208.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA13" type="Sprite" parent="Battlements"]
+position = Vector2( 224.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA14" type="Sprite" parent="Battlements"]
+position = Vector2( 240.02, 50 )
+texture = ExtResource( 2 )
+
+[node name="BattlementsA15" type="Sprite" parent="Battlements"]
+position = Vector2( 264.02, 50 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="BattlementsA16" type="Sprite" parent="Battlements"]
+position = Vector2( 280.02, 50 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="BattlementsA17" type="Sprite" parent="Battlements"]
+position = Vector2( 297.02, 50 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="BattlementsA19" type="Sprite" parent="Battlements"]
+position = Vector2( 314.02, 50 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="BattlementsB" type="Sprite" parent="Battlements"]
+position = Vector2( 27, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB2" type="Sprite" parent="Battlements"]
+position = Vector2( 55.01, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB11" type="Sprite" parent="Battlements"]
+position = Vector2( 83.01, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB3" type="Sprite" parent="Battlements"]
+position = Vector2( 111.02, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB4" type="Sprite" parent="Battlements"]
+position = Vector2( 139.03, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB5" type="Sprite" parent="Battlements"]
+position = Vector2( 168.04, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB6" type="Sprite" parent="Battlements"]
+position = Vector2( 197.05, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB7" type="Sprite" parent="Battlements"]
+position = Vector2( 225.06, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB8" type="Sprite" parent="Battlements"]
+position = Vector2( 254.07, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB9" type="Sprite" parent="Battlements"]
+position = Vector2( 284.08, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsB10" type="Sprite" parent="Battlements"]
+position = Vector2( 314.08, 22 )
+texture = ExtResource( 3 )
+
+[node name="BattlementsC" type="Sprite" parent="Battlements"]
+position = Vector2( 11, 23 )
+texture = ExtResource( 1 )
+
+[node name="BattlementsC2" type="Sprite" parent="Battlements"]
+position = Vector2( 329, 23 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="BackdropMainMenu" type="Sprite" parent="."]
+modulate = Color( 0.474287, 0.458923, 0.570313, 1 )
+position = Vector2( 26, 49 )
+scale = Vector2( 288, 204 )
+z_index = -500
+z_as_relative = false
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Title" parent="." instance=ExtResource( 4 )]
+position = Vector2( 173, 41 )
+fadeDuration = 6.0
+visibleDuration = 3.0
+
+[node name="Label" parent="Title" index="0"]
+margin_left = -160.0
+margin_top = -19.02
+margin_right = 1.0
+margin_bottom = -0.0200024
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 9 )
+text = "Wizard's Windows"
+
+[node name="CollisionShape2D" parent="Title" index="1"]
+position = Vector2( -5.5, 117.5 )
+shape = SubResource( 1 )
+
+[node name="Popp" parent="." instance=ExtResource( 4 )]
+position = Vector2( 45, 89 )
+delay = 3.0
+
+[node name="Label" parent="Popp" index="0"]
+margin_left = -23.92
+margin_top = -41.02
+margin_right = 222.08
+margin_bottom = -35.02
+text = "Design, Coding, Art by Matt Popp"
+
+[node name="CollisionShape2D" parent="Popp" index="1"]
+position = Vector2( 124, 65.5 )
+shape = SubResource( 2 )
+
+[node name="Foho" parent="." instance=ExtResource( 4 )]
+position = Vector2( 45, 89 )
+delay = 3.0
+
+[node name="Label" parent="Foho" index="0"]
+margin_left = -17.9099
+margin_top = -34.02
+margin_right = 266.09
+margin_bottom = -28.02
+text = "Sound Effects & Music by Peteoro Foho"
+
+[node name="CollisionShape2D" parent="Foho" index="1"]
+position = Vector2( 124, 66 )
+shape = SubResource( 2 )
+
+[node name="Changelog" parent="." instance=ExtResource( 4 )]
+position = Vector2( 74.74, 228.17 )
+
+[node name="Label" parent="Changelog" index="0"]
+text = "Updates"
+
+[node name="CollisionShape2D" parent="Changelog" index="1"]
+position = Vector2( 95.26, -72.7601 )
+shape = SubResource( 3 )
+
+[node name="Block - Shallow13" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -23.02, 11.83 )
+
+[node name="Block - Shallow14" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -31.03, 11.83 )
+
+[node name="Block - Shallow15" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -39.04, 11.83 )
+
+[node name="Block - Shallow16" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -39.04, 3.82001 )
+
+[node name="Block - Shallow17" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -15.01, 11.83 )
+
+[node name="Block - Shallow18" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -7, 11.83 )
+
+[node name="Block - Shallow19" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( 1.01001, 11.83 )
+
+[node name="Block - Shallow20" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( 9.02002, 11.83 )
+
+[node name="Block - Shallow21" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( 17.03, 11.83 )
+
+[node name="Block - Shallow22" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( 17.03, 3.82001 )
+
+[node name="Block - Shallow23" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -39.04, -4.19 )
+
+[node name="Block - Shallow24" parent="Changelog" instance=ExtResource( 5 )]
+position = Vector2( -39.04, -12.2 )
+
+[node name="CHANGES1" parent="Changelog" instance=ExtResource( 4 )]
+
+[node name="Label" parent="Changelog/CHANGES1" index="0"]
+margin_left = 6.05002
+margin_top = -51.37
+margin_right = 516.05
+margin_bottom = 8.63004
+text = "- Added \"Hold [ESC] for 10s to reset level\"
+- Turned a bug into a feature (see level 5)
+- Added more levels
+- Added guideline to mouse
+- Improved aiming logic
+- Made text more legible
+- Added changelog"
+
+[node name="CollisionShape2D" parent="Changelog/CHANGES1" index="1"]
+visible = true
+position = Vector2( -12.74, -6.17 )
+shape = SubResource( 6 )
+
+[node name="CHANGES2" parent="Changelog" instance=ExtResource( 4 )]
+position = Vector2( 0, -152.19 )
+
+[node name="Label" parent="Changelog/CHANGES2" index="0"]
+margin_left = 8.05001
+margin_top = 87.09
+margin_right = 446.05
+margin_bottom = 111.09
+text = "- fixed strobing reset, and reset time not... resetting. this is why you test *before* shipping code."
+autowrap = true
+
+[node name="CollisionShape2D" parent="Changelog/CHANGES2" index="1"]
+visible = true
+position = Vector2( -12.74, 146.02 )
+shape = SubResource( 7 )
+
+[node name="CHANGES3" parent="Changelog" instance=ExtResource( 4 )]
+position = Vector2( 0, -173.21 )
+
+[node name="Label" parent="Changelog/CHANGES3" index="0"]
+margin_left = 8.05001
+margin_top = 87.09
+margin_right = 446.05
+margin_bottom = 111.09
+text = "- Added Hidden spells to teleport down the tower. Find them on each level except the last one.
+- minor tweaks to text around maps
+- added detail to title screen"
+autowrap = true
+
+[node name="CollisionShape2D" parent="Changelog/CHANGES3" index="1"]
+visible = true
+position = Vector2( -12.74, 167.05 )
+shape = SubResource( 7 )
+
+[node name="about" type="Node2D" parent="."]
+
+[node name="a1" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+
+[node name="Label" parent="about/a1" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -251.0
+margin_right = 377.0
+margin_bottom = -233.0
+text = "Hi! I'm Matt. I'm a software engineer who left Amazon after 6 years in December 2023. I want to work in gamedev."
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a1" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a2" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 3.0
+
+[node name="Label" parent="about/a2" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -239.0
+margin_right = 377.0
+margin_bottom = -197.0
+text = "This game was conceived on Dec 19th, 2023 after meeting with a talent partner at a16z to discuss what gamedev studios are looking for in a potential hire."
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a2" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a3" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 6.0
+
+[node name="Label" parent="about/a3" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -221.0
+margin_right = 377.0
+margin_bottom = -197.0
+text = "Everything except Music & SFX was built by me since then.
+"
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a3" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a4" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 9.0
+
+[node name="Label" parent="about/a4" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -213.0
+margin_right = 377.0
+margin_bottom = -180.0
+text = "I originally planned to learn Unreal for this project, as it's the top engine, but decided to use Godot 3.6 for 3 reasons:"
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a4" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a5" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 12.0
+
+[node name="Label" parent="about/a5" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -200.0
+margin_right = 379.0
+margin_bottom = -167.0
+text = "1. I chose 2D, as 18 days is not enough to create a enough 3D art, & research told me that 2D in UE can be challenging"
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a5" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a6" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 15.0
+
+[node name="Label" parent="about/a6" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -187.0
+margin_right = 377.0
+margin_bottom = -145.0
+text = "2. I wanted to have the game playable on a webpage. Who wants to download an EXE to evaluate a candidate? Pixel streaming was too complex given the timeline. "
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a6" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a7" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 18.0
+
+[node name="Label" parent="about/a7" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -169.0
+margin_right = 377.0
+margin_bottom = -127.0
+text = "3. I have only briefly used C++ a long time ago. I think learning a new engine, new language, & new web technology while also producing something good was too much to fit in 18 days."
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a7" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a8" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 21.0
+
+[node name="Label" parent="about/a8" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -150.0
+margin_right = 377.0
+margin_bottom = -114.0
+text = "It's my 1st project in Godot. It's not a fancy tech demo, but it does (I hope) show that I think of the player first. I've leaned on friends (of all experience lvls) to playtest it, & incorporated their feedback throughout the dev cycle"
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a8" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a9" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 24.0
+
+[node name="Label" parent="about/a9" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -125.0
+margin_right = 377.0
+margin_bottom = -101.0
+text = "I focused on making something that is a complete experience for the player that is actually pretty fun."
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a9" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a10" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 27.0
+
+[node name="Label" parent="about/a10" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -187.0
+margin_top = -109.0
+margin_right = 373.0
+margin_bottom = -76.0
+text = "Feel free to open issues on the GitHub repo with any feedback you have, or email me at mgp214@gmail.com."
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a10" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="a11" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 216, 317 )
+fadeDuration = 2.0
+visibleDuration = 10.0
+delay = 30.0
+
+[node name="Label" parent="about/a11" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -93.0
+margin_top = -92.0
+margin_right = 137.0
+margin_bottom = -77.0
+text = "Thanks for giving it a shot! 
+Matt Popp"
+autowrap = true
+
+[node name="CollisionShape2D" parent="about/a11" index="1"]
+position = Vector2( 73.01, -88.8299 )
+shape = SubResource( 4 )
+
+[node name="About" parent="about" instance=ExtResource( 4 )]
+position = Vector2( 291.01, 228.17 )
+
+[node name="Label" parent="about/About" index="0"]
+text = "About"
+
+[node name="CollisionShape2D" parent="about/About" index="1"]
+position = Vector2( -121.005, -72.7601 )
+shape = SubResource( 3 )
+
+[node name="Block - Shallow" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( -15.01, 11.83 )
+
+[node name="Block - Shallow10" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( -23.02, 11.83 )
+
+[node name="Block - Shallow11" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( -31.03, 11.83 )
+
+[node name="Block - Shallow12" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( -31.03, 3.82001 )
+
+[node name="Block - Shallow2" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( -7, 11.83 )
+
+[node name="Block - Shallow3" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 1.00998, 11.83 )
+
+[node name="Block - Shallow4" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 9.01999, 11.83 )
+
+[node name="Block - Shallow5" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 17.03, 11.83 )
+
+[node name="Block - Shallow6" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 25.04, 11.83 )
+
+[node name="Block - Shallow7" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 25.04, 3.82001 )
+
+[node name="Block - Shallow8" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 25.04, -4.19 )
+
+[node name="Block - Shallow9" parent="about/About" instance=ExtResource( 5 )]
+position = Vector2( 25.04, -12.2 )
+
+[node name="Idle Text" parent="." instance=ExtResource( 4 )]
+position = Vector2( 172, 107 )
+fadeDuration = 1.0
+visibleDuration = 5.0
+delay = 10.0
+
+[node name="Label" parent="Idle Text" index="0"]
+margin_left = 36.0
+margin_top = -43.0
+margin_right = 244.0
+margin_bottom = -25.0
+text = "...move down with [s]
+left & right with [q] & [e]"
+autowrap = true
+
+[node name="CollisionShape2D" parent="Idle Text" index="1"]
+visible = true
+shape = SubResource( 5 )
+
+[node name="SpellCollectible" parent="." instance=ExtResource( 6 )]
+position = Vector2( 20.5198, 143.97 )
+
+[node name="Label" parent="SpellCollectible" index="2"]
+text = "HOME"
+
+[node name="dressing" type="Node2D" parent="."]
+
+[node name="Block - Background" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 27, 155 )
+
+[node name="Block - Background2" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 31, 145 )
+
+[node name="Block - Background3" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 43, 233 )
+
+[node name="Block - Background4" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 32, 216 )
+
+[node name="Block - Background5" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 97, 245 )
+
+[node name="Block - Background6" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 87, 235 )
+
+[node name="Block - Background7" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 101, 237 )
+
+[node name="Block - Background8" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 67, 249 )
+
+[node name="Block - Background9" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 47, 247 )
+
+[node name="Block - Background10" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 99, 225 )
+
+[node name="Block - Background11" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 109, 225 )
+
+[node name="Block - Background12" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 270, 231 )
+
+[node name="Block - Background13" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 261, 225 )
+
+[node name="Block - Background14" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 253, 226 )
+
+[node name="Block - Background15" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 254, 218 )
+
+[node name="Block - Background16" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 278, 234 )
+
+[node name="Block - Background17" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 282, 214.96 )
+
+[node name="Block - Background75" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 285, 206.95 )
+
+[node name="Block - Background76" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 309.03, 142.87 )
+
+[node name="Block - Background77" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 313.03, 134.86 )
+
+[node name="Block - Background78" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 313.03, 126.85 )
+
+[node name="Block - Background79" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 309.02, 121.84 )
+
+[node name="Block - Background80" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 304.01, 126.85 )
+
+[node name="Block - Background81" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 312.02, 158.89 )
+
+[node name="Block - Background82" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 312.02, 167.91 )
+
+[node name="Block - Background83" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 313.02, 175.92 )
+
+[node name="Block - Background84" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 297, 191.94 )
+
+[node name="Block - Background18" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 252, 238 )
+
+[node name="Block - Background19" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 262, 212.96 )
+
+[node name="Block - Background85" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 205.94, 169.94 )
+
+[node name="Block - Background86" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 213.94, 164.9 )
+
+[node name="Block - Background87" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 216.95, 174.94 )
+
+[node name="Block - Background88" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 224.95, 169.9 )
+
+[node name="Block - Background89" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 222.96, 162.92 )
+
+[node name="Block - Background90" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 232.96, 155.88 )
+
+[node name="Block - Background91" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 216.94, 155.88 )
+
+[node name="Block - Background92" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 215.94, 213.88 )
+
+[node name="Block - Background93" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 207.93, 213.88 )
+
+[node name="Block - Background94" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 199.92, 213.88 )
+
+[node name="Block - Background95" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 208, 198 )
+
+[node name="Block - Background96" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 211.93, 209.88 )
+
+[node name="Block - Background97" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 221.94, 209.88 )
+
+[node name="Block - Background98" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 218.94, 203.87 )
+
+[node name="Block - Background99" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 200.92, 203.87 )
+
+[node name="Block - Background100" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 196.92, 198.86 )
+
+[node name="Block - Background101" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 188.91, 182.84 )
+
+[node name="Block - Background20" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 236 )
+
+[node name="Block - Background21" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 313, 212 )
+
+[node name="Block - Background22" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 300, 225 )
+
+[node name="Block - Background23" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 309, 220 )
+
+[node name="Block - Background24" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 309, 65 )
+
+[node name="Block - Background25" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 313, 63 )
+
+[node name="Block - Background26" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 302, 73 )
+
+[node name="Block - Background27" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 278, 64 )
+
+[node name="Block - Background28" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 257, 65 )
+
+[node name="Block - Background29" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 183, 72 )
+
+[node name="Block - Background30" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 177, 67 )
+
+[node name="Block - Background31" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 160.98, 64 )
+
+[node name="Block - Background32" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 170.99, 62 )
+
+[node name="Block - Background33" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 203.03, 62 )
+
+[node name="Block - Background34" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 195.02, 62 )
+
+[node name="Block - Background35" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 199.02, 70.01 )
+
+[node name="Block - Background36" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 110.91, 86.03 )
+
+[node name="Block - Background37" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 94.89, 78.02 )
+
+[node name="Block - Background38" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 86.88, 70.01 )
+
+[node name="Block - Background39" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 88.88, 76.01 )
+
+[node name="Block - Background40" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 48.8299, 76.01 )
+
+[node name="Block - Background41" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 40.8199, 92.03 )
+
+[node name="Block - Background42" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 42.8199, 99.03 )
+
+[node name="Block - Background43" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 31.8099, 99.03 )
+
+[node name="Block - Background44" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 27.7999, 106.03 )
+
+[node name="Block - Background45" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 30.7999, 89.01 )
+
+[node name="Block - Background46" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 27.7999, 63.98 )
+
+[node name="Block - Background47" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 35.8099, 63.98 )
+
+[node name="Block - Background48" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 43.8199, 63.98 )
+
+[node name="Block - Background49" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 39.8199, 71.99 )
+
+[node name="Block - Background50" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 28.7999, 74.99 )
+
+[node name="Block - Background51" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 36.8099, 147.08 )
+
+[node name="Block - Background52" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 38.8099, 139.08 )
+
+[node name="Block - Background53" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 78.8599, 139.08 )
+
+[node name="Block - Background54" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 78.8599, 155.1 )
+
+[node name="Block - Background55" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 86.8699, 155.1 )
+
+[node name="Block - Background56" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 89.8799, 147.09 )
+
+[node name="Block - Background57" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 129.93, 147.09 )
+
+[node name="Block - Background58" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 129.93, 163.11 )
+
+[node name="Block - Background59" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 121.92, 164.11 )
+
+[node name="Block - Background60" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 121.92, 180.13 )
+
+[node name="Block - Background61" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 129.93, 196.15 )
+
+[node name="Block - Background62" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 126.93, 189.15 )
+
+[node name="Block - Background63" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 110.91, 189.15 )
+
+[node name="Block - Background64" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 94.8898, 205.17 )
+
+[node name="Block - Background65" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 40.8198, 221.19 )
+
+[node name="Block - Background66" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 40.8198, 228.2 )
+
+[node name="Block - Background67" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 56.8398, 233.2 )
+
+[node name="Block - Background68" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 49.8398, 233.2 )
+
+[node name="Block - Background69" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 63.8598, 236.21 )
+
+[node name="Block - Background70" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 79.8798, 244.22 )
+
+[node name="Block - Background71" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 135.95, 228.2 )
+
+[node name="Block - Background72" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 143.96, 228.2 )
+
+[node name="Block - Background73" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 151.97, 228.2 )
+
+[node name="Block - Background74" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 151.97, 220.19 )
+
+[editable path="Title"]
+[editable path="Popp"]
+[editable path="Foho"]
+[editable path="Changelog"]
+[editable path="Changelog/CHANGES1"]
+[editable path="Changelog/CHANGES2"]
+[editable path="Changelog/CHANGES3"]
+[editable path="about/a1"]
+[editable path="about/a2"]
+[editable path="about/a3"]
+[editable path="about/a4"]
+[editable path="about/a5"]
+[editable path="about/a6"]
+[editable path="about/a7"]
+[editable path="about/a8"]
+[editable path="about/a9"]
+[editable path="about/a10"]
+[editable path="about/a11"]
+[editable path="about/About"]
+[editable path="Idle Text"]
+[editable path="SpellCollectible"]

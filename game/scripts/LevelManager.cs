@@ -28,10 +28,10 @@ public class LevelManager : Node2D, Manager {
     Node2D[,] bgTiles;
     Node2D[] endcaps;
 
-    [Export]
-    List<string> levelNames;
-    List<PackedScene> levelScenes;
     int currentLevel = 0;
+
+    [Export]
+    public Level[] levels;
 
     public const string MAIN_MENU = "Main Menu";
 
@@ -42,12 +42,13 @@ public class LevelManager : Node2D, Manager {
 
     public static LevelManager Instance { get; private set; }
 
-    PackedScene transition;
+    PackedScene transition, towerBg;
 
-    string CurrentLevelName { get => levelNames[currentLevel]; }
-    public bool IsLastLevel { get => levelNames.Count == currentLevel + 1; }
+    string CurrentLevelName { get => levels[currentLevel].ResourcePath.Split('/').Last(); }
+    public bool IsLastLevel { get => levels.Length == currentLevel + 1; }
     public bool IsOnMainMenu { get => currentLevel == 0; }
     public int NextLevelIndex { get => IsLastLevel ? 0 : currentLevel + 1; }
+
 
 
 
@@ -59,28 +60,19 @@ public class LevelManager : Node2D, Manager {
         bgTileScene = GD.Load<PackedScene>("res://_scenes/env/other/Wall.tscn");
         endcapScene = GD.Load<PackedScene>("res://_scenes/env/other/Endcap.tscn");
         transition = GD.Load<PackedScene>("res://_scenes/fx/transition.tscn");
-
-        levelScenes = new List<PackedScene>();
-        foreach (var lvlName in levelNames) {
-            levelScenes.Add(GD.Load<PackedScene>($"res://levels/{lvlName}.tscn"));
-        }
-
-
-        GD.Print("Initialized with level list (index, name, next):");
-        for (var i = 0; i < levelNames.Count; i++) {
-            currentLevel = i;
-            GD.Print($"{currentLevel},{CurrentLevelName},{NextLevelIndex}");
-        }
+        towerBg = GD.Load<PackedScene>("res://_scenes/env/other/background.tscn");
         currentLevel = 0;
         Instance = this;
         progressBlocker.SetDeferred("disabled", true);
         Overseer.Instance.ReportReady(this);
+        foreach (var l in levels) {
+            l.spell = l.spell.ToUpper();
+        }
     }
 
     void GenerateBackground() {
         backdrop.Visible = !IsOnMainMenu;
-        var bgScene = GD.Load<PackedScene>("res://_scenes/env/other/background.tscn");
-        var bg = bgScene.Instance<Node2D>();
+        var bg = towerBg.Instance<Node2D>();
         AddChild(bg);
         bg.RotationDegrees = GetJitter(360);
         var s = IsOnMainMenu ? mainMenuStart : start;
@@ -103,15 +95,14 @@ public class LevelManager : Node2D, Manager {
         Vector2 rowShift, tileShift;
         float rowCant, tileCant;
 
-        //^ main tiles
-        //* start building from bottom as it looks better with the higher row tiles in front
+        // start building from bottom as it looks better with the higher row tiles in front
         for (var y = height - 1; y >= 0; y--) {
             if (IsLucky(rowShiftChance)) {
                 rowShift = new Vector2(GetJitter(rowShiftExtent.x), 0);
             } else {
                 rowShift = Vector2.Zero;
             }
-            //* shift horizontally and vertically separately, otherwise too noticeable
+            // shift horizontally and vertically separately, otherwise too noticeable
             if (IsLucky(rowShiftChance)) {
                 rowShift += new Vector2(0, GetJitter(rowShiftExtent.y));
             }
@@ -151,7 +142,7 @@ public class LevelManager : Node2D, Manager {
             rowHolder.Position += rowShift;
         }
 
-        //^ endcaps
+        // endcaps
         for (var y = 0; y < height; y++) {
             var endcap = endcapScene.Instance<Sprite>();
             var holder = rowHolders[y];
@@ -176,16 +167,16 @@ public class LevelManager : Node2D, Manager {
     bool IsLucky(float chance) => GD.Randf() <= chance;
 
     public void AllowProgression() {
-        if (IsLastLevel) {
-            GrimeManager.Instance.ShowWinLabel("THE END...\nFOR NOW!");
-        } else {
-            GrimeManager.Instance.ShowWinLabel();
+        if (!IsOnMainMenu) {
+            if (IsLastLevel) {
+                GrimeManager.Instance.ShowWinLabel("THE END...\nFOR NOW!");
+            } else {
+                GrimeManager.Instance.ShowWinLabel();
+            }
         }
         progressBlocker.SetDeferred("disabled", true);
     }
     void OnProgress(Node n) {
-        AddChild(transition.Instance());
-
         ChangeLevel();
     }
 
@@ -194,12 +185,18 @@ public class LevelManager : Node2D, Manager {
         return false;
     }
 
-    void ChangeLevel(int specificLevel = -1) {
+    public void ChangeLevel(string spell = null) {
+        AddChild(transition.Instance());
         var oldLevelIndex = currentLevel;
-        if (specificLevel >= 0) currentLevel = specificLevel;
-        currentLevel = NextLevelIndex;
+        if (spell != null) {
+            currentLevel = levels.ToList().FindIndex(l => l.spell == spell);
+            if (currentLevel == -1) currentLevel = 0;
+        } else {
+            currentLevel = NextLevelIndex;
+        }
+
         GD.Print($"Progressing from level {oldLevelIndex} to {currentLevel}");
-        GetTree().ChangeSceneTo(levelScenes[currentLevel]);
+        GetTree().ChangeSceneTo(levels[currentLevel].scene);
         Overseer.Instance.Reset();
     }
     public PackedScene GetPackedScene() => null;
