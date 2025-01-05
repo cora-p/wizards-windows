@@ -379,6 +379,18 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="Block - Background46" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 201, 189 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Block - Background47" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 201, 189 )
+__meta__ = {
+"_edit_bone_": true
+}
+
 [node name="Block - Background32" parent="Set Dressing" instance=ExtResource( 2 )]
 position = Vector2( 65, 204.08 )
 rotation = -1.10612
@@ -401,22 +413,50 @@ rotation = -0.785397
 
 [node name="Block - Background37" parent="Set Dressing" instance=ExtResource( 2 )]
 position = Vector2( 87, 177.08 )
-rotation = -0.785397
+rotation = -0.930142
 
 [node name="Block - Background38" parent="Set Dressing" instance=ExtResource( 2 )]
-position = Vector2( 93, 171.08 )
+position = Vector2( 91, 171 )
 rotation = -0.785397
 
 [node name="Block - Background39" parent="Set Dressing" instance=ExtResource( 2 )]
-position = Vector2( 98, 167.08 )
+position = Vector2( 97, 166 )
 rotation = -0.785397
 
 [node name="Block - Background40" parent="Set Dressing" instance=ExtResource( 2 )]
-position = Vector2( 102, 161.08 )
-rotation = -0.0282027
+position = Vector2( 103, 162 )
+rotation = -0.656972
+
+[node name="Block - Background48" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 109, 157 )
+rotation = -0.6091
 
 [node name="Block - Background25" parent="Set Dressing" instance=ExtResource( 2 )]
 position = Vector2( 168.03, 69.99 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Block - Background42" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 253, 62 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Block - Background43" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 247, 67 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Block - Background44" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 212, 169 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Block - Background45" parent="Set Dressing" instance=ExtResource( 2 )]
+position = Vector2( 212, 169 )
 __meta__ = {
 "_edit_bone_": true
 }
@@ -542,9 +582,12 @@ __meta__ = {
 }
 
 [node name="Label" parent="Bumps Helper" index="0"]
-text = "a good running
-start helps to
-get over bumps"
+margin_left = -81.0
+margin_top = 36.92
+margin_right = 35.0
+margin_bottom = 103.92
+text = "a good running start helps to get over bumps"
+autowrap = true
 
 [node name="CollisionShape2D" parent="Bumps Helper" index="1"]
 position = Vector2( -10.5, 11.5 )
@@ -555,14 +598,15 @@ position = Vector2( 260.22, 161.13 )
 __meta__ = {
 "_edit_bone_": true
 }
+fadeDuration = 2.0
 visibleDuration = 5.0
-delay = 1.0
+delay = 5.0
 
 [node name="Label" parent="Ropes" index="0"]
-margin_left = -10.2201
-margin_top = -17.13
-margin_right = 63.7799
-margin_bottom = -5.13004
+margin_left = -38.22
+margin_top = -3.13
+margin_right = 127.78
+margin_bottom = 11.87
 text = "work with the ropes
 not against them"
 autowrap = true

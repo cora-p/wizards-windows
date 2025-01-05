@@ -16,8 +16,11 @@ public class HelperText : Area2D {
 
     readonly Color W = Colors.White;
 
+    Label label;
+
     public override void _Ready() {
-        Modulate = Colors.Transparent;
+        label = GetNode<Label>("Label");
+        label.Modulate = Colors.Transparent;
         delayRemaining = delay;
     }
 
@@ -39,6 +42,6 @@ public class HelperText : Area2D {
             delayRemaining = delay;
             if (fadePosition > 0f) fadePosition -= delta;
         }
-        Modulate = new Color(W.r, W.g, W.b, visibilityCurve.InterpolateBaked(FadePositionNormalized));
+        label.Modulate = new Color(W.r, W.g, W.b, visibilityCurve.InterpolateBaked(FadePositionNormalized));
     }
 }

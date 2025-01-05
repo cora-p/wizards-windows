@@ -26,10 +26,10 @@ rowShiftChance = 0.33
 rowCantChance = 0.25
 tileShiftChance = 0.131
 tileCantChance = 0.33
-levelNames = [ "Main Menu", "01", "02", "03" ]
+levelNames = [ "Main Menu", "01", "02", "03", "04", "05" ]
 
 [node name="Progress Blocker" type="StaticBody2D" parent="."]
-position = Vector2( 224.28, 244.31 )
+position = Vector2( 168.21, 244.31 )
 collision_mask = 4
 physics_material_override = SubResource( 2 )
 
@@ -37,11 +37,12 @@ physics_material_override = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Progress" type="Area2D" parent="."]
-position = Vector2( 224.28, 260.33 )
+position = Vector2( 176.22, 276.35 )
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Progress"]
+position = Vector2( -8.00999, 0 )
 shape = SubResource( 1 )
 
 [node name="Backdrop" type="Sprite" parent="."]

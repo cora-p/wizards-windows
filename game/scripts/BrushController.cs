@@ -35,12 +35,19 @@ public class BrushController : KinematicBody2D, Manager {
     Node2D manipulatableNode;
     Node2D headPositionNode;
 
+    [Export]
+    Color guideColor;
+
+    [Export]
+    float guideDashLength, guideGapLength;
+
     Node2D head;
 
     AudioStreamPlayer sfx;
     public List<Area2D> brushHitboxes;
 
     public static BrushController Instance { get; private set; }
+    float T { get => 1 - scrubDurationRemaining / scrubDuration; }
 
     public override void _Ready() {
         Instance = this;
@@ -60,6 +67,18 @@ public class BrushController : KinematicBody2D, Manager {
         Overseer.Instance.ReportReady(this);
     }
 
+    public override void _Draw() {
+        Utility.DrawDashedRay(
+            this,
+            ToLocal(headPositionNode.GlobalPosition),
+            Vector2.Right,
+            1000f,
+            guideColor,
+            guideDashLength,
+            guideGapLength,
+            1.1f);
+        // DrawLine(Vector2.Zero, GetLocalMousePosition(),
+    }
     void RecurseChildren(Node node, List<Node> collection) {
         for (var i = 0; i < node.GetChildCount(); i++) {
             var c = node.GetChild(i);
@@ -68,24 +87,27 @@ public class BrushController : KinematicBody2D, Manager {
         }
     }
 
-
     public override void _PhysicsProcess(float delta) {
 
-        if (Position.DistanceTo(GetLocalMousePosition()) < distanceFromCleaner) return;
+
 
         var parent = GetParent<Node2D>();
         var targetPosition = parent.GetLocalMousePosition().Normalized() * distanceFromCleaner;
         Position = Position.LinearInterpolate(targetPosition, moveLerpWeight);
 
-        var currentRot = Rotation;
-        LookAt(GetGlobalMousePosition());
-        Rotation = Mathf.LerpAngle(currentRot, Rotation, rotateLerpWeight);
+        //^ only look at the mouse if we are far enough away
+        if (Position.DistanceTo(GetLocalMousePosition()) > distanceFromCleaner + scrubPositionCurve.Interpolate(T)) {
+            var currentRot = Rotation;
+            LookAt(GetGlobalMousePosition());
+            Rotation = Mathf.LerpAngle(currentRot, Rotation, rotateLerpWeight);
+        }
 
         head.GlobalPosition = headPositionNode.GlobalPosition;
         head.ResetPhysicsInterpolation();
     }
 
     public override void _Process(float delta) {
+        Update();
         if (Input.IsActionPressed("Scrub") && scrubCooldownRemaining == 0f) {
             scrubCooldownRemaining += scrubCooldown;
             scrubDurationRemaining = scrubDuration;
@@ -98,9 +120,8 @@ public class BrushController : KinematicBody2D, Manager {
         if (scrubDurationRemaining > 0f) {
             scrubDurationRemaining -= delta;
             if (scrubDurationRemaining < 0f) scrubDurationRemaining = 0f;
-            var t = 1 - scrubDurationRemaining / scrubDuration;
-            manipulatableNode.RotationDegrees = manipulatableNode.Scale.y * scrubAngleCurve.Interpolate(t);
-            manipulatableNode.Position = Vector2.Right * scrubPositionCurve.Interpolate(t);
+            manipulatableNode.RotationDegrees = manipulatableNode.Scale.y * scrubAngleCurve.Interpolate(T);
+            manipulatableNode.Position = Vector2.Right * scrubPositionCurve.Interpolate(T);
         } else {
             manipulatableNode.Rotation = 0f;
             manipulatableNode.Position = Vector2.Zero;

@@ -23,4 +23,25 @@ public static class Utility {
         return minDist;
     }
     public static float GetJitter(float extent) => (float)GD.RandRange(-extent, extent);
+
+    public static void DrawDashedRay(Node2D caller, Vector2 from, Vector2 dir, float length, Color color, float dashLength, float gapLength, float width = 1) {
+        var hasReachedTo = false;
+        var p = from;
+        var isSolid = true;
+        var actualTo = p + dir * length;
+        while (!hasReachedTo) {
+            if (isSolid) {
+                // dash
+                caller.DrawLine(p, p + (dir * dashLength), color, width);
+                p += dir * Mathf.Min(dashLength, p.DistanceTo(actualTo));
+                length -= dashLength;
+            } else {
+                // gap
+                p += dir * Mathf.Min(gapLength, p.DistanceTo(actualTo));
+                length -= gapLength;
+            }
+            isSolid = !isSolid;
+            hasReachedTo = length < Mathf.Max(gapLength, dashLength);
+        }
+    }
 }

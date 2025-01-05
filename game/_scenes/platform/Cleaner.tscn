@@ -15,6 +15,7 @@ stopAcceleration = 0.2
 maxTravelDistance = 12.0
 travelSpeed = 65.0
 centerAfter = 5.0
+maxWindUpDistance = 60.0
 shovePower = 230.0
 shoveUpFactor = 0.2
 popUpPixels = 0.5

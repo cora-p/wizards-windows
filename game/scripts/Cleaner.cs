@@ -15,6 +15,9 @@ public class Cleaner : Node2D, Manager {
     float centerAfter;
     float idleTime;
 
+    [Export]
+    float maxWindUpDistance;
+
     float shoveMomentumDistance = 0f;
 
     [Export]
@@ -92,7 +95,10 @@ public class Cleaner : Node2D, Manager {
     }
 
     void ShovePlatform(bool left) {
+        if (shoveMomentumDistance == 0) return;
         Vector2 impulse;
+        shoveMomentumDistance = Mathf.Min(shoveMomentumDistance, maxWindUpDistance);
+        GD.Print($"Windup: {shoveMomentumDistance}");
         if (left) {
             impulse = (Vector2.Left + Vector2.Up * shoveUpFactor).Normalized().Rotated(platform.GlobalRotation);
             hasShovedLeft = true;

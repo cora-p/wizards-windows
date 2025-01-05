@@ -214,11 +214,12 @@ __meta__ = {
 }
 fadeDuration = 1.0
 visibleDuration = 8.0
+delay = 2.0
 
 [node name="Label" parent="Helper Text2" index="0"]
 margin_left = -147.0
 margin_top = -23.0
-margin_right = -104.0
+margin_right = -55.0
 margin_bottom = 4.0
 text = "now you're getting the swing of it"
 autowrap = true

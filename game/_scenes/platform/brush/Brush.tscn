@@ -20,6 +20,9 @@ scrubCooldown = 0.01
 scrubPositionCurve = ExtResource( 4 )
 scrubAngleCurve = ExtResource( 5 )
 scrubDuration = 0.607
+guideColor = Color( 1, 1, 1, 0.270588 )
+guideDashLength = 3.0
+guideGapLength = 5.0
 
 [node name="Manipulatable" type="Node2D" parent="."]
 
