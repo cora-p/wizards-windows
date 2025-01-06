@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://misc/dogica_small_emoticon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://_scenes/env/Window_E.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=6]
 [ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=8]
+[ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 63.5, 15.5 )
@@ -730,6 +731,15 @@ rotation = 0.801428
 position = Vector2( 31, 58 )
 rotation = 0.675565
 
+[node name="Torch" parent="set dressing" instance=ExtResource( 9 )]
+position = Vector2( 259.04, 84.78 )
+
+[node name="Torch2" parent="set dressing" instance=ExtResource( 9 )]
+position = Vector2( 119, 93 )
+
+[node name="Torch3" parent="set dressing" instance=ExtResource( 9 )]
+position = Vector2( 144, 216 )
+
 [node name="SpellCollectible" parent="." instance=ExtResource( 8 )]
 position = Vector2( 129, 214 )
 
@@ -771,11 +781,11 @@ position = Vector2( 119, 272 )
 delay = 5.0
 
 [node name="Label" parent="text/Helper Text3" index="0"]
-margin_left = -109.0
+margin_left = -99.0
 margin_top = -119.0
-margin_right = 231.0
+margin_right = 525.0
 margin_bottom = -99.0
-text = "It'll reveal a word you can utter anytime teleport just past where it was found."
+text = "It'll reveal a word you can use anytime to teleport just past where it was found."
 autowrap = true
 
 [node name="CollisionShape2D" parent="text/Helper Text3" index="1"]
@@ -788,10 +798,10 @@ position = Vector2( 119, 272 )
 delay = 8.0
 
 [node name="Label" parent="text/Helper Text5" index="0"]
-margin_left = -109.0
-margin_top = -102.98
-margin_right = 231.0
-margin_bottom = -82.98
+margin_left = -99.0
+margin_top = -110.98
+margin_right = 241.0
+margin_bottom = -90.98
 text = "This is the only way to save your progress!"
 autowrap = true
 
@@ -802,7 +812,7 @@ shape = SubResource( 9 )
 
 [node name="Helper Text4" parent="text" instance=ExtResource( 5 )]
 position = Vector2( 119, 272 )
-delay = 14.0
+delay = 17.0
 
 [node name="Label" parent="text/Helper Text4" index="0"]
 margin_left = 79.0
@@ -813,6 +823,23 @@ text = "The spell to go to the top of the tower is \"HOME\""
 autowrap = true
 
 [node name="CollisionShape2D" parent="text/Helper Text4" index="1"]
+visible = true
+position = Vector2( -22.04, -58 )
+shape = SubResource( 9 )
+
+[node name="Helper Text6" parent="text" instance=ExtResource( 5 )]
+position = Vector2( 119, 272 )
+delay = 14.0
+
+[node name="Label" parent="text/Helper Text6" index="0"]
+margin_left = -98.0
+margin_top = -103.0
+margin_right = 192.0
+margin_bottom = -83.0
+text = "They're usually found near torches"
+autowrap = true
+
+[node name="CollisionShape2D" parent="text/Helper Text6" index="1"]
 visible = true
 position = Vector2( -22.04, -58 )
 shape = SubResource( 9 )
@@ -933,6 +960,7 @@ shape = SubResource( 7 )
 [editable path="text/Helper Text3"]
 [editable path="text/Helper Text5"]
 [editable path="text/Helper Text4"]
+[editable path="text/Helper Text6"]
 [editable path="text/Helper Text"]
 [editable path="text/Travel Helper"]
 [editable path="text/Raise + Lower Helper"]

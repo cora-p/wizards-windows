@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/LevelManager.cs" type="Script" id=1]
 [ext_resource path="res://sprites/dot.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://levels/01_basics.tres" type="Resource" id=7]
 [ext_resource path="res://levels/00_mainmenu.tres" type="Resource" id=8]
 [ext_resource path="res://levels/t1.tres" type="Resource" id=9]
+[ext_resource path="res://levels/06_walk.tres" type="Resource" id=10]
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.0
@@ -34,7 +35,7 @@ rowCantChance = 0.25
 tileShiftChance = 0.131
 tileCantChance = 0.33
 mainMenu = ExtResource( 8 )
-levels = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+levels = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 10 ) ]
 secretLevels = [ ExtResource( 9 ) ]
 
 [node name="Progress Blocker" type="StaticBody2D" parent="."]

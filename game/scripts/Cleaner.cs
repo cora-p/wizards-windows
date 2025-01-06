@@ -16,11 +16,11 @@ public class Cleaner : Node2D, Manager {
     float idleTime;
 
     [Export]
-    float maxWindUpDistance;
+    float maxWindup, windupDecayRate;
     [Export]
     Curve windUpCurve;
 
-    float shoveMomentumDistance = 0f;
+    float windup = 0f;
 
     [Export]
     float shovePower;
@@ -50,6 +50,7 @@ public class Cleaner : Node2D, Manager {
     public override void _PhysicsProcess(float delta) {
         var leftPressed = Input.IsActionPressed("Move Left");
         var rightPressed = Input.IsActionPressed("Move Right");
+        var windupNormalized = windup / maxWindup;
         if (leftPressed && !rightPressed) {
             moveInputMoment = Mathf.Lerp(moveInputMoment, -1f, moveInputAcceleration);
         }
@@ -77,9 +78,11 @@ public class Cleaner : Node2D, Manager {
                 moveInputMoment = Mathf.Lerp(moveInputMoment, 0f, stopAcceleration);
                 idleTime += delta;
             }
+            windup -= windupDecayRate * delta;
         } else {
             idleTime = 0;
         }
+        windup = Mathf.Clamp(windup, 0, maxWindup);
         if (Mathf.Abs(moveInputMoment) > 0.01f) {
             if (moveInputMoment > 0 && travelPosition >= maxTravelDistance) {
                 if (!hasShovedRight) {
@@ -94,20 +97,21 @@ public class Cleaner : Node2D, Manager {
             } else {
                 var positionDelta = moveInputMoment * travelSpeed * delta;
                 travelPosition += positionDelta;
-                shoveMomentumDistance += Mathf.Abs(positionDelta) * windUpCurve.InterpolateBaked(shoveMomentumDistance / maxWindUpDistance);
+                windup += Mathf.Abs(positionDelta) * windUpCurve.Interpolate(windupNormalized);
             }
         }
-        var ct = windUpColorCurve.InterpolateBaked(shoveMomentumDistance / maxWindUpDistance);
+        var ct = windUpColorCurve.Interpolate(windupNormalized);
         sprite.Modulate = new Color(1, ct, ct, 1);
+
         Position = new Vector2(travelPosition, Position.y);
         Rotation = 0f;
     }
 
     void ShovePlatform(bool left) {
-        if (shoveMomentumDistance == 0) return;
+        if (windup == 0) return;
         Vector2 impulse;
-        shoveMomentumDistance = Mathf.Min(shoveMomentumDistance, maxWindUpDistance);
-        GD.Print($"Windup: {shoveMomentumDistance}");
+        windup = Mathf.Min(windup, maxWindup);
+        GD.Print($"Windup: {windup}");
         if (left) {
             impulse = (Vector2.Left + Vector2.Up * shoveUpFactor).Normalized().Rotated(platform.GlobalRotation);
             hasShovedLeft = true;
@@ -115,11 +119,11 @@ public class Cleaner : Node2D, Manager {
             impulse = (Vector2.Right + Vector2.Up * shoveUpFactor).Normalized().Rotated(platform.GlobalRotation);
             hasShovedRight = true;
         }
-        if (shoveMomentumDistance > shovePopThreshold) {
+        if (windup > shovePopThreshold) {
             platform.MoveLocalY(-popUpPixels);
         }
-        platform.ApplyCentralImpulse(impulse * shoveMomentumDistance * shovePower);
-        shoveMomentumDistance = 0f;
+        platform.ApplyCentralImpulse(impulse * windup * shovePower);
+        windup = 0f;
     }
 
     public void OnAllReady() {

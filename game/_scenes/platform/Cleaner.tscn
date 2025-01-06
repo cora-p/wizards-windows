@@ -5,10 +5,10 @@
 [ext_resource path="res://_scenes/platform/brush/Brush.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 0.187291, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 0.688963, 0.127273 ), -0.384875, -0.384875, 0, 0, Vector2( 1, 0.1 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 0.1, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 0.732441, 0.290909 ), -1.13936, -1.13936, 0, 0, Vector2( 1, 0.181818 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.535117, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.204013, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Cleaner" type="Node2D"]
 physics_interpolation_mode = 1
@@ -21,7 +21,8 @@ stopAcceleration = 0.2
 maxTravelDistance = 12.0
 travelSpeed = 65.0
 centerAfter = 5.0
-maxWindUpDistance = 60.0
+maxWindup = 60.0
+windupDecayRate = 60.0
 windUpCurve = SubResource( 2 )
 shovePower = 230.0
 windUpColorCurve = SubResource( 3 )

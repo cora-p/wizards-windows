@@ -197,7 +197,7 @@ public class LevelManager : Node2D, Manager {
     public void AllowProgression() {
         if (!IsOnMainMenu) {
             if (IsLastLevel) {
-                GrimeManager.Instance.ShowWinLabel("YOU'VE CLEANED\nTHE WHOLE TOWER...\nFOR NOW!");
+                GrimeManager.Instance.ShowWinLabel("YOU'VE CLEANED\nTHE WHOLE TOWER\n...FOR NOW!\n\nTHANKS FOR\nPLAYING!");
             } else {
                 GrimeManager.Instance.ShowWinLabel();
             }

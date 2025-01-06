@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/dot.png" type="Texture" id=1]
+[ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://_scenes/env/Window_D.tscn" type="PackedScene" id=3]
+
+[node name="XX_LEVELTEMPLATE" type="Node2D"]
+
+[node name="Backdrop" type="Sprite" parent="."]
+modulate = Color( 0.474287, 0.458923, 0.570313, 1 )
+position = Vector2( 26, -5 )
+scale = Vector2( 288, 250 )
+z_index = -500
+z_as_relative = false
+texture = ExtResource( 1 )
+centered = false
+
+[node name="start" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Block - Background2" parent="start" instance=ExtResource( 2 )]
+position = Vector2( 168.21, 40.05 )
+
+[node name="Block - Background6" parent="start" instance=ExtResource( 2 )]
+position = Vector2( 176.22, 32.04 )
+
+[node name="Block - Background10" parent="start" instance=ExtResource( 2 )]
+position = Vector2( 176.22, 40.05 )
+
+[node name="Block - Background11" parent="start" instance=ExtResource( 2 )]
+position = Vector2( 160.2, 40.05 )
+
+[node name="Block - Background12" parent="start" instance=ExtResource( 2 )]
+position = Vector2( 160.2, 32.04 )
+
+[node name="Block - Background7" parent="start" instance=ExtResource( 2 )]
+position = Vector2( 168.21, 32.04 )
+
+[node name="window groups" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="window groups"]
+position = Vector2( 120.15, 136.17 )
+
+[node name="Window_D" parent="window groups/Node2D" instance=ExtResource( 3 )]
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="dressing" type="Node2D" parent="."]
+
+[node name="misc" type="Node2D" parent="."]

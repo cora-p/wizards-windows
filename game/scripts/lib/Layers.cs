@@ -28,6 +28,8 @@ public static class ZIndices {
     public const int Battlements = 150;
     public const int DeepShadow = 199;
     public const int Deep = 200;
+
+    public const int Lights = 210;
     public const int Birds = 250;
     public const int HudBackground = 300;
     public const int HudMiddleground = 305;

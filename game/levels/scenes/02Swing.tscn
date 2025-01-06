@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_scenes/env/block_deep.tscn" type="PackedScene" id=4]
 [ext_resource path="res://_scenes/env/Window_D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://_scenes/env/Window_C.tscn" type="PackedScene" id=7]
 [ext_resource path="res://_scenes/ui/Helper Text.tscn" type="PackedScene" id=9]
 
@@ -168,6 +169,9 @@ __meta__ = {
 [node name="Block - Background4" parent="Set Dressing" instance=ExtResource( 2 )]
 position = Vector2( 73.92, -13.01 )
 
+[node name="Torch" parent="Set Dressing" instance=ExtResource( 6 )]
+position = Vector2( 31.0001, -1.99999 )
+
 [node name="windows" type="Node2D" parent="."]
 
 [node name="Node2D" type="Node2D" parent="windows"]
@@ -269,11 +273,27 @@ margin_left = -51.8599
 margin_top = -36.03
 margin_right = 276.14
 margin_bottom = -12.03
-text = "Dont forget:
-every level has a spell
+text = "Dont forget: every level has a spell
 this is the only was to save your progress!"
 
 [node name="CollisionShape2D" parent="text/Helper Text3" index="1"]
+visible = true
+position = Vector2( 45.5, -9 )
+shape = SubResource( 2 )
+
+[node name="Helper Text4" parent="text" instance=ExtResource( 9 )]
+position = Vector2( 169, 197 )
+visibleDuration = 5.0
+delay = 4.0
+
+[node name="Label" parent="text/Helper Text4" index="0"]
+margin_left = -51.8599
+margin_top = -24.02
+margin_right = 276.14
+margin_bottom = -0.019989
+text = "They're usually found near torches..."
+
+[node name="CollisionShape2D" parent="text/Helper Text4" index="1"]
 visible = true
 position = Vector2( 45.5, -9 )
 shape = SubResource( 2 )
@@ -282,3 +302,4 @@ shape = SubResource( 2 )
 [editable path="text/Helper Text"]
 [editable path="text/Helper Text2"]
 [editable path="text/Helper Text3"]
+[editable path="text/Helper Text4"]
