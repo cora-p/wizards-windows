@@ -287,7 +287,7 @@ shape = SubResource( 2 )
 [node name="Helper Text4" parent="text" instance=ExtResource( 9 )]
 position = Vector2( 169, 197 )
 visibleDuration = 5.0
-delay = 4.0
+delay = 2.0
 
 [node name="Label" parent="text/Helper Text4" index="0"]
 margin_left = -51.8599

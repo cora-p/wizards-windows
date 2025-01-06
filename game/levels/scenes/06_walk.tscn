@@ -124,11 +124,23 @@ position = Vector2( 199.99, 71.99 )
 [node name="Block - Shallow28" parent="obstacles" instance=ExtResource( 3 )]
 position = Vector2( 191.98, 63.98 )
 
-[node name="Block - Shallow32" parent="obstacles" instance=ExtResource( 3 )]
-position = Vector2( 208, 63.98 )
-
 [node name="Block - Shallow33" parent="obstacles" instance=ExtResource( 3 )]
 position = Vector2( 216.01, 63.98 )
+
+[node name="Block - Shallow70" parent="obstacles" instance=ExtResource( 3 )]
+position = Vector2( 312.13, 88.01 )
+
+[node name="Block - Shallow71" parent="obstacles" instance=ExtResource( 3 )]
+position = Vector2( 312.13, 104.03 )
+
+[node name="Block - Shallow72" parent="obstacles" instance=ExtResource( 3 )]
+position = Vector2( 312.13, 120.05 )
+
+[node name="Block - Shallow73" parent="obstacles" instance=ExtResource( 3 )]
+position = Vector2( 312.13, 136.07 )
+
+[node name="Block - Shallow74" parent="obstacles" instance=ExtResource( 3 )]
+position = Vector2( 308.12, 149.09 )
 
 [node name="Block - Shallow34" parent="obstacles" instance=ExtResource( 3 )]
 position = Vector2( 224.02, 63.98 )
@@ -470,6 +482,42 @@ position = Vector2( 219, 165 )
 
 [node name="Block - Background64" parent="dressing" instance=ExtResource( 7 )]
 position = Vector2( 235.02, 173.01 )
+
+[node name="Block - Background73" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 128 )
+
+[node name="Block - Background74" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 111.98 )
+
+[node name="Block - Background75" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 95.96 )
+
+[node name="Block - Background76" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 63.9199 )
+
+[node name="Block - Background77" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 55.9099 )
+
+[node name="Block - Background78" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 310, 47.8999 )
+
+[node name="Block - Background79" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 306.99, 39.8899 )
+
+[node name="Block - Background80" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 301.98, 52.8999 )
+
+[node name="Block - Background81" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 305.99, 81.9399 )
+
+[node name="Block - Background82" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 291.97, 78.9399 )
+
+[node name="Block - Background83" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 275.95, 78.9399 )
+
+[node name="Block - Background84" parent="dressing" instance=ExtResource( 7 )]
+position = Vector2( 267.94, 78.9399 )
 
 [node name="Block - Background62" parent="dressing" instance=ExtResource( 7 )]
 position = Vector2( 184.1, 166.99 )

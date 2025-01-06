@@ -15,7 +15,7 @@
 [ext_resource path="res://_scenes/env/Crate.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96.75, 24.75 )
+extents = Vector2( 50.5, 24.75 )
 
 [node name="05" type="Node2D"]
 
@@ -445,17 +445,25 @@ position = Vector2( 232.03, 100 )
 
 [node name="Windows" type="Node2D" parent="."]
 
-[node name="Window_D" parent="Windows" instance=ExtResource( 3 )]
+[node name="Node2D" type="Node2D" parent="Windows"]
+
+[node name="Window_D" parent="Windows/Node2D" instance=ExtResource( 3 )]
 position = Vector2( 40.02, 50.01 )
 
-[node name="Window_D2" parent="Windows" instance=ExtResource( 3 )]
-position = Vector2( 143, 97 )
+[node name="Node2D2" type="Node2D" parent="Windows"]
 
-[node name="Window_C" parent="Windows" instance=ExtResource( 4 )]
+[node name="Window_A" parent="Windows/Node2D2" instance=ExtResource( 6 )]
+position = Vector2( 56.03, 199 )
+
+[node name="Node2D3" type="Node2D" parent="Windows"]
+
+[node name="Window_C" parent="Windows/Node2D3" instance=ExtResource( 4 )]
 position = Vector2( 275, 104 )
 
-[node name="Window_A" parent="Windows" instance=ExtResource( 6 )]
-position = Vector2( 56.03, 199 )
+[node name="Node2D4" type="Node2D" parent="Windows"]
+
+[node name="Window_D2" parent="Windows/Node2D4" instance=ExtResource( 3 )]
+position = Vector2( 143, 97 )
 
 [node name="Text" type="Node2D" parent="."]
 
@@ -463,14 +471,49 @@ position = Vector2( 56.03, 199 )
 position = Vector2( 123, 109 )
 
 [node name="Label" parent="Text/Wind Up" index="0"]
-margin_top = -33.03
-margin_right = 214.0
-margin_bottom = -9.03003
+margin_left = -96.0701
+margin_top = -49.0
+margin_right = 491.93
+margin_bottom = -25.0
 text = "Run back and forth without hitting the side several times for maximum force"
 autowrap = true
 
 [node name="CollisionShape2D" parent="Text/Wind Up" index="1"]
 position = Vector2( 32.25, -9.75 )
+shape = SubResource( 1 )
+
+[node name="Wind Up2" parent="Text" instance=ExtResource( 7 )]
+position = Vector2( 123, 109 )
+delay = 2.0
+
+[node name="Label" parent="Text/Wind Up2" index="0"]
+margin_left = -72.0901
+margin_top = -40.05
+margin_right = 141.91
+margin_bottom = -16.05
+text = "This is called winding up
+"
+autowrap = true
+
+[node name="CollisionShape2D" parent="Text/Wind Up2" index="1"]
+position = Vector2( 32.25, -9.75 )
+shape = SubResource( 1 )
+
+[node name="Wind Up3" parent="Text" instance=ExtResource( 7 )]
+position = Vector2( 123, 109 )
+delay = 2.0
+
+[node name="Label" parent="Text/Wind Up3" index="0"]
+margin_left = -56.0701
+margin_top = 21.07
+margin_right = 461.93
+margin_bottom = 45.07
+text = "Your ropes are heavy. Don't unspool more than you need"
+autowrap = true
+
+[node name="CollisionShape2D" parent="Text/Wind Up3" index="1"]
+visible = true
+position = Vector2( 119.5, -9.75 )
 shape = SubResource( 1 )
 
 [node name="SpellCollectible" parent="." instance=ExtResource( 9 )]
@@ -496,4 +539,6 @@ position = Vector2( 46, 27 )
 position = Vector2( 46.05, 52.02 )
 
 [editable path="Text/Wind Up"]
+[editable path="Text/Wind Up2"]
+[editable path="Text/Wind Up3"]
 [editable path="SpellCollectible"]

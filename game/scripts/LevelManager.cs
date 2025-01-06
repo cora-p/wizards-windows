@@ -57,7 +57,7 @@ public class LevelManager : Node2D, Manager {
         if (secretLevels.Contains(currentLevel)) return mainMenu;
 
         var i = levels.IndexOf(currentLevel) + 1;
-        if (i >= 0 && i < levels.Count - 1) return levels[i];
+        if (i >= 0 && i < levels.Count) return levels[i];
         return mainMenu;
     }
 
