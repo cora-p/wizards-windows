@@ -435,7 +435,7 @@ margin_left = -187.0
 margin_top = -251.0
 margin_right = 377.0
 margin_bottom = -233.0
-text = "Hi! I'm Matt. I'm a software engineer who left Amazon after 6 years in December 2023. I want to work in gamedev."
+text = "Hi! I'm Matt. I'm a software engineer who left Amazon after 6 years in December 2024. I want to work in gamedev."
 autowrap = true
 
 [node name="CollisionShape2D" parent="about/a1" index="1"]
@@ -458,7 +458,7 @@ margin_left = -187.0
 margin_top = -239.0
 margin_right = 377.0
 margin_bottom = -197.0
-text = "This game was conceived on Dec 19th, 2023 after meeting with a talent partner at a16z to discuss what gamedev studios are looking for in a potential hire."
+text = "This game was conceived on Dec 19th, 2024 after meeting with a talent partner at a16z to discuss what gamedev studios are looking for in a potential hire."
 autowrap = true
 
 [node name="CollisionShape2D" parent="about/a2" index="1"]
