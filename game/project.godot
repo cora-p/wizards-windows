@@ -137,6 +137,7 @@ Scrub={
 2d_physics/layer_6="Grime"
 2d_physics/layer_7="Mobs"
 2d_physics/layer_8="FX"
+2d_physics/layer_9="Progress Blocker"
 
 [mono]
 

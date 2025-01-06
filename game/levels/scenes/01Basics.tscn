@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://misc/dogica_small_emoticon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://_scenes/env/Window_E.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=8]
 [ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_scenes/env/Crate_small.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 63.5, 15.5 )
@@ -954,6 +955,24 @@ text = ":D"
 visible = true
 position = Vector2( 11.4999, 6.5 )
 shape = SubResource( 7 )
+
+[node name="Crate" parent="." instance=ExtResource( 10 )]
+position = Vector2( 32, 44 )
+
+[node name="Crate2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 144, 76 )
+
+[node name="Crate3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 283.17, 124.06 )
+
+[node name="Crate4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 311.21, 67.99 )
+
+[node name="Crate5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 324.23, 67.99 )
+
+[node name="Crate6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 317.23, 55.97 )
 
 [editable path="SpellCollectible"]
 [editable path="text/Helper Text2"]

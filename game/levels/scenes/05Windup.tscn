@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/block_deep.tscn" type="PackedScene" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://_scenes/ui/Helper Text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=8]
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_scenes/env/skull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://_scenes/env/nest.tscn" type="PackedScene" id=11]
+[ext_resource path="res://_scenes/env/Crate_small.tscn" type="PackedScene" id=12]
+[ext_resource path="res://_scenes/env/Crate.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96.75, 24.75 )
@@ -177,6 +181,12 @@ position = Vector2( 277.99, 69.9399 )
 [node name="Block - Shallow48" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 294.01, 69.9399 )
 
+[node name="Block - Shallow54" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 326.05, 37.8999 )
+
+[node name="Block - Shallow55" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 318.04, 37.8999 )
+
 [node name="Block - Shallow49" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 294.01, 61.9299 )
 
@@ -230,6 +240,14 @@ position = Vector2( 133.81, 69.9399 )
 
 [node name="Block - Shallow47" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 125.8, 69.9399 )
+
+[node name="Crate - Small" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 228, 45 )
+rotation = -0.5927
+
+[node name="skull" parent="Obstacles" instance=ExtResource( 10 )]
+position = Vector2( 290.99, 112 )
+rotation = 1.57079
 
 [node name="Dressing" type="Node2D" parent="."]
 
@@ -322,6 +340,21 @@ position = Vector2( 278, 65 )
 
 [node name="Block - Background49" parent="Dressing" instance=ExtResource( 5 )]
 position = Vector2( 283, 49 )
+
+[node name="Block - Background56" parent="Dressing" instance=ExtResource( 5 )]
+position = Vector2( 322.05, 43 )
+
+[node name="Block - Background57" parent="Dressing" instance=ExtResource( 5 )]
+position = Vector2( 314.04, 43 )
+
+[node name="Block - Background58" parent="Dressing" instance=ExtResource( 5 )]
+position = Vector2( 330.06, 43 )
+
+[node name="Block - Background59" parent="Dressing" instance=ExtResource( 5 )]
+position = Vector2( 333.06, 37.99 )
+
+[node name="Block - Background60" parent="Dressing" instance=ExtResource( 5 )]
+position = Vector2( 312.04, 36.99 )
 
 [node name="Block - Background50" parent="Dressing" instance=ExtResource( 5 )]
 position = Vector2( 264, 57 )
@@ -445,6 +478,22 @@ position = Vector2( 195.21, 166.1 )
 
 [node name="Label" parent="SpellCollectible" index="2"]
 text = "WALK"
+
+[node name="Crate" parent="." instance=ExtResource( 13 )]
+position = Vector2( 216, 57 )
+
+[node name="Crate - Small" parent="." instance=ExtResource( 12 )]
+position = Vector2( 232, 58 )
+rotation = 0.74016
+
+[node name="Nest" parent="." instance=ExtResource( 11 )]
+position = Vector2( 323, 33 )
+
+[node name="Crate - Small2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 46, 27 )
+
+[node name="Crate - Small3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 46.05, 52.02 )
 
 [editable path="Text/Wind Up"]
 [editable path="SpellCollectible"]

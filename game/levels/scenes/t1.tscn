@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://_scenes/env/Window_D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://_scenes/env/Crate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://_scenes/env/Window_E.tscn" type="PackedScene" id=5]
+[ext_resource path="res://_scenes/env/Window_A.tscn" type="PackedScene" id=6]
+[ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=7]
+[ext_resource path="res://_scenes/env/Window_B.tscn" type="PackedScene" id=8]
+[ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_scenes/env/Crate_small.tscn" type="PackedScene" id=10]
+[ext_resource path="res://_scenes/env/skull.tscn" type="PackedScene" id=11]
 
 [node name="t1" type="Node2D"]
 
@@ -21,3 +30,135 @@ position = Vector2( 172.98, 111 )
 
 [node name="Window_D5" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 172.98, 125.02 )
+
+[node name="Crate" parent="." instance=ExtResource( 4 )]
+position = Vector2( 117, 109 )
+
+[node name="Crate2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 98.98, 109 )
+
+[node name="Crate3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 109.99, 89.98 )
+
+[node name="Crate4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 126.01, 89.98 )
+
+[node name="Block - Shallow" parent="." instance=ExtResource( 3 )]
+position = Vector2( 242.13, 158.03 )
+
+[node name="Block - Shallow8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 138, 125.99 )
+
+[node name="Block - Shallow9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 138, 117.98 )
+
+[node name="Block - Shallow2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 234.12, 158.03 )
+
+[node name="Block - Shallow3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 226.11, 158.03 )
+
+[node name="Block - Shallow4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 218.1, 158.03 )
+
+[node name="Block - Shallow5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 210.09, 158.03 )
+
+[node name="Block - Shallow6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 202.08, 158.03 )
+
+[node name="Block - Shallow7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 194.07, 158.03 )
+
+[node name="Block - Shallow10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 138, 134 )
+
+[node name="Block - Shallow11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 129.99, 134 )
+
+[node name="Block - Shallow12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 121.98, 134 )
+
+[node name="Block - Shallow13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 113.97, 134 )
+
+[node name="Block - Shallow14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 105.96, 134 )
+
+[node name="Block - Shallow15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 97.9499, 134 )
+
+[node name="Block - Shallow16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 89.9398, 134 )
+
+[node name="Torch" parent="." instance=ExtResource( 9 )]
+position = Vector2( 81, 106 )
+
+[node name="Torch2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 137.07, 97.99 )
+
+[node name="Block - Background" parent="." instance=ExtResource( 7 )]
+position = Vector2( 138, 110 )
+
+[node name="Block - Background2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 129.99, 126.02 )
+
+[node name="Block - Background3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 129.99, 118.01 )
+
+[node name="Block - Background4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 121.98, 126.02 )
+
+[node name="Block - Background5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 146.01, 93.98 )
+
+[node name="Window_A" parent="Block - Background5" instance=ExtResource( 6 )]
+position = Vector2( -87.01, 26.02 )
+
+[node name="Window_B" parent="Block - Background5" instance=ExtResource( 8 )]
+position = Vector2( -2.00998, 63.02 )
+
+[node name="Window_E" parent="Block - Background5" instance=ExtResource( 5 )]
+position = Vector2( -48.01, -29.98 )
+
+[node name="Crate - Small" parent="." instance=ExtResource( 10 )]
+position = Vector2( 120, 72 )
+
+[node name="Crate - Small2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 140, 107 )
+
+[node name="Crate - Small4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 195.08, 148.05 )
+
+[node name="Crate - Small5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 241.14, 148.05 )
+
+[node name="Crate - Small3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 141, 92 )
+
+[node name="skull" parent="." instance=ExtResource( 11 )]
+position = Vector2( 226, 140 )
+
+[node name="skull2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 218, 140 )
+
+[node name="skull3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 222, 130 )
+
+[node name="skull4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 209.98, 140 )
+
+[node name="skull5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 201.98, 140 )
+
+[node name="skull6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 205.98, 130 )
+
+[node name="skull7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 217.99, 123.98 )
+
+[node name="skull8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 209.99, 123.98 )
+
+[node name="skull9" parent="." instance=ExtResource( 11 )]
+position = Vector2( 213.99, 113.98 )

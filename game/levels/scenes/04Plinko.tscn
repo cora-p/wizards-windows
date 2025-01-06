@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://_scenes/env/block_shallow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/block_deep.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://_scenes/ui/Helper Text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=8]
 [ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_scenes/env/skull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://_scenes/env/Crate_small.tscn" type="PackedScene" id=11]
+[ext_resource path="res://_scenes/env/Crate.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42, 65 )
@@ -296,6 +299,19 @@ position = Vector2( 42, 38 )
 [node name="Torch2" parent="set dressing" instance=ExtResource( 9 )]
 position = Vector2( 226.94, 209 )
 
+[node name="Node2D" parent="set dressing" instance=ExtResource( 10 )]
+position = Vector2( 119, 70 )
+
+[node name="Node2D2" parent="set dressing" instance=ExtResource( 10 )]
+position = Vector2( 113, 70 )
+
+[node name="Node2D3" parent="set dressing" instance=ExtResource( 10 )]
+position = Vector2( 116, 64 )
+
+[node name="Node2D4" parent="set dressing" instance=ExtResource( 10 )]
+position = Vector2( 163.06, 58.99 )
+rotation = -3.09425
+
 [node name="windows" type="Node2D" parent="."]
 
 [node name="Node2D2" type="Node2D" parent="windows"]
@@ -343,6 +359,12 @@ position = Vector2( 43.01, 53.81 )
 
 [node name="Label" parent="SpellCollectible" index="2"]
 text = "WINDUP"
+
+[node name="Crate" parent="." instance=ExtResource( 12 )]
+position = Vector2( 260, 160 )
+
+[node name="Crate - Small" parent="." instance=ExtResource( 11 )]
+position = Vector2( 162, 67 )
 
 [editable path="text/Helper Text"]
 [editable path="SpellCollectible"]

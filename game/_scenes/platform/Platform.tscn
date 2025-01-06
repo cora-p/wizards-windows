@@ -4,7 +4,7 @@
 [ext_resource path="res://_scenes/platform/Cleaner.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 5 )
+extents = Vector2( 3, 4 )
 
 [node name="Platform" type="RigidBody2D"]
 physics_interpolation_mode = 1
@@ -12,18 +12,28 @@ position = Vector2( 1.36422e-12, 1.36422e-12 )
 z_index = 20
 z_as_relative = false
 collision_layer = 4
-collision_mask = 3
+collision_mask = 259
 mass = 100.0
 gravity_scale = 1.2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -1 )
-shape = SubResource( 1 )
-disabled = true
-
 [node name="Cleaner" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cleaner"]
+position = Vector2( -1.36422e-12, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cleaner"]
+position = Vector2( -1.36422e-12, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Cleaner"]
+position = Vector2( -1.36422e-12, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Cleaner"]
+position = Vector2( -1.36422e-12, 1 )
+shape = SubResource( 1 )
 
 [node name="Platform" type="Sprite" parent="."]
 position = Vector2( 1.36422e-12, 1.36422e-12 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://_scenes/env/SpellCollectible.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_scenes/env/block_background.tscn" type="PackedScene" id=2]
@@ -7,7 +7,10 @@
 [ext_resource path="res://_scenes/env/Window_D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://_scenes/env/Torch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://_scenes/env/Window_C.tscn" type="PackedScene" id=7]
+[ext_resource path="res://_scenes/env/Crate_small.tscn" type="PackedScene" id=8]
 [ext_resource path="res://_scenes/ui/Helper Text.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_scenes/env/Crate.tscn" type="PackedScene" id=10]
+[ext_resource path="res://_scenes/env/skull.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 78.5 )
@@ -297,6 +300,22 @@ text = "They're usually found near torches..."
 visible = true
 position = Vector2( 45.5, -9 )
 shape = SubResource( 2 )
+
+[node name="Crate" parent="." instance=ExtResource( 10 )]
+position = Vector2( 203, 79 )
+
+[node name="Crate - Small" parent="." instance=ExtResource( 8 )]
+position = Vector2( 220, 82 )
+
+[node name="Crate - Small2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 217, 70 )
+
+[node name="Crate - Small3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 71, -16 )
+
+[node name="skull" parent="." instance=ExtResource( 11 )]
+position = Vector2( 208, 67 )
+rotation = -0.785397
 
 [editable path="SpellCollectible"]
 [editable path="text/Helper Text"]
