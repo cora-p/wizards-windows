@@ -11,7 +11,7 @@ public class MenuController : Node2D {
         if (Input.IsActionPressed("Reset")) {
             resetTime += delta;
             if (resetHoldTime < resetTime) {
-                Overseer.Instance.Reset();
+                LevelManager.Instance.ChangeLevel(LevelManager.Instance.CurrentLevel.spell);
                 resetTime = 0f;
             }
         } else {

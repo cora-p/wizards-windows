@@ -277,7 +277,7 @@ margin_top = -36.03
 margin_right = 276.14
 margin_bottom = -12.03
 text = "Dont forget: every level has a spell
-this is the only was to save your progress!"
+this is the only way to save your progress!"
 
 [node name="CollisionShape2D" parent="text/Helper Text3" index="1"]
 visible = true

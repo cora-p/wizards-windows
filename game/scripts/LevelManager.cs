@@ -31,7 +31,7 @@ public class LevelManager : Node2D, Manager {
     [Export]
     Level mainMenu;
 
-    Level currentLevel;
+    public Level CurrentLevel { get; private set; }
 
     [Export]
     List<Level> levels;
@@ -50,13 +50,13 @@ public class LevelManager : Node2D, Manager {
 
     PackedScene transition, towerBg;
 
-    public bool IsOnMainMenu { get => currentLevel == mainMenu; }
-    public bool IsLastLevel { get => currentLevel == levels.Last(); }
+    public bool IsOnMainMenu { get => CurrentLevel == mainMenu; }
+    public bool IsLastLevel { get => CurrentLevel == levels.Last(); }
     private Level GetNextLevel() {
         if (IsOnMainMenu) return levels[0];
-        if (secretLevels.Contains(currentLevel)) return mainMenu;
+        if (secretLevels.Contains(CurrentLevel)) return mainMenu;
 
-        var i = levels.IndexOf(currentLevel) + 1;
+        var i = levels.IndexOf(CurrentLevel) + 1;
         if (i >= 0 && i < levels.Count) return levels[i];
         return mainMenu;
     }
@@ -86,7 +86,7 @@ public class LevelManager : Node2D, Manager {
         endcapScene = GD.Load<PackedScene>("res://_scenes/env/other/Endcap.tscn");
         transition = GD.Load<PackedScene>("res://_scenes/fx/transition.tscn");
         towerBg = GD.Load<PackedScene>("res://_scenes/env/other/background.tscn");
-        currentLevel = mainMenu;
+        CurrentLevel = mainMenu;
         Instance = this;
         progressBlocker.SetDeferred("disabled", true);
         Overseer.Instance.ReportReady(this);
@@ -218,12 +218,12 @@ public class LevelManager : Node2D, Manager {
     public void ChangeLevel(string spell = null) {
         AddChild(transition.Instance());
         if (spell != null) {
-            currentLevel = GetAllLevels().Find(l => l.spell == spell);
+            CurrentLevel = GetAllLevels().Find(l => l.spell == spell);
         } else {
-            currentLevel = GetNextLevel();
+            CurrentLevel = GetNextLevel();
         }
 
-        GetTree().ChangeSceneTo(currentLevel.scene);
+        GetTree().ChangeSceneTo(CurrentLevel.scene);
         Overseer.Instance.Reset();
     }
     public PackedScene GetPackedScene() => null;
